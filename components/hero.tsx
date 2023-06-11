@@ -71,7 +71,7 @@ const Hero = () => {
         />
       </div>
       <section>
-        <div id="projects" className="mt-40">
+        <div id="projects" className="mt-20">
           <h3 className="text-black/90 dark:text-white/90 text-xl font-semibold">
             Projects
           </h3>
@@ -83,7 +83,7 @@ const Hero = () => {
         </div>
       </section>
       <section>
-        <div id="other" className="mt-40">
+        <div id="other" className=" mt-24">
           <h3 className="text-black/90 dark:text-white/90 text-xl font-semibold">
             Other
           </h3>
