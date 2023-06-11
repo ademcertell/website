@@ -1,0 +1,93 @@
+---
+title: Spotify APİ ile Next.js kullanma
+date: 2023-06-09
+---
+
+Sitemde anlık olarak hangi şarkıyı dinlediğimi sizlere göstermek istedim. Bunları yapmak için **Spotify API** ve **Next.js API** yoluyla entegre etmem gerekiyor.
+
+## Bir Uygulama Oluşturun
+
+Öncelikle, API ile kimlik doğrulaması yapmanız için bize kimlik bilgilerini verecek bir Spotify uygulaması oluşturmanız gerekiyor.
+
+- [Spotify Developer Dashboard'unuza](https://developer.spotify.com/dashboard/) sayfasına giderek oturumunuzu açın.
+- Bir Uygulama Oluştur'a tıklayın.
+- Uygulama adı ve açıklama oluşturun.
+- "Client Secret" göster'e tıklayın.
+- "Client ID ve Client Secret" kaydedin. Yakında bunlara ihtiyacın olucak 🔍
+- Ayarları Düzenle'yi
+- `https://localhost:3000`, Yönlendirmesine URI'si olarak ekleyin.
+
+Hepsi tamam! Artık doğru şekilde yapılandırılmış bir Spotify uygulamasına ve istekte bulunmak için doğru kimlik bilgilerine sahipsiniz.
+
+## Kimlik Doğrulama
+
+Uygulamanıza bağlı olarak Spotify API ile kimlik doğrulamanın çeşitli birçok yolları vardır. İznin yalnızca bir kez verilmesine ihtiyacımız olduğu için, yetkilendirme kodu akışını kullanacağız.
+
+İhtiyacaımız olan kapsamlar ile giriş yaparak uygulama talep yetkimizi alacağız. İşte URL'nin nasıl görünebileceğine dair bir örnek `client_id` ve kapsamlarını kendiniz için değiştirin.
+
+```bash
+https://accounts.spotify.com/authorize?client_id=<clientİD>&response_type=code&redirect_uri=http
+%3A%2F%2Flocalhost:3000&scope=user-read-currently-playing%20
+user-top-read
+```
+
+Yetkilendirmeden sonra, `redirect_uri` URL'de bir `code` sorgu parametresi var bu değeri kaydedin.
+
+```bash
+http://localhost:3000/callback?code=AnNCg..BkTQ
+```
+
+Ardından, yenileme belirtecini almamız gerekecek. Client Secret ve daha önceki Client ID'yi Base 64 kodlu bir dize oluşturmanız gerekir. Çevrim içi olarak kodlamak için [Base64 formatından geçirmeniz gerekir](https://www.base64encode.org/). `client_id:client_secret` şeklinde yapıştırın.
+
+```bash
+curl -H "Authorization: Basic base64 code" -d grant_type=authorization_code -d code=<code> -d 
+redirect_uri=http%3A%2F%2Flocalhost:3000 
+https://accounts.spotify.com/api/token
+```
+
+`refresh_token` içeren bir JSON yanıtı döndürür. Bu belirteç, eşimi iptal etmediğiniz sürece süresiz olarak geçerlidir, bu nedenle bunu bir ortam değişkenine kaydetmek isteyeceğiz.
+
+## Spotify'ın API'sini kullanma
+
+Sonunda Spotify'ın API'sini kullanmaya geldik ve bazı gerçek verleri elde edebilicez. Next.js içinde, `.env.local` dosyanızda üç yeni değer oluşturun.
+
+```bash
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
+SPOTIFY_REFRESH_TOKEN=
+```
+
+Artık Client ID ve Client Secret ve `refresh_token` kullanarak erişim belirteci talep edebiliriz.
+
+```js
+import querystring from 'querystring';
+ 
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
+ 
+const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
+const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+ 
+const getAccessToken = async () => {
+  const response = await fetch(TOKEN_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${basic}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: querystring.stringify({
+      grant_type: 'refresh_token',
+      refresh_token,
+    }),
+  });
+ 
+  return response.json();
+};
+```
+
+En iyi parçalarınızı güvenli bir şekilde istemek için bu `access_token`'i kullanın. Başlangıçta kullanıcı tarafından okunan kapsamı eklediğinizi varsayar.
+
+Blog yazımı okuduğunuz için Teşekkür ederim.
+
+Kişisel sitemde kullandığım Spotify API kodlarına bakabilirsiniz. [Tıkla](https://github.com/AdemCanCertel/homepage).
