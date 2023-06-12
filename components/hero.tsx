@@ -8,12 +8,12 @@ import OtherCard from "./card/Other";
 const projects: Project[] = [
   {
     title: "homepage",
-    description: "My personal website, build with Next.js, TailwindCSS",
+    description: "✨ My personal website was created with Nextjs, TawilwindCSS and deployed with Vercel.",
     href: "https://github.com/ademcertell/homepage",
   },
   {
     title: "maahes",
-    description: "Stay in shape⚡- my fitness app project with React Native",
+    description: "Stay in shape ⚡ - The fitness app I made with React Native technology",
     href: "https://github.com/maahes-app/maahes",
   },
 ];
