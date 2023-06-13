@@ -3,8 +3,9 @@ import {
   defineDocumentType,
   makeSource,
 } from "contentlayer/source-files";
+import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import readingTime from "reading-time";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 
 const computedFields = defineComputedFields<"Post">({
@@ -40,14 +41,16 @@ export default makeSource({
     rehypePlugins: [
       rehypeSlug,
       [
+        rehypePrettyCode,
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ["subheading-anchor"],
-            ariaLabel: "Link to section",
+            className: ["anchor"],
           },
         },
       ],
     ],
   },
 });
+
+149315

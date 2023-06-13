@@ -59,7 +59,7 @@ SPOTIFY_REFRESH_TOKEN=
 
 Artık Client ID ve Client Secret ve `refresh_token` kullanarak erişim belirteci talep edebiliriz.
 
-```js
+```js title="lib/spotify.js"
 import querystring from 'querystring';
  
 const client_id = process.env.SPOTIFY_CLIENT_ID;
