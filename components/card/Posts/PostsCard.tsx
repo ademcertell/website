@@ -22,11 +22,11 @@ const PostCard = ({ data }: PostCardProps) => {
   return (
     <div className="flex flex-col rounded-lg py-4 no-underline text-neutral-800 dark:text-neutral-200 transition-all">
       <NextLink href={`/post/${data.slug}`}>
-        <h4 className="text-lg font-semibold cursor-pointer">{data.title}</h4>
+        <h4 className="text-xl font-semibold cursor-pointer">{data.title}</h4>
       </NextLink>
       <p className="text-sm my-1">{data.subtitle}</p>
       <div className="flex items-center mt-1 space-x-2">
-        <time dateTime={data.date} className="text-sm">
+        <time dateTime={data.date} className="text-sm text-black/50 dark:text-white/70">
           {format(parseISO(data.date!), "d LLLL yyyy", {
             locale: tr,
           })}

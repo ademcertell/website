@@ -6,7 +6,7 @@ import PostCard from "./PostsCard";
 
 export const metadata: Metadata = {
     title: "Posts",
-    description: "My all posts",
+    description: "all posts",
   };
   
   // Sort posts by date in descending order
