@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
+import "@upstash/claps/style.css";
+
 import Header from "@/components/ui/Header";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -36,7 +38,7 @@ export const metadata: Metadata = {
     site: "@ademcertell",
     card: "summary",
   },
-  themeColor: "#c5ebfc",
+  themeColor: "#d5d5d7",
   icons: {
     icon: "/avatar.png",
   },

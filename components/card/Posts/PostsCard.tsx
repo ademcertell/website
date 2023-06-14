@@ -3,7 +3,6 @@
 import NextLink from "next/link";
 
 import { format, parseISO } from "date-fns";
-import { tr } from "date-fns/locale";
 
 interface PostCardProps {
   data: {
@@ -24,15 +23,17 @@ const PostCard = ({ data }: PostCardProps) => {
       <NextLink href={`/post/${data.slug}`}>
         <h4 className="text-xl font-semibold cursor-pointer">{data.title}</h4>
       </NextLink>
-      <p className="text-sm my-1">{data.subtitle}</p>
-      <div className="flex items-center mt-1 space-x-2">
-        <time dateTime={data.date} className="text-sm text-black/50 dark:text-white/70">
-          {format(parseISO(data.date!), "d LLLL yyyy", {
-            locale: tr,
-          })}
+      <div className="flex items-center space-x-2 mt-1.5">
+        <time
+          dateTime={data.date}
+          className="text-sm text-black/50 dark:text-white/70"
+        >
+          {format(parseISO(data.date!), "d LLLL yyyy")}
         </time>
         <span className="opacity-60">·</span>
-        <span className="text-sm">{data.readingTime.text}</span>
+        <span className="text-sm text-black/50 dark:text-white/70">
+          {data.readingTime.text}
+        </span>
       </div>
     </div>
   );

@@ -1,10 +1,11 @@
-import { allPosts, Post } from "@/.contentlayer/generated";
 import { Balancer } from "react-wrap-balancer";
 import { notFound } from "next/navigation";
 import { format, parseISO } from "date-fns";
-import { tr } from "date-fns/locale";
+import { allPosts, Post } from "@/.contentlayer/generated";
+import { DiscussionEmbed, CommentCount } from "disqus-react";
 
 import { Mdx } from "@/components/mdx";
+import ClapsButton from "@/components/ui/ClapsButton";
 
 type Props = {
   params: {
@@ -54,9 +55,7 @@ export default async function BlogPost({ params, data }: any) {
         <div className="space-y-4">
           <div className="flex flex-warp items-center justify-center gap-x-6 gap-y-2 text-sm text-black/50 dark:text-white/70">
             <time dateTime={post.date}>
-              {format(parseISO(post.date), "d LLLL yyyy", {
-                locale: tr,
-              })}
+              {format(parseISO(post.date), "d LLLL yyyy")}
             </time>
             <div>
               <span>{post.readingTime.text}</span>
@@ -71,6 +70,9 @@ export default async function BlogPost({ params, data }: any) {
       </header>
       <div className="w-full text-gray-500 dark:text-white mt-4 mb-10">
         <Mdx code={post.body.code} />
+        <div className="mt-10 flex justify-center">
+          <ClapsButton url={post.tweetUrl} />
+        </div>
       </div>
     </section>
   );

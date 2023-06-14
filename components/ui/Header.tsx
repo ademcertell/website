@@ -1,11 +1,8 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-import Button from "./Button";
 import { ThemeToggle } from "../theme-toggle";
 
 interface NavItem {
@@ -14,8 +11,6 @@ interface NavItem {
 }
 
 const Header = () => {
-  const pathname = usePathname();
-  const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -40,7 +35,7 @@ const Header = () => {
               </Link>
             ))}
           </div>
-              <ThemeToggle />
+          <ThemeToggle />
         </nav>
       </div>
     </nav>

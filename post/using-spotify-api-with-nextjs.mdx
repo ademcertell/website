@@ -1,0 +1,93 @@
+---
+title: Using Spotify API with Next.js
+date: 2023-06-09
+---
+
+I wanted to display the song I'm currently listening to on my website. To achieve this, I need to integrate **Spotify API** and **Next.js API**.
+
+## Create an application
+
+First, you need to create a Spotify application that will provide us with the credentials for authenticating with the API.
+
+- [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/) go the page and log in to your account.
+- Click on Create an Application.
+- Create an application name and description.
+- "Client Secret" click on Show.
+- "Client ID and Client Secret" Save it. You will need these soon. 🔍
+- Edit Settings
+- `https://localhost:3000`, Add it as a Redirect URI.
+
+All set! You now have a properly configured Spotify application and the correct credentials to make requests.
+
+## Authentication
+
+Depending on your application, there are various ways to authenticate with the Spotify API. Since we only need to grant permission once, we will use the Authorization Code flow.
+
+We will obtain the necessary authorization for our application by logging in with the required scopes. Here is an example of how the URL might look, please replace `client_id` and scopes with your own
+
+```bash
+https://accounts.spotify.com/authorize?client_id=<clientİD>&response_type=code&redirect_uri=http
+%3A%2F%2Flocalhost:3000&scope=user-read-currently-playing%20
+user-top-read
+```
+
+After the authorization, there will be a code query parameter in the `redirect_uri` URL. Please save this value
+
+```bash
+http://localhost:3000/callback?code=AnNCg..BkTQ
+```
+
+Next, we will need to obtain the refresh token. You need to create a Base64-encoded string of the Client Secret and the previous Client ID. To encode it online, you can use a tool like [Base64Encode](https://www.base64encode.org/) Paste it in the format `client_id:client_secret` to encode it.
+
+```bash
+curl -H "Authorization: Basic base64 code" -d grant_type=authorization_code -d code=<code> -d
+redirect_uri=http%3A%2F%2Flocalhost:3000
+https://accounts.spotify.com/api/token
+```
+
+It will return a JSON response containing the `refresh_token`. This token is valid indefinitely unless revoked, so we will want to save it to an environment variable
+
+## Using Spotify API
+
+We have finally reached the point of using Spotify's API and obtaining some real data. Inside Next.js, create three new values in your `.env.local` file.
+
+```bash
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
+SPOTIFY_REFRESH_TOKEN=
+```
+
+Now, we can request an access token using the Client ID, Client Secret, and refresh_token.
+
+```js title="lib/spotify.js"
+import querystring from "querystring";
+
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
+
+const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
+const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+
+const getAccessToken = async () => {
+  const response = await fetch(TOKEN_ENDPOINT, {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${basic}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: querystring.stringify({
+      grant_type: "refresh_token",
+      refresh_token,
+    }),
+  });
+
+  return response.json();
+};
+```
+
+Use this access_token to securely request your top tracks. It is assumed that you have added the appropriate scope initially, which allows the user to read their top tracks.
+
+You're welcome! Thank you for reading my blog post.
+
+Sure, I can take a look at the Spotify API codes you are using on your personal website. [source code](https://github.com/ademcertell/homepage).
