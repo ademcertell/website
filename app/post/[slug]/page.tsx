@@ -2,7 +2,6 @@ import { Balancer } from "react-wrap-balancer";
 import { notFound } from "next/navigation";
 import { format, parseISO } from "date-fns";
 import { allPosts, Post } from "@/.contentlayer/generated";
-import { DiscussionEmbed, CommentCount } from "disqus-react";
 
 import { Mdx } from "@/components/mdx";
 import ClapsButton from "@/components/ui/ClapsButton";
