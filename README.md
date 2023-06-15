@@ -5,7 +5,7 @@
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Deployment:** [Vercel](https://vercel.com)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Uptash/Claps** [Claps](https://upstash-claps.vercel.app/)
+- **Upstash/Claps** [Claps](https://upstash-claps.vercel.app/)
 
 # Overview
 
