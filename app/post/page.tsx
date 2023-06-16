@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const BlogPage = () => {
   return (
     <header className="w-full m-1.5">
-      <h1 className="text-black dark:text-white text-3xl font-bold">Blog</h1>
+      <h1 className="text-black dark:text-white text-3xl">Blog</h1>
       <div className="mt-5">
         <Lists />
       </div>

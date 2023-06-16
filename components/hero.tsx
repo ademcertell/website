@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+
 import Tech from "./icons/Tech";
 import ProjectsCard from "./card/Projects";
 import OtherCard from "./card/Other";
@@ -8,12 +9,14 @@ import OtherCard from "./card/Other";
 const projects: Project[] = [
   {
     title: "homepage",
-    description: "✨ My personal website was created with Nextjs, TawilwindCSS and deployed with Vercel.",
+    description:
+      "✨ My personal website was created with Nextjs, TawilwindCSS and deployed with Vercel.",
     href: "https://github.com/ademcertell/homepage",
   },
   {
     title: "maahes",
-    description: "Stay in shape ⚡ - The fitness app I made with React Native technology",
+    description:
+      "Stay in shape ⚡ - The fitness app I made with React Native technology",
     href: "https://github.com/maahes-app/maahes",
   },
 ];
@@ -21,9 +24,9 @@ const projects: Project[] = [
 type Project = {
   title: string;
   description: string;
-  href: string
+  href: string;
 };
-
+///
 const other: Other[] = [
   {
     title: "Repository",
@@ -41,9 +44,8 @@ const other: Other[] = [
 type Other = {
   title: string;
   description: string;
-  href: string
+  href: string;
 };
-
 
 const Hero = () => {
   return (
@@ -51,10 +53,8 @@ const Hero = () => {
       <div className="w-full flex justify-between flex-col-reverse lg:flex-row items-center">
         <div>
           <p className="w-full mt-10 text-base text-center lg:text-start mb-0 text-black dark:text-white mx-auto">
-            Im
-            <strong className="text-zinc-900 dark:text-white"> Adem Can</strong>
-            , front-end developer in Turkey, a technology enthusiast. Im in love
-            with NextJS, TailwindCSS. I dont stop learning new things.
+            front-end developer and technology enthusiast. Im in love with
+            NextJS, TailwindCSS. I dont stop learning new things.
           </p>
           <div className="flex flex-col justify-center items-center lg:items-start mb-16 mx-auto lg:mx-0">
             <div className="flex flex-col justify-center items-center lg:items-start">
@@ -71,8 +71,8 @@ const Hero = () => {
           src="/avatar.png"
         />
       </div>
-      <section>
-        <div id="projects" className="mt-20">
+      <section id="projects">
+        <div className="mt-20">
           <h3 className="text-black/90 dark:text-white/90 text-xl font-semibold">
             Projects
           </h3>
@@ -83,8 +83,8 @@ const Hero = () => {
           </div>
         </div>
       </section>
-      <section>
-        <div id="other" className=" mt-24">
+      <section id="other">
+        <div className=" mt-24">
           <h3 className="text-black/90 dark:text-white/90 text-xl font-semibold">
             Other
           </h3>

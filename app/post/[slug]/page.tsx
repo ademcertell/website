@@ -61,7 +61,7 @@ export default async function BlogPost({ params, data }: any) {
             </div>
           </div>
           <div className="space-y-2">
-            <Balancer className="block mx-auto text-2xl font-bold text-black dark:text-white">
+            <Balancer className="block mx-auto text-2xl text-black dark:text-white">
               {post.title}
             </Balancer>
           </div>

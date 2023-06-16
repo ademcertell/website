@@ -1,7 +1,7 @@
 const Tech = () => {
   return (
     <>
-      <div className="text-base text-center lg:text-start mb-1.5 mt-3.5 text-black dark:text-white">
+      <div className="text-base lg:text-start mb-1.5 mt-3.5 text-gray-500">
         <h2>favorite techs</h2>
       </div>
       <div className="flex items-center justify-center md:justify-start gap-x-3 gap-y-2 flex-wrap">
