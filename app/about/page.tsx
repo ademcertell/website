@@ -41,7 +41,7 @@ const AboutPage = () => {
             </li>
             <li>
               {" "}
-              <Link href="https://steamcommunity.com/id/ademcertel">
+              <Link href="https://www.instagram.com/ademcertell/">
                 Instagram: @ademcertell
               </Link>
             </li>
