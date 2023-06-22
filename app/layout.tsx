@@ -9,39 +9,47 @@ import Header from "@/components/ui/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const title = "Adem Can Certel";
+const description = "Front-end developer and designer.";
+const url = "https://ademcan.dev";
+const locale = "tr-TR";
+
 export const metadata: Metadata = {
   title: {
-    default: "Adem Can Certel",
-    template: "%s | Adem Can Certel",
+    default: title,
+    template: `%s | ${title}`,
   },
-  description: "Front-end developer, designer.",
+  description: description,
   openGraph: {
-    title: "Adem Can Certel",
-    description: "Front-end developer, designer.",
-    url: "https://ademcan.dev",
-    siteName: "Adem Can Certel",
+    title,
+    description,
+    url,
+    siteName: title,
+    locale,
+    type: "website",
     images: [
       {
         url: "/avatar.png",
         alt: "Adem Can Certel",
       },
     ],
-    locale: "tr-TR",
-    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: title,
+    description,
+    site: "@ademcertell",
   },
   robots: {
     index: true,
     follow: true,
   },
-  twitter: {
-    title: "Adem Can Certel",
-    site: "@ademcertell",
-    card: "summary",
-  },
   themeColor: "#d5d5d7",
   icons: {
     icon: "/avatar.png",
+    apple: "/avatar.png",
   },
+  manifest: `/manifest.json`,
 };
 
 export default function RootLayout({

@@ -4,7 +4,7 @@ import Lists from "@/components/card/Posts/Lists";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Sonra",
+  description: "He jots down information, notes, figma designs, tips, tips on his blog page to show the knowledge he has gained from experience and what he wants to tell.",
 };
 
 const BlogPage = () => {

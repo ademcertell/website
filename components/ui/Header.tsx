@@ -23,8 +23,7 @@ const Header = () => {
   ];
 
   return (
-    <nav>
-      <div className="flex flex-col justify-center">
+    <nav className="flex flex-col justify-center">
         <nav className="flex items-center justify-between w-full mt-5 relative max-w-5xl py-5 text-zinc-900 dark:text-zinc-200">
           <div className="ml-[-0.10rem] space-x-4">
             {nav.map((navItem) => (
@@ -37,7 +36,6 @@ const Header = () => {
           </div>
           <ThemeToggle />
         </nav>
-      </div>
     </nav>
   );
 };
