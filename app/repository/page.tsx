@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const Repository = () => {
   return (
-    <header className="w-full m-1.5">
+    <header className="m-1.5 space-y-6 md:my-20">
       <RepositoryCard />
     </header>
   );

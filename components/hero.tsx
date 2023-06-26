@@ -49,7 +49,7 @@ type Other = {
 
 const Hero = () => {
   return (
-    <section className="w-full m-1.5">
+    <section className="m-1.5 space-y-6 md:my-16">
       <div className="w-full flex justify-between flex-col-reverse lg:flex-row items-center">
         <div>
           <p className="w-full mt-10 text-base text-center lg:text-start mb-0 text-black dark:text-white mx-auto">
