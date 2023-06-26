@@ -66,7 +66,8 @@ const Hero = () => {
           alt="Adem Can Certel"
           height={176}
           width={176}
-          priority={true}
+          priority
+          loading='eager'
           className="rounded-full"
           src="/avatar.png"
         />
