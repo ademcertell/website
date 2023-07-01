@@ -49,7 +49,7 @@ export default async function BlogPost({ params, data }: any) {
   }
 
   return (
-    <section className="m-1.5 space-y-6 md:my-20">
+    <section className="m-1.5 space-y-6 md:my-20 mt-20">
       <header className="space-y-8 text-center">
         <div className="space-y-4">
           <div className="flex flex-warp items-center justify-center gap-x-6 gap-y-2 text-sm text-black/50 dark:text-white/70">

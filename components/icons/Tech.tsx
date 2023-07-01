@@ -1,11 +1,11 @@
 const Tech = () => {
   return (
     <>
-      <div className="text-base lg:text-start mb-1.5 mt-3.5 text-gray-500">
+      <div className="text-base lg:text-start mb-1.5 mt-3.5 text-[#888]">
         <h2>favorite techs</h2>
       </div>
       <div className="flex items-center justify-center md:justify-start gap-x-3 gap-y-2 flex-wrap">
-        <div className="text-[#7e7d7d]">
+        <div className="text-[#888]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -18,7 +18,7 @@ const Tech = () => {
           </svg>
         </div>
 
-        <div className="text-[#7e7d7d]">
+        <div className="text-[#888]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -31,7 +31,7 @@ const Tech = () => {
           </svg>
         </div>
 
-        <div className="text-[#7e7d7d]">
+        <div className="text-[#888]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -44,7 +44,7 @@ const Tech = () => {
           </svg>
         </div>
 
-        <div className="text-[#7e7d7d]">
+        <div className="text-[#888]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -57,7 +57,7 @@ const Tech = () => {
           </svg>
         </div>
 
-        <div className="text-[#7e7d7d]">
+        <div className="text-[#888]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

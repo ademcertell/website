@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 @layer components {
-  body {
-    @apply max-w-5xl mx-auto px-6;
+    body {
+      @apply max-w-5xl mx-auto px-6;
+    }
   }
-}
-
-@layer {
-  body {
-    @apply dark:bg-background_color dark:text-blue-500 bg-gray-50 text-gray-900;
+  
+  @layer {
+    body {
+      @apply dark:bg-[#18181b] bg-gray-50 text-gray-900;
+    }
   }
-}
+  
