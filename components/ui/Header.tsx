@@ -19,6 +19,7 @@ const Header = () => {
 
   const nav: NavItem[] = [
     { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
     { label: "Posts", path: "/post" },
   ];
 
