@@ -61,17 +61,6 @@ export default makeSource({
           theme: {
             dark: "github-dark",
           },
-          onVisitline(node) {
-            if (node.children.length === 0) {
-              node.children = [{ type: "text", value: " " }];
-            }
-          },
-          onVisitHighlightedLine(node) {
-            node.properties.className.push("line--highlighted");
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ["word--highlighted"];
-          },
         },
       ],
       [
