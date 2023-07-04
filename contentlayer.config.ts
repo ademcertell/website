@@ -3,15 +3,16 @@ import {
   defineDocumentType,
   makeSource,
 } from "contentlayer/source-files";
-import rehypePrettyCode from 'rehype-pretty-code';
+import rehypePrettyCode from "rehype-pretty-code";
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import readingTime from "reading-time";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 
 const computedFields = defineComputedFields<"Post">({
   slug: {
-    type: "string",
-    resolve: (doc: any) => doc._raw.flattenedPath,
+    type: 'string',
+    resolve: (doc) => doc._raw.flattenedPath,
   },
   readingTime: {
     type: "json",
@@ -26,10 +27,22 @@ const Post = defineDocumentType(() => ({
   contentType: "mdx",
   filePathPattern: `**/*.mdx`,
   fields: {
-    date: { type: "date", required: true },
-    title: { type: "string", required: true },
-    tweetUrl: { type: "string", required: false },
-    subtitle: { type: "string", required: false },
+    title: { 
+      type: "string", 
+      required: true 
+    },
+    date: { 
+      type: "date", 
+      required: true 
+    },
+    tweetUrl: { 
+      type: "string", 
+      required: false 
+    },
+    subtitle: { 
+      type: "string", 
+      required: false 
+    },
   },
   computedFields,
 }));
@@ -38,14 +51,34 @@ export default makeSource({
   contentDirPath: "post",
   documentTypes: [Post],
   mdx: {
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [
+      rehypeAutolinkHeadings,
       rehypeSlug,
       [
         rehypePrettyCode,
+        {
+          theme: {
+            dark: "github-dark",
+          },
+          onVisitline(node) {
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }];
+            }
+          },
+          onVisitHighlightedLine(node) {
+            node.properties.className.push("line--highlighted");
+          },
+          onVisitHighlightedWord(node) {
+            node.properties.className = ["word--highlighted"];
+          },
+        },
+      ],
+      [
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ["anchor"],
+            className: ['anchor'],
           },
         },
       ],

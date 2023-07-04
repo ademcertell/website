@@ -29,7 +29,7 @@ const Header = () => {
           <div className="ml-[-0.4rem] space-x-4">
             {nav.map((navItem) => (
               <Link key={navItem.path} href={navItem.path}>
-                <span className="p-1 md:px-3 sm:py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800/40 transition-all text-gray-900 dark:text-gray-200">
+                <span className="p-1 md:px-3 sm:py-3 text-gray-900 dark:text-gray-200">
                   {navItem.label}
                 </span>
               </Link>

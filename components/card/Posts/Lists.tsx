@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     return (
       <div>
         {posts.map((post: Post) => (
-          <PostCard key={post._id} data={post} />
+          <PostCard key={post._id} data={post}/>
         ))}
       </div>
     );

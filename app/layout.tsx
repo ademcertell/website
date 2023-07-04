@@ -6,7 +6,6 @@ import "./globals.css";
 import "@upstash/claps/style.css";
 
 import Header from "@/components/ui/Header";
-import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -66,7 +65,6 @@ export default function RootLayout({
             <Header />
             {children}
           </main>
-          <Footer />
           <Analytics />
         </body>
       </head>
