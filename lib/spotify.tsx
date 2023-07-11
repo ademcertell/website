@@ -10,10 +10,12 @@ const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token"
 type Song = {
   is_playing: boolean;
   item: {
-    name: string;
+    name: string
+    artists: {
+      name: string
+    }[]
     album: {
       name: string;
-      artists: string;
       images:  [{ url: string }];
     };
     external_urls: {
