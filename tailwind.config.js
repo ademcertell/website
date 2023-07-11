@@ -9,6 +9,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        dark_card: "#1c1c1e",
+        light_card: "#f2f2f7",
         background_color: "#18181b",
       },
       width: {

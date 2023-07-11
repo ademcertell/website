@@ -8,22 +8,19 @@ const NOW_PLAYING_ENDPOINT =
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token"
 
 type Song = {
-  is_playing: boolean
+  is_playing: boolean;
   item: {
-    name: string
-    artists: {
-      name: string
-    }[]
+    name: string;
     album: {
-      name: string
-      images: {
-        url: string
-      }[]
-    }
+      name: string;
+      artists: string;
+      images:  [{ url: string }];
+    };
     external_urls: {
       spotify: string
-    }
-  }
+    };
+  };
+  currently_playing_type: string;
 }
 
 type AccessToken = {

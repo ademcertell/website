@@ -26,9 +26,11 @@ export const GET = async () => {
 
     const isPlaying = song.is_playing
     const name = song.item.name
-    const artist = song.item.artists.map((_artist) => _artist.name).join(', ')
+    const artist = song.item.artists
+      .map((artist) => artist.name)
+      .join(', ')
     const album = song.item.album.name
-    const albumImage = song.item.album.images[0].url
+    const albumImageURL = song.item.album.images[0].url
     const songUrl = song.item.external_urls.spotify
 
     return NextResponse.json({
@@ -36,7 +38,7 @@ export const GET = async () => {
       name,
       artist,
       album,
-      albumImage,
+      albumImageURL,
       songUrl,
     })
   } catch {
@@ -49,5 +51,3 @@ export const GET = async () => {
     )
   }
 }
-
-// https://github.com/tszhong0411/honghong.me - I got the code snippets from here.

@@ -16,6 +16,13 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  images: {
+    domains: [
+      'i.scdn.co',
+      'steamcdn-a.akamaihd.net',
+      'avatars.steamstatic.com'
+    ],
+  }
 };
 
 module.exports = withContentlayer(nextConfig);

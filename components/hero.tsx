@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 
-import Tech from "./icons/Tech";
 import ProjectsCard from "./card/Projects";
 import OtherCard from "./card/Other";
 
@@ -62,11 +61,6 @@ const Hero = () => {
             front-end developer and technology enthusiast. Im in love with
             NextJS, TailwindCSS. I dont stop learning new things.
           </p>
-          <div className="flex flex-col justify-center items-center lg:items-start mb-16 mx-auto lg:mx-0">
-            <div className="flex flex-col justify-center items-center lg:items-start">
-              <Tech />
-            </div>
-          </div>
         </div>
         <Image
           alt="Adem Can Certel"
@@ -74,13 +68,13 @@ const Hero = () => {
           width={176}
           priority
           loading='eager'
-          className="rounded-full"
+          className="rounded-full my-3"
           src="/avatar.png"
         />
       </div>
       <section id="projects">
         <div className="mt-20">
-          <h3 className="text-black/90 dark:text-white/90 text-xl font-semibold">
+          <h3 className="text-black dark:text-white text-xl font-semibold">
             Projects
           </h3>
           <div className="grid gap-4 md:grid-cols-2">
@@ -92,7 +86,7 @@ const Hero = () => {
       </section>
       <section id="other">
         <div className=" mt-24">
-          <h3 className="text-black/90 dark:text-white/90 text-xl font-semibold">
+          <h3 className="text-black dark:text-white text-xl font-semibold">
             Other
           </h3>
           <div className="grid gap-4 md:grid-cols-2 mb-10">

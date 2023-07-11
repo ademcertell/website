@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import Link from "next/link";
 
 const AboutPage = () => {
@@ -8,13 +5,12 @@ const AboutPage = () => {
     <section className="space-y-6 md:my-20 m-1.5 mt-20">
       <>
         <h1 className="text-black dark:text-white text-3xl">About me</h1>
-        <p className="my-1.5 dark:text-gray-50/80 text-gray-500/80">Hi, Im Adem Can</p>
         <div className="text-black dark:text-white text-base my-5">
           <p>
-            I am a front end developer in Turkey, I am currently developing my
-            project maahes which is a fitness interface application. I also do
-            ui designs as a freelancer and I am interested in fitness
-            bodybuilding.
+            Hi, Im Adem Can, I am a front end developer in Turkey, I am
+            currently developing my project maahes which is a fitness interface
+            application. I also do ui designs as a freelancer and I am
+            interested in fitness bodybuilding.
           </p>
           <hr className="my-5 opacity-25" />
           <p>
@@ -22,7 +18,7 @@ const AboutPage = () => {
             combination of interests eventually led me to my current role, front
             end development.
           </p>
-          <div className=" my-10">
+          <div className="mt-10">
             <h2 id="links" className="text-black dark:text-white text-2xl">
               <a href="#links">Links</a>
             </h2>
@@ -35,6 +31,14 @@ const AboutPage = () => {
               <li className="mb-1.5">
                 <Link target="_blank" href="https://twitter.com/ademcertell">
                   Twitter
+                </Link>
+              </li>
+              <li className="mb-1.5">
+                <Link
+                  target="_blank"
+                  href="https://www.linkedin.com/in/ademcancertel/"
+                >
+                  LinkedIn
                 </Link>
               </li>
               <li className="mb-1.5">
@@ -56,7 +60,7 @@ const AboutPage = () => {
               <li></li>
             </ul>
           </div>
-          <div className="my-10">
+          <div className="mt-10">
             <h2 id="build" className="text-black dark:text-white text-2xl">
               <a href="#build">How it was built</a>
             </h2>

@@ -53,7 +53,7 @@ const RepositoryCard = () => {
         <h1 className="text-black dark:text-white text-3xl">
           Repositories
         </h1>
-        <p className="text-black/50 dark:text-white/70">All my open source repositories</p>
+        <p className="text-black dark:text-white">All my open source repositories</p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 mt-5">
         {loading
