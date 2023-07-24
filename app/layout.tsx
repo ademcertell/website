@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import "@upstash/claps/style.css";
 
-import Header from "@/components/ui/Header";
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 

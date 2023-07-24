@@ -15,13 +15,13 @@ const Dashboard = () => {
   return (
     <section className="space-y-6 md:my-20 m-1.5 mt-20">
       <>
-        <h1 className="text-black dark:text-white text-3xl">Dashboard</h1>
+        <h1 className="text-black dark:text-white text-3xl font-semibold">Dashboard</h1>
         <p className="text-black dark:text-white">
           This control panel shows my Steam activity and my spotify activity.
         </p>
         <div className="mb-4 mt-5 grid gap-4 sm:grid-cols-2">
           <div className="h-full">
-            <div className="text-black/50 dark:text-white/70 text-lg line-clamp-2 mb-2.5">
+            <div className="text-slate-500 dark:text-white/70 text-lg line-clamp-2 mb-2.5">
               Steam Activite
             </div>
            <hr className="w-full opacity-5 my-1.5" />
@@ -32,7 +32,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="h-full">
-            <div className="text-black/50 dark:text-white/70 text-lg line-clamp-2 mb-2.5">
+            <div className="text-slate-500 dark:text-white/70 text-lg line-clamp-2 mb-2.5">
               Spotify Now Playing
             </div>
             <hr className="w-full opacity-5 my-1.5" />
@@ -43,7 +43,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="h-full">
-            <div className="text-black/50 dark:text-white/70 text-lg line-clamp-2 mb-2.5">
+            <div className="text-slate-500 dark:text-white/70 text-lg line-clamp-2 mb-2.5">
               GitHub Data
             </div>
             <hr className="w-full opacity-5 my-1.5" />

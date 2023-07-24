@@ -5,9 +5,9 @@ import { compareDesc } from "date-fns";
 import PostCard from "./PostsCard";
 
 export const metadata: Metadata = {
-    title: "Posts",
-    description: "all posts",
-  };
+  title: "Blog",
+  description: "He jots down information, notes, figma designs, tips, tips on his blog page to show the knowledge he has gained from experience and what he wants to tell.",
+};
   
   // Sort posts by date in descending order
   function getData() {

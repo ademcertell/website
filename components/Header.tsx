@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-import { ThemeToggle } from "../theme-toggle";
+import { ThemeToggle } from "./theme-toggle";
 
 interface NavItem {
   label: string;
@@ -20,7 +20,7 @@ const Header = () => {
   const nav: NavItem[] = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
-    { label: "Posts", path: "/post" },
+    { label: "Post", path: "/post" },
   ];
 
   return (

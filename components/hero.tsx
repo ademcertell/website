@@ -64,12 +64,12 @@ const Hero = () => {
         </div>
         <Image
           alt="Adem Can Certel"
+          className="rounded-full my-3"
+          src="/avatar.png"
           height={176}
           width={176}
           priority
           loading='eager'
-          className="rounded-full my-3"
-          src="/avatar.png"
         />
       </div>
       <section id="projects">

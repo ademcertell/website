@@ -50,7 +50,7 @@ const RepositoryCard = () => {
   return (
     <section className="w-full m-1.5">
       <div className="space-y-2 my-2">
-        <h1 className="text-black dark:text-white text-3xl">
+        <h1 className="text-black dark:text-white text-3xl font-semibold">
           Repositories
         </h1>
         <p className="text-black dark:text-white">All my open source repositories</p>
@@ -69,7 +69,7 @@ const RepositoryCard = () => {
                         {repo.name}
                       </h3>
                     </div>
-                    <p className="text-black/50 dark:text-white/70 text-sm line-clamp-2 mb-2.5">
+                    <p className="text-slate-500 dark:text-white/70 text-sm line-clamp-2 mb-2.5">
                       {repo.description}
                     </p>
                     <div className="mt-5">
