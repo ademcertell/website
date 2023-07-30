@@ -4,7 +4,6 @@ import React from "react";
 
 import Games from "@/components/activites";
 import NowPlaying from "@/components/now-playing";
-import GitHubData from "@/components/data/GitHub";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -39,17 +38,6 @@ const Dashboard = () => {
             <div className="text-black dark:text-white items-center truncate space-x-1">
               <div className="mt-1.5">
                 <NowPlaying />
-              </div>
-            </div>
-          </div>
-          <div className="h-full">
-            <div className="text-slate-500 dark:text-white/70 text-lg line-clamp-2 mb-2.5">
-              GitHub Data
-            </div>
-            <hr className="w-full opacity-5 my-1.5" />
-            <div className="text-black dark:text-white items-center truncate space-x-1">
-              <div className="mt-1.5">
-                <GitHubData username="ademcertell" />
               </div>
             </div>
           </div>
