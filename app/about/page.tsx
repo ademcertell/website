@@ -7,12 +7,12 @@ const AboutPage = () => {
         <h1 className="text-black dark:text-white text-3xl font-semibold">
           About me
         </h1>
-        <h3 className="text-neutral-500 dark:text-white/70">Hi I'm Adem Can</h3>
+        <h3 className="text-neutral-500 dark:text-white/70">Hi I&rsquo;m Adem Can</h3>
         <div className="text-black dark:text-white text-base my-5">
           <p>
-            I'm a Frontend developer in Turkey, I'm currently making mobile
+          I&rsquo;m a Frontend developer in Turkey, I&rsquo;m currently making mobile
             applications on a react native. I also do ui designs as a freelancer
-            and I'm interested in fitness bodybuilding.
+            and I&rsquo;m interested in fitness bodybuilding.
           </p>
           <hr className="my-5 opacity-25" />
           <p>
