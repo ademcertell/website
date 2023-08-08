@@ -19,9 +19,6 @@ const AboutPage = () => {
             I was interested in coding, and when I added design into it, this
             combination of interests eventually led me to my current role, front
             end development.
-            <Link target="_blank" href="https://superpeer.com/ademcancertel">
-              To meet 1:1
-            </Link>
           </p>
           <div className="mt-10">
             <h2 className="text-black/50 dark:text-white/70 font-semibold">
