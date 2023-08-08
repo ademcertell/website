@@ -62,7 +62,7 @@ const RepositoryCard = () => {
             ))
           : repositories.map((repo) => (
               <Link target="_blank" href={repo.html_url} key={repo.id}>
-                <div className="h-full rounded-md p-4 border border-neutral-200 dark:border-neutral-800 hover:dark:bg-neutral-900 hover:bg-neutral-100 ease-in-out overflow-x-hidden transition-colors">
+                <div className="h-full rounded-md p-4 hover:dark:bg-zinc-800 hover:bg-[#f1f5f9] ease-in-out overflow-x-hidden transition-colors">
                   <div className="space-y-2">
                     <div className="flex justify-between space-x-2">
                       <h3 className="text-black dark:text-white items-center truncate space-x-1">

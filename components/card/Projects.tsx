@@ -18,7 +18,7 @@ const ProjectsCard = ({ project }: ProjectsCardProps) => {
           <Link
             href={project.href}
             target="_blank"
-            className="rounded-md p-4 border border-neutral-200 dark:border-neutral-800 hover:dark:bg-neutral-900 hover:bg-neutral-100 border-opacity-30 overflow-x-hidden transition-colors duration-300 ease-in-out"
+            className="rounded-md p-4 hover:dark:bg-zinc-800 hover:bg-[#f1f5f9] overflow-x-hidden transition-colors duration-300 ease-in-out"
           >
             <div className="overflow-x-hidden leading-relaxed space-x-y">
               <h2 className="text-black dark:text-white font-medium">

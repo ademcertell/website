@@ -1,21 +1,18 @@
 # Homepage - ademcan.dev
 
-# İnfo
-
+## İnfo
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Claps](https://upstash-claps.vercel.app/)
 - [Vercel](https://vercel.com)
-- [Supabase](https://supabase.com/)
 
-# Overview
-
+## Overview
 - `/` - Home page.
 - `/blog` - All my posts are here!
 - `pages/about` - About me, what I like to do, what is my current job, and more...
 - `pages/repository` - All my open source repositories.
 
-# Local run
+## Local run
 ```bash
 $ git clone https://github.com/AdemCanCertel/homepage.git
 $ pnpm install or npm install - Set up with the package manager you prefer

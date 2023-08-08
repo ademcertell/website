@@ -7,10 +7,10 @@ import OtherCard from "./card/Other";
 
 const projects: Project[] = [
   {
-    title: "homepage",
+    title: "website",
     description:
-      "✨ My personal website was created with Nextjs, TawilwindCSS and deployed with Vercel.",
-    href: "https://github.com/ademcertell/homepage",
+      "✨ My personal portfolio was created with next.js tailwindcss and vercel.",
+    href: "https://github.com/ademcertell/website",
   },
   {
     title: "maahes",
@@ -25,7 +25,7 @@ type Project = {
   description: string;
   href: string;
 };
-///
+
 const other: Other[] = [
   {
     title: "Repository",
@@ -57,9 +57,9 @@ const Hero = () => {
     <section className="m-1.5 space-y-6 md:my-16 mt-20">
       <div className="w-full flex justify-between flex-col-reverse lg:flex-row items-center">
         <div>
-          <p className="w-full mt-10 text-base text-center lg:text-start mb-0 text-black dark:text-white mx-auto">
-            front-end developer and technology enthusiast. Im in love with
-            NextJS, TailwindCSS. I dont stop learning new things.
+          <p className="mt-10 text-base text-center lg:text-start text-black dark:text-white mx-auto">
+            Frontend developer and technology enthusiast.
+            Interface, mobile apps and more.
           </p>
         </div>
         <Image
