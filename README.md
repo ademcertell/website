@@ -1,4 +1,4 @@
-# Homepage - ademcan.dev
+# ademcan.dev
 
 ## İnfo
 - [Next.js](https://nextjs.org/)

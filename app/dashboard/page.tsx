@@ -16,7 +16,7 @@ const Dashboard = () => {
       <>
         <h1 className="text-black dark:text-white text-3xl font-semibold">Dashboard</h1>
         <p className="text-black dark:text-white">
-          This control panel shows my Steam activity and my spotify activity.
+        Personal activity dashboard created using the Next.js API ways.
         </p>
         <div className="mb-4 mt-5 grid gap-4 sm:grid-cols-2">
           <div className="h-full">

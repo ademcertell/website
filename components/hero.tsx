@@ -73,7 +73,7 @@ const Hero = () => {
         />
       </div>
       <section id="projects">
-        <div className="mt-20">
+        <div className="mt-10">
           <h3 className="text-black dark:text-white text-xl font-semibold">
             Projects
           </h3>
