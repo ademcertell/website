@@ -16,7 +16,7 @@ const projects: Project[] = [
     title: "maahes",
     description:
       "Stay in shape ⚡ - The fitness app I made with React Native technology",
-    href: "https://github.com/maahes-app/maahes",
+    href: "https://github.com/NebulaViq/maahes",
   },
 ];
 
