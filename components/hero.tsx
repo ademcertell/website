@@ -56,21 +56,21 @@ const Hero = () => {
   return (
     <section className="m-1.5 space-y-6 md:my-16 mt-20">
       <div className="w-full flex justify-between flex-col-reverse lg:flex-row items-center">
-        <div>
+        <div className="md:max-w-lg">
           <p className="mt-10 text-base text-center lg:text-start text-black dark:text-white mx-auto">
-            Frontend developer and technology enthusiast.
-            Interface, mobile apps and more.
+            Frontend developer and technology enthusiast. Interface, mobile apps
+            and more.
           </p>
         </div>
-        <Image
-          alt="Adem Can Certel"
-          className="rounded-full my-3"
-          src="/avatar.png"
-          height={176}
-          width={176}
-          priority
-          loading='eager'
-        />
+          <Image
+            alt="Adem Can Certel"
+            className="rounded-full my-3"
+            src="/avatar.png"
+            height={176}
+            width={176}
+            priority
+            loading="eager"
+          />
       </div>
       <section id="projects">
         <div className="mt-10">
