@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Balancer } from "react-wrap-balancer";
 import { notFound } from "next/navigation";
 import { format, parseISO } from "date-fns";
@@ -61,7 +62,7 @@ export default async function BlogPost({ params, data }: any) {
             </div>
           </div>
           <div className="space-y-2">
-            <Balancer className="block mx-auto text-2xl text-black dark:text-white">
+            <Balancer className="block mx-auto text-2xl md:w-11/12 text-black dark:text-white">
               {post.title}
             </Balancer>
           </div>
