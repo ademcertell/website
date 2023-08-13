@@ -1,0 +1,91 @@
+---
+title: "State Management Context APİ: Data Management in React Native Applications"
+subtitle: "How to manage data in React Native apps? Discover the power of State Management and Context API. Read on for details."
+date: 2023-08-13
+---
+
+As mobile app development increases in complexity, data management becomes more important. User interactions, updating data and in-app states are key components that shape the app experience. This is where **"state management"** comes into play and provides React Native developers with a powerful tool.
+
+## State Management: Basic Concepts
+
+React Native has a component-based structure. Each component can manage its own local state. Think about the clickability of a button, the visibility of a view, or the content of a text field. These states affect the behavior and appearance of the component.
+
+However, data that needs to be used across the application (such as login state, theme preferences, etc.) can be difficult to pass between components. This is where the Context API comes in.
+
+## State Hooks
+
+State Hooks is a new feature introduced as of React Native 16.8. State Hooks make state management easier and more flexible.
+
+State Hooks include two basic hooks, `useState` and `useReducer`. `useState` hook returns a state variable and a function to change the value of the state variable. `useReducer` hook returns a state variable, a function to change the value of the state variable, and a function to calculate the new value of the state variable.
+
+State Hooks are the most flexible way to manage state in React Native. State Hooks can be used to implement different state management strategies.
+
+## What is Context API?
+
+The Context API makes it easy to share state between different components of an application in React Native. The Context API allows to create a context and bind the context to a component. A component bound to a context can access the state in the context and change the state in the context.
+
+Context API is the simplest method of sharing state between different components of an application. The Context API shares state between different components of an application in a consistent and predictable way.
+
+- The Context API includes special hooks such as `createContext`, `useContext`, and `useReducer`. `createContext` creates a context and allows data to be passed to other components. `useContext` allows a component to access this context. `useReducer` is a hook used in more complex scenarios and facilitates data state management.
+
+<Callout>
+  Context API and State Hooks are two different tools used for state management
+  in React Native. The Context API makes it easy to share state between
+  different components of an application, while State Hooks make it easy to
+  manage state in a component.
+</Callout>
+
+## Advantages of Context API
+
+1. **Ease of Data Sharing:** The Context API makes it simple to pass data between all components. Instead of passing data to each component, the Context API manages data in a centralized location.
+
+2. **Code Cleanliness:** By centralizing data delivery, you can make your code more organized and cleaner. There is no need for complex transmission methods such as prop drilling.
+
+3. **Global State Management:** Managing application-wide state in a centralized way reduces the complexity of the application. So you can track data updates more effectively.
+
+4. **Performance Improvements:** Context API can improve performance by preventing unnecessary re-rendering. This ensures that only relevant components are updated.
+
+Overall, Context API is a powerful tool for React Native applications and a popular choice for state management. It has many advantages such as ease of data sharing, code cleanup, global state management, performance improvements and flexibility.
+
+## Context API Usage Example
+
+Let's say you want to add a theme switching feature and you want to share this theme across the application. In this case, you can use the Context API to give all components access to the theme settings. When you update the theme settings in one place, it will be reflected across the entire application.
+
+```js JavaScript
+import React, { createContext, useContext, useReducer } from "react";
+
+const ThemeContext = createContext();
+
+const themeReducer = (state, action) => {
+  switch (action.type) {
+    case "TOGGLE_THEME":
+      return state === "light" ? "dark" : "light";
+    default:
+      return state;
+  }
+};
+
+const ThemeProvider = ({ children }) => {
+  const [theme, dispatch] = useReducer(themeReducer, "light");
+
+  return (
+    <ThemeContext.Provider value={{ theme, dispatch }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+const useTheme = () => {
+  return useContext(ThemeContext);
+};
+
+export { ThemeProvider, useTheme };
+```
+
+In the example above, a theme change scenario is considered. The ThemeProvider component manages the theme state and pushes it to all components. theme information is accessed using a useTheme customized hook.
+
+## Result
+
+In React Native, state management is an important process for tracking and managing data about the state of the application. State management makes the application more consistent and predictable.
+
+There are several different methods that can be used for state management in React Native. The most common methods are State Hooks, Context API and Redux. Which state management method to use depends on the complexity of the application.
