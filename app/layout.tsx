@@ -6,6 +6,7 @@ import "./globals.css";
 import "@upstash/claps/style.css";
 
 import Header from "@/components/Header";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -57,9 +58,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '';
   return (
     <html lang="en">
       <head>
+      <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
         <body className={inter.className}>
           <main>
             <Header />
