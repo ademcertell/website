@@ -58,11 +58,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '';
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
   return (
     <html lang="en">
       <head>
-      <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
+        <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
         <body className={inter.className}>
           <main>
             <Header />
@@ -70,6 +70,13 @@ export default function RootLayout({
           </main>
           <Analytics />
         </body>
+        {process.env.NODE_ENV === "production" && (
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6633734277250116"
+            crossOrigin="anonymous"
+          ></script>
+        )}
       </head>
     </html>
   );
