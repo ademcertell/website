@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import Script from 'next/script'
 
 import "./globals.css";
 import "@upstash/claps/style.css";
@@ -67,6 +68,12 @@ export default function RootLayout({
           </main>
           <Analytics />
         </body>
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
       </head>
     </html>
   );
