@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import ProjectsCard from "./card/Projects";
 import OtherCard from "./card/Other";
@@ -9,13 +10,13 @@ const projects: Project[] = [
   {
     title: "website",
     description:
-      "✨ My personal portfolio was created with next.js tailwindcss and vercel.",
+      "My personal portfolio was created with next.js tailwindcss and vercel.",
     href: "https://github.com/ademcertell/website",
   },
   {
     title: "maahes",
     description:
-      "Stay in shape ⚡ - The fitness app I made with React Native technology",
+      "My fitness app interface application project that I am developing with React Native",
     href: "https://github.com/NebulaViq/maahes",
   },
 ];
@@ -61,16 +62,46 @@ const Hero = () => {
             Frontend developer and technology enthusiast. Interface, mobile apps
             and more.
           </p>
+          <div className="mt-10">
+            <div className="flex items-center space-x-3">
+              <Link
+                href="mailto:ademcancertel619@gmail.com"
+                target="_blank"
+                className="flex items-center rounded-full bg-zinc-200 p-3 text-zinc-600 transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-100"
+              >
+                Email
+              </Link>
+              <Link
+                href="https://twitter.com/ademcertell"
+                target="_blank"
+                className="flex items-center rounded-full bg-zinc-200 p-3 text-zinc-600 transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-100"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="28"
+                  height="28"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                </svg>
+              </Link>
+            </div>
+          </div>
         </div>
-          <Image
-            alt="Adem Can Certel"
-            className="rounded-full my-3"
-            src="/avatar.png"
-            height={176}
-            width={176}
-            priority
-            loading="eager"
-          />
+        <Image
+          alt="Adem Can Certel"
+          className="rounded-full my-3"
+          src="/avatar.png"
+          height={176}
+          width={176}
+          priority
+          loading="eager"
+        />
       </div>
       <section id="projects">
         <div className="mt-10">

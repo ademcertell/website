@@ -18,7 +18,7 @@ const OtherCard = ({ other }: OtherCardProps) => {
         <div className="mt-4 grid gap-4 md:grid-cols-1">
           <Link
             href={other.href}
-            className="rounded-md p-4 hover:dark:bg-zinc-800 hover:bg-[#f1f5f9] overflow-x-hidden transition-colors duration-300 ease-in-out"
+            className="rounded-md p-4 hover:dark:bg-zinc-800 hover:bg-indigo-50 overflow-x-hidden transition-colors duration-300 ease-in-out"
           >
             <div className="overflow-x-hidden leading-relaxed space-x-y">
               <h2 className="text-black dark:text-white font-medium">

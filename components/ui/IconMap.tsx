@@ -32,7 +32,6 @@ const GitHubIcon = (
   </svg>
 );
 
-
 const InstagramIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -51,12 +50,30 @@ const InstagramIcon = (
   </svg>
 );
 
+const YouTubeIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="28"
+    height="28"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z"></path>
+    <path d="M10 9l5 3l-5 3z"></path>
+  </svg>
+);
+
 type IconType = React.ReactElement;
 
 const IconMap: Record<string, IconType> = {
   twitter: TwitterIcon,
   github: GitHubIcon,
   instagram: InstagramIcon,
+  youtube: YouTubeIcon,
 };
 
 export default IconMap;

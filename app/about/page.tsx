@@ -10,20 +10,29 @@ const AboutPage = () => {
           About me
         </h1>
         <h3 className="text-neutral-500 dark:text-white/70">
-          Hi I&rsquo;m Adem Can
+          Hi I&rsquo;m Adem Can 👋
         </h3>
         <div className="text-black dark:text-white text-base my-5">
           <p>
-            I&rsquo;m a Frontend developer in Turkey, I&rsquo;m currently making
-            mobile applications on a react native. I also do ui designs as a
-            freelancer and I&rsquo;m interested in fitness bodybuilding.
+            I am a frontend developer and designer based in Istanbul, I&rsquo;m
+            currently making mobile applications on a react native. I also do ui
+            designs as a freelancer and I&rsquo;m interested in fitness
+            bodybuilding.
           </p>
           <hr className="my-5 opacity-25" />
           <div className="flex flex-col gap-6">
             <p>
               I develop react native mobile applications in my organization
-              called <Link href="https://github.com/NebulaViq" target="_blank" className="underline underline-offset-4">NebulaViq</Link> on GitHub and independently made a space news
-              website with Nasa API.
+              called{" "}
+              <Link
+                href="https://github.com/NebulaViq"
+                target="_blank"
+                className="underline underline-offset-4"
+              >
+                NebulaViq
+              </Link>{" "}
+              on GitHub and independently made a space news website with Nasa
+              API.
             </p>
             <p>
               I love working in coding and design. Some of the things that
@@ -50,6 +59,11 @@ const AboutPage = () => {
                   text="Instagram"
                   url="https://www.instagram.com/ademcertell/"
                   iconKey="instagram"
+                />
+                <CustomLink
+                  text="YouTube"
+                  url="https://www.youtube.com/channel/UC3sLnNIrakZRPJEOnzCKerQ"
+                  iconKey="youtube"
                 />
               </ul>
             </div>
