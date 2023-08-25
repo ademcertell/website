@@ -67,7 +67,7 @@ const Hero = () => {
               <Link
                 href="mailto:ademcancertel619@gmail.com"
                 target="_blank"
-                className="flex items-center rounded-full bg-zinc-200 p-3 text-zinc-600 transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-100"
+                className="flex font-bold items-center rounded-full bg-zinc-200 p-3 text-zinc-600 transition-colors hover:bg-indigo-50 dark:hover:bg-indigo-100"
               >
                 Email
               </Link>
@@ -79,8 +79,8 @@ const Hero = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  width="28"
-                  height="28"
+                  width="25"
+                  height="25"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
