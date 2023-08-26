@@ -1,8 +1,8 @@
-const runtimeCaching = require('next-pwa/cache')
+const runtimeCaching = require("next-pwa/cache");
 const { withContentlayer } = require("next-contentlayer");
 
-const withPWA = require('next-pwa')({
-  dest: 'public',
+const withPWA = require("next-pwa")({
+  dest: "public",
   register: true,
   skipWaiting: true,
 });
@@ -18,11 +18,11 @@ const nextConfig = {
   },
   images: {
     domains: [
-      'i.scdn.co',
-      'steamcdn-a.akamaihd.net',
-      'avatars.steamstatic.com'
+      "i.scdn.co",
+      "steamcdn-a.akamaihd.net",
+      "avatars.steamstatic.com",
     ],
-  }
+  },
 };
 
 module.exports = withContentlayer(nextConfig);

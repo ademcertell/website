@@ -56,9 +56,9 @@ const AboutPage = () => {
                   iconKey="github"
                 />
                 <CustomLink
-                  text="CV"
+                  text="Resume"
                   url="https://read.cv/ademcancertel"
-                  iconKey="cv"
+                  iconKey="resume"
                 />
                 <CustomLink
                   text="Instagram"

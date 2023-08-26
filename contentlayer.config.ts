@@ -4,14 +4,14 @@ import {
   makeSource,
 } from "contentlayer/source-files";
 import rehypePrettyCode from "rehype-pretty-code";
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import readingTime from "reading-time";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 const computedFields = defineComputedFields<"Post">({
   slug: {
-    type: 'string',
+    type: "string",
     resolve: (doc) => doc._raw.flattenedPath,
   },
   readingTime: {
@@ -27,21 +27,21 @@ const Post = defineDocumentType(() => ({
   contentType: "mdx",
   filePathPattern: `**/*.mdx`,
   fields: {
-    title: { 
-      type: "string", 
-      required: true 
+    title: {
+      type: "string",
+      required: true,
     },
-    date: { 
-      type: "date", 
-      required: true 
+    date: {
+      type: "date",
+      required: true,
     },
-    tweetUrl: { 
-      type: "string", 
-      required: false 
+    tweetUrl: {
+      type: "string",
+      required: false,
     },
-    subtitle: { 
-      type: "string", 
-      required: false 
+    subtitle: {
+      type: "string",
+      required: false,
     },
   },
   computedFields,
@@ -67,7 +67,7 @@ export default makeSource({
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ['anchor'],
+            className: ["anchor"],
           },
         },
       ],

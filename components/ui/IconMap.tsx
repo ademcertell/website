@@ -32,7 +32,7 @@ const GitHubIcon = (
   </svg>
 );
 
-const CV = (
+const Resume = (
   <svg
     role="img"
     xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ type IconType = React.ReactElement;
 const IconMap: Record<string, IconType> = {
   twitter: TwitterIcon,
   github: GitHubIcon,
-  cv: CV,
+  resume: Resume,
   instagram: InstagramIcon,
   youtube: YouTubeIcon,
 };
