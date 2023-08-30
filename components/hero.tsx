@@ -14,10 +14,10 @@ const projects: Project[] = [
     href: "https://github.com/ademcertell/website",
   },
   {
-    title: "maahes",
+    title: "ozel-gun",
     description:
-      "My fitness app interface application project that I am developing with React Native",
-    href: "https://github.com/NebulaViq/maahes",
+      "Özel günleri takip etmek ve hatırlatıcı bildirimler almak için basit bir araç.",
+    href: "https://github.com/ademcertell/ozel-gun",
   },
 ];
 
