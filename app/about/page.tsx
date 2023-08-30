@@ -22,19 +22,6 @@ const AboutPage = () => {
           <hr className="my-5 opacity-25" />
           <div className="flex flex-col gap-6">
             <p>
-              I develop react native mobile applications in my organization
-              called{" "}
-              <Link
-                href="https://github.com/NebulaViq"
-                target="_blank"
-                className="underline underline-offset-4"
-              >
-                NebulaViq
-              </Link>{" "}
-              on GitHub and independently made a space news website with Nasa
-              API.
-            </p>
-            <p>
               I love working in coding and design. Some of the things that
               excite me are animations, design systems, and great ui designs.
             </p>
