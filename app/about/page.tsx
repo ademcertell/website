@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import CustomLink from "@/components/ui/CustomLink";
 
 const AboutPage = () => {
@@ -10,13 +8,13 @@ const AboutPage = () => {
           About me
         </h1>
         <h3 className="text-neutral-500 dark:text-white/70">
-          Hi I&rsquo;m Adem Can 👋
+          Hi I&rsquo;m Adem Can
         </h3>
         <div className="text-black dark:text-white text-base my-5">
           <p>
-            I am a frontend developer and designer based in Istanbul, I&rsquo;m
-            currently making mobile applications on a react native. I also do ui
-            designs as a freelancer and I&rsquo;m interested in fitness
+            I&rsquo;m a frontend developer and designer living in Istanbul, I make
+            mobile applications on react native in my spare time. I also do
+            interface designs as a freelancer and I&rsquo;m interested in
             bodybuilding.
           </p>
           <hr className="my-5 opacity-25" />
