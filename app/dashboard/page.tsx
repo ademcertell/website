@@ -14,7 +14,7 @@ const Dashboard = () => {
   return (
     <section className="space-y-6 md:my-20 m-1.5 mt-20">
       <>
-        <h1 className="text-black dark:text-white text-3xl font-semibold">Dashboard</h1>
+        <h1 className="text-black dark:text-white text-3xl font-semibold">🔖 Dashboard</h1>
         <p className="text-black dark:text-white">
         Personal activity dashboard created using the Next.js API ways.
         </p>

@@ -51,7 +51,7 @@ const RepositoryCard = () => {
     <section className="w-full m-1.5">
       <div className="space-y-2 my-2">
         <h1 className="text-black dark:text-white text-3xl font-semibold">
-          Repositories
+        🔎 Repositories
         </h1>
         <p className="text-black dark:text-white">All my open source repositories</p>
       </div>

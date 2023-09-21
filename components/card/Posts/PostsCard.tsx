@@ -34,10 +34,6 @@ const PostCard = ({ data }: PostCardProps) => {
           >
             {format(parseISO(data.date!), "d LLLL yyyy")}
           </time>
-          <span className="opacity-60">,</span>
-          <span className="text-sm text-slate-500 dark:text-white/70">
-            {data.readingTime.text}
-          </span>
         </div>
       </div>
     </section>
