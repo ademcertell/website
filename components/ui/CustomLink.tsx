@@ -12,17 +12,19 @@ const CustomLink: React.FC<CustomLinkProps> = ({ text, url, iconKey }) => {
   const icon = IconMap[iconKey];
 
   return (
-    <li className="mb-1.5">
-      <Link 
-        href={url} 
+    <div className="flex felx-col gap-1">
+      <Link
+        href={url}
         passHref
         target="_blank"
-        className="w-32 flex justify-between items-center cursor-pointer text-lg"
-        >
-          {text}
+        className="flex items-center justify-between gap-2 rounded-lg p-2 hover:dark:bg-zinc-800 hover:bg-indigo-50 transition-all"
+      >
+        <span className="inline-flex items-center gap-2 font-medium">
           {icon}
+          {text}
+        </span>
       </Link>
-    </li>
+    </div>
   );
 };
 

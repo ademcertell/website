@@ -9,26 +9,28 @@ const AboutPage = () => {
         <h1 className="text-black dark:text-white text-3xl font-semibold">
           About me
         </h1>
-        <h3 className="text-neutral-500 dark:text-white/70">
-        Hi👋, I&rsquo;m Adem Can
+        <h3 className="text-neutral-800 dark:text-neutral-200">
+          Hi, I&rsquo;m Adem Can
         </h3>
         <div className="text-black dark:text-white text-base my-5">
           <p>
             I&rsquo;m a frontend developer and designer living in Istanbul, I
-            make mobile applications on react native in my spare time. I also do
-            interface designs as a freelancer and I&rsquo;m interested in
-            bodybuilding.
+            develop mobile applications with react-native. I also freelance
+            interface designs and I&rsquo;m interested in bodybuilding.
           </p>
-          <hr className="my-5 opacity-25 border-dashed" />
+          <hr className="my-5 opacity-40 border-dashed" />
           <div className="flex flex-col gap-6">
             <p>
-              I love working in coding and design. Some of the things that
-              excite me are animations, design systems and cool user interface
+              I love working in design and coding. Some of the things that
+              excite me are animations, design systems and great user interface
               designs. Sometimes I do pixel art designs.
             </p>
           </div>
           <div className="text-center mb-8 mt-8">
-            <Link className="m-1 bg-blue-300 hover:bg-blue-200 transition duration-200 text-black rounded-xl p-3 " href="mailto:ademcancertel619@gmail.com">
+            <Link
+              className="m-1 bg-blue-300 hover:bg-blue-200 transition duration-200 text-black rounded-xl p-3 "
+              href="mailto:ademcancertel619@gmail.com"
+            >
               Say hello!
             </Link>
           </div>
