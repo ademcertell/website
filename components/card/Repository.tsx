@@ -48,9 +48,9 @@ const RepositoryCard = () => {
   }, []);
 
   return (
-    <section className="w-full m-1.5">
+    <section>
       <div className="space-y-2 my-2">
-        <h1 className="text-black dark:text-white text-3xl font-semibold">
+        <h1 className="text-black dark:text-white text-2xl font-semibold">
         Repositories
         </h1>
         <p className="text-black dark:text-white">All my open source repositories</p>
@@ -62,7 +62,7 @@ const RepositoryCard = () => {
             ))
           : repositories.map((repo) => (
               <Link target="_blank" href={repo.html_url} key={repo.id}>
-                <div className="h-full rounded-md p-4 hover:dark:bg-zinc-800 hover:bg-indigo-50 ease-in-out overflow-x-hidden transition-colors">
+                <div className="border border-neutral-300 dark:border-neutral-800 dark:text-neutral-200 text-neutral-500 hover:dark:bg-neutral-800 hover:bg-neutral-100 h-full rounded-md p-4 ease-in-out overflow-x-hidden transition-colors">
                   <div className="space-y-2">
                     <div className="flex justify-between space-x-2">
                       <h3 className="text-black dark:text-white items-center truncate space-x-1">

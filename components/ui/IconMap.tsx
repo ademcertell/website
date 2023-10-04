@@ -4,8 +4,8 @@ const TwitterIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    width="28"
-    height="28"
+    width="23"
+    height="23"
     fill="none"
     stroke="currentColor"
     stroke-width="2"
@@ -20,8 +20,8 @@ const TwitterIcon = (
 const GitHubIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
+    width="23"
+    height="23"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -34,30 +34,11 @@ const GitHubIcon = (
   </svg>
 );
 
-const Resume = (
-  <svg
-    role="img"
-    xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    className="text-neutral-500 dark:text-white/70"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-    <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
-  </svg>
-);
-
 const InstagramIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
+    width="23"
+    height="23"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -72,32 +53,12 @@ const InstagramIcon = (
   </svg>
 );
 
-const YouTubeIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    className="text-neutral-500 dark:text-white/70"
-  >
-    <path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z"></path>
-    <path d="M10 9l5 3l-5 3z"></path>
-  </svg>
-);
-
 type IconType = React.ReactElement;
 
 const IconMap: Record<string, IconType> = {
   twitter: TwitterIcon,
   github: GitHubIcon,
-  resume: Resume,
   instagram: InstagramIcon,
-  youtube: YouTubeIcon,
 };
 
 export default IconMap;

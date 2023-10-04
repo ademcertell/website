@@ -1,71 +1,58 @@
-import Link from "next/link";
+import { Metadata } from "next";
 
 import CustomLink from "@/components/ui/CustomLink";
 
+export const metadata: Metadata = {
+  title: "About",
+  description: "About me and links",
+};
+
 const AboutPage = () => {
   return (
-    <section className="space-y-6 md:my-20 m-1.5 mt-20">
+    <section id="about">
       <>
-        <h1 className="text-black dark:text-white text-3xl font-semibold">
+        <h1 className="text-black dark:text-white text-2xl font-semibold">
           About me
         </h1>
-        <h3 className="text-neutral-800 dark:text-neutral-200">
+        <p className="text-neutral-800 dark:text-neutral-200 my-5">
           Hi, I&rsquo;m Adem Can
-        </h3>
-        <div className="text-black dark:text-white text-base my-5">
+        </p>
+        <div className="text-neutral-800 dark:text-neutral-200 text-base">
           <p>
-            I&rsquo;m a frontend developer and designer living in Istanbul, I
+            I&rsquo;m a self-taught Frontend Developer living in Istanbul, I
             develop mobile applications with react-native. I also freelance
             interface designs and I&rsquo;m interested in bodybuilding.
           </p>
-          <hr className="my-5 opacity-40 border-dashed" />
-          <div className="flex flex-col gap-6">
+          <hr className="my-5 opacity-40" />
+          <div className="flex flex-col gap-3">
             <p>
-              I love working in design and coding. Some of the things that
-              excite me are animations, design systems and great user interface
-              designs. Sometimes I do pixel art designs.
+              I love working in coding and design . Some of the things that
+              excite me are CSS, design systems and great user interface
+              designs.
+            </p>
+            <p>
+              I enjoy reading books, playing games and I have a passion for
+              creating creative content. I try to produce creative content as
+              much as I can.
             </p>
           </div>
-          <div className="text-center mb-8 mt-8">
-            <Link
-              className="m-1 bg-blue-300 hover:bg-blue-200 transition duration-200 text-black rounded-xl p-3 "
-              href="mailto:ademcancertel619@gmail.com"
-            >
-              Say hello!
-            </Link>
-          </div>
           <div className="mt-10">
-            <h2 className="text-black/50 dark:text-white/70 font-semibold">
-              Links
-            </h2>
-            <div className="my-1.5">
-              <ul className="flex flex-col gap-1">
-                <CustomLink
-                  text="Twitter"
-                  url="https://twitter.com/ademcertell"
-                  iconKey="twitter"
-                />
-                <CustomLink
-                  text="GitHub"
-                  url="https://github.com/ademcertell"
-                  iconKey="github"
-                />
-                <CustomLink
-                  text="Instagram"
-                  url="https://www.instagram.com/ademcertell/"
-                  iconKey="instagram"
-                />
-                <CustomLink
-                  text="YouTube"
-                  url="https://www.youtube.com/channel/UC3sLnNIrakZRPJEOnzCKerQ"
-                  iconKey="youtube"
-                />
-                <CustomLink
-                  text="Resume"
-                  url="https://read.cv/ademcancertel"
-                  iconKey="resume"
-                />
-              </ul>
+            <div>
+              <CustomLink
+                text="Twitter"
+                url="https://twitter.com/ademcertell"
+                iconKey="twitter"
+              />
+              <CustomLink
+                text="GitHub"
+                url="https://github.com/ademcertell"
+                iconKey="github"
+              />
+              <CustomLink
+                text="Instagram"
+                url="https://www.instagram.com/ademcertell/"
+                iconKey="instagram"
+              />
             </div>
           </div>
         </div>

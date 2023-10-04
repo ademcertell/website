@@ -1,43 +1,47 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { ThemeToggle } from "./theme-toggle";
 
-interface NavItem {
-  label: string;
-  path: string;
-}
+const links = {
+  "/": "Home",
+  "/about": "About",
+  "/post": "Blog",
+  "/repository": "Repository",
+};
 
 const Header = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const nav: NavItem[] = [
-    { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
-    { label: "Post", path: "/post" },
-  ];
+  const pathname = usePathname();
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-40 bg-white/80 shadow-md saturate-[1.8] backdrop-blur-[10px] dark:bg-[#19191b] dark:saturate-100">
-        <nav className="flex items-center justify-between w-full mx-auto h-[60px] px-5 relative max-w-5xl">
-          <div className="ml-[-0.4rem] space-x-4">
-            {nav.map((navItem) => (
-              <Link key={navItem.path} href={navItem.path}>
-                <span className="p-1 md:px-3 sm:py-3 text-gray-900 dark:text-gray-200">
-                  {navItem.label}
-                </span>
-              </Link>
-            ))}
-          </div>
-          <ThemeToggle />
-        </nav>
-    </nav>
+    <header className="flex flex-col sm:flex-row mt-5 md:mb-10 items-center">
+      <nav
+        id="nav"
+        className={"font-medium text-medium items-center flex grow gap-3"}
+      >
+        {Object.entries(links).map(([path, text]) => {
+          const active = path === pathname;
+          return (
+            <Link key={path} href={path}>
+              <span
+                className={`${
+                  active
+                    ? "dark:text-white text-black font-bold"
+                    : "dark:text-white text-black"
+                }`}
+              >
+                {text}
+              </span>
+            </Link>
+          );
+        })}
+      </nav>
+      <div className="flex flex-row items-center justify-center sm:ml-4 space-x-4 mt-3">
+        <ThemeToggle />
+      </div>
+    </header>
   );
 };
 

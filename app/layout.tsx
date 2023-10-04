@@ -10,7 +10,7 @@ import Header from "@/components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 const title = "Adem Can Certel";
-const description = "Front-end developer";
+const description = "Frontend developer";
 const url = "https://ademcan.dev";
 const locale = "tr-TR";
 
