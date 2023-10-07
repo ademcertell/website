@@ -52,13 +52,17 @@ export default async function BlogPost({ params, data }: any) {
   return (
     <section className="">
       <header className="space-y-8 text-center">
-        <Image
-          src={post.bannerUrl}
-          alt={post.title}
-          className="object-cover w-full transition-all rounded-lg h-30 ring-1 dark:ring-white/10 ring-black/10"
-          width={1200}
-          height={400}
-        />
+        {post.bannerUrl ? (
+          <Image
+            src={post.bannerUrl}
+            alt={post.title}
+            className="object-cover w-full transition-all rounded-lg h-30 ring-1 dark:ring-white/10 ring-black/10"
+            width={1200}
+            height={400}
+          />
+        ) : (
+          <p>Error</p>
+        )}
         <div className="space-x-4">
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <div className="flex items-center justify-center space-x-2 text-sm text-black/50 dark:text-white/70">
