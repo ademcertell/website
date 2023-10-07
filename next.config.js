@@ -17,11 +17,12 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    /*domains: [
+    domains: [
       "i.scdn.co",
       "steamcdn-a.akamaihd.net",
       "avatars.steamstatic.com",
-    ], */
+      "vyshnav.xyz"
+    ],
   },
 };
 

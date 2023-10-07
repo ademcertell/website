@@ -19,7 +19,9 @@ const Header = () => {
     <header className="flex flex-col sm:flex-row mt-5 md:mb-10 items-center">
       <nav
         id="nav"
-        className={"font-medium text-medium items-center flex grow gap-3"}
+        className={
+          "font-medium text-medium items-center space-x-2 flex grow gap-3"
+        }
       >
         {Object.entries(links).map(([path, text]) => {
           const active = path === pathname;

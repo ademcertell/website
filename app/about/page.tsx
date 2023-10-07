@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 import CustomLink from "@/components/ui/CustomLink";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -37,7 +38,7 @@ const AboutPage = () => {
             </p>
           </div>
           <div className="mt-10">
-            <div>
+            <div className="grid grid-cols-4 gap-4">
               <CustomLink
                 text="Twitter"
                 url="https://twitter.com/ademcertell"
@@ -52,6 +53,11 @@ const AboutPage = () => {
                 text="Instagram"
                 url="https://www.instagram.com/ademcertell/"
                 iconKey="instagram"
+              />
+              <CustomLink
+                text="YouTube"
+                url="https://www.youtube.com/channel/UC3sLnNIrakZRPJEOnzCKerQ"
+                iconKey="youtube"
               />
             </div>
           </div>

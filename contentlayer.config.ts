@@ -43,6 +43,9 @@ const Post = defineDocumentType(() => ({
       type: "string",
       required: false,
     },
+    bannerUrl: {
+      type: "string",
+    },
   },
   computedFields,
 }));

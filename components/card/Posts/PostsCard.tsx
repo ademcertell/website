@@ -1,7 +1,6 @@
 "use client";
 
 import NextLink from "next/link";
-
 import { format, parseISO } from "date-fns";
 
 interface PostCardProps {
@@ -32,7 +31,7 @@ const PostCard = ({ data }: PostCardProps) => {
             dateTime={data.date}
             className="text-sm text-slate-500 dark:text-white/70"
           >
-            {format(parseISO(data.date!), "d LLLL yyyy")}
+            {format(parseISO(data.date), "d LLLL yyyy")}
           </time>
         </div>
       </div>
