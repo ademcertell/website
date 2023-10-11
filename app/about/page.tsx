@@ -38,7 +38,7 @@ const AboutPage = () => {
             </p>
           </div>
           <div className="mt-10">
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid gap-4 md:grid-cols-2">
               <CustomLink
                 text="Twitter"
                 url="https://twitter.com/ademcertell"

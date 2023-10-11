@@ -56,7 +56,7 @@ export default async function BlogPost({ params, data }: any) {
           <Image
             src={post.bannerUrl}
             alt={post.title}
-            className="object-cover w-full transition-all rounded-lg h-30 ring-1 dark:ring-white/10 ring-black/10"
+            className="object-cover w-full transition-all rounded-lg h-30 mt-3 ring-1 dark:ring-white/10 ring-black/10"
             width={1200}
             height={400}
           />
