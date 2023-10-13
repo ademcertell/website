@@ -32,7 +32,7 @@ const Hero = () => {
       <div className="w-full flex justify-between flex-col-reverse lg:flex-row items-center">
         <div className="md:max-w-lg">
           <p className="text-base text-center lg:text-start text-black dark:text-white mx-auto">
-            Frontend developer and technology enthusiast. Interface, mobile apps
+            Frontend developer and technology enthusiast. Interface, design, mobile apps
             and more.
           </p>
         </div>
@@ -47,7 +47,7 @@ const Hero = () => {
       </div>
       <div className="mb-8 mt-5">
         <Link
-          className="border border-neutral-300 dark:border-neutral-800 dark:text-neutral-200 text-neutral-500 hover:dark:bg-neutral-800 hover:bg-neutral-100 transition duration-200 rounded-xl p-3 m-1"
+          className="border border-neutral-300 dark:border-neutral-800 dark:text-neutral-200 text-neutral-500 hover:dark:bg-neutral-800 hover:bg-neutral-100 rounded-xl p-3 m-1 transition duration-200"
           href="mailto:ademcancertel619@gmail.com"
         >
           Say hello!
