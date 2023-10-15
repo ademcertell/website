@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
 import CustomLink from "@/components/ui/CustomLink";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,13 +10,15 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <section id="about">
-      <>
+      <header>
         <h1 className="text-black dark:text-white text-2xl font-semibold">
           About me
         </h1>
         <p className="text-neutral-800 dark:text-neutral-200 my-5">
           Hi, I&rsquo;m Adem Can
         </p>
+      </header>
+      <>
         <div className="text-neutral-800 dark:text-neutral-200 text-base">
           <p>
             I&rsquo;m a self-taught Frontend Developer living in Istanbul, I
@@ -38,7 +39,7 @@ const AboutPage = () => {
             </p>
           </div>
           <div className="mt-10">
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-4">
               <CustomLink
                 text="Twitter"
                 url="https://twitter.com/ademcertell"
@@ -53,11 +54,6 @@ const AboutPage = () => {
                 text="Instagram"
                 url="https://www.instagram.com/ademcertell/"
                 iconKey="instagram"
-              />
-              <CustomLink
-                text="YouTube"
-                url="https://www.youtube.com/channel/UC3sLnNIrakZRPJEOnzCKerQ"
-                iconKey="youtube"
               />
             </div>
           </div>

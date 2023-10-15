@@ -32,8 +32,8 @@ const Hero = () => {
       <div className="w-full flex justify-between flex-col-reverse lg:flex-row items-center">
         <div className="md:max-w-lg">
           <p className="text-base text-center lg:text-start text-black dark:text-white mx-auto">
-            Frontend developer and technology enthusiast. Interface, design, mobile apps
-            and more.
+            Frontend developer and technology enthusiast. Interface, design,
+            mobile apps and more.
           </p>
         </div>
         <Image
@@ -63,6 +63,9 @@ const Hero = () => {
               <ProjectsCard key={index} project={project} />
             ))}
           </div>
+          <Link href="/repository" className="text-neutral-400">
+            More projects
+          </Link>
         </div>
       </section>
     </section>

@@ -9,7 +9,7 @@ const links = {
   "/": "Home",
   "/about": "About",
   "/post": "Blog",
-  "/repository": "Repository",
+  "/photos": "Photos",
 };
 
 const Header = () => {
@@ -20,7 +20,7 @@ const Header = () => {
       <nav
         id="nav"
         className={
-          "font-medium text-medium items-center space-x-2 flex grow gap-3"
+          "font-medium text-medium items-center flex grow gap-3"
         }
       >
         {Object.entries(links).map(([path, text]) => {
