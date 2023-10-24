@@ -54,6 +54,11 @@ const AboutPage = () => {
                 url="https://www.instagram.com/ademcertell/"
                 iconKey="instagram"
               />
+              <CustomLink
+                text="Discord"
+                url="https://discord.gg/5JAP5M3rTt"
+                iconKey="discord"
+              />
             </div>
           </div>
         </div>
