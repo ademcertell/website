@@ -21,9 +21,8 @@ const AboutPage = () => {
       <>
         <div className="text-neutral-800 dark:text-neutral-200 text-base">
           <p>
-            I&rsquo;m a self-taught Frontend Developer living in Istanbul, I
-            develop mobile applications with react-native. I also freelance
-            interface designs and I&rsquo;m interested in bodybuilding.
+            I&rsquo;m a self-taught Frontend Developer and designer living in Istanbul,
+            I also do freelance interface designs and I&rsquo;m interested in bodybuilding.
           </p>
           <hr className="my-5 opacity-40" />
           <div className="flex flex-col gap-3">
