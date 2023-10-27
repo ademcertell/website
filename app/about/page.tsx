@@ -21,7 +21,7 @@ const AboutPage = () => {
       <>
         <div className="text-neutral-800 dark:text-neutral-200 text-base">
           <p>
-            I&rsquo;m a self-taught Frontend Developer and designer living in Istanbul,
+            I&rsquo;m a self-taught Frontend Developer and writer, designer, living in Istanbul,
             I also do freelance interface designs and I&rsquo;m interested in bodybuilding.
           </p>
           <hr className="my-5 opacity-40" />
