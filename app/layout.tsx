@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/avatar.png",
+        url: "/favicon.png",
         alt: "Adem Can Certel",
       },
     ],
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
   },
   themeColor: "#d5d5d7",
   icons: {
-    icon: "/avatar.png",
-    apple: "/avatar.png",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
   manifest: `/manifest.json`,
 };
