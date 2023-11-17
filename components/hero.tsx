@@ -62,7 +62,7 @@ const Hero = () => {
               <ProjectsCard key={index} project={project} />
             ))}
           </div>
-          <Link href="/repository" className="text-neutral-400 py-1">
+          <Link href="/repository" className="text-neutral-400">
             More projects
           </Link>
         </div>

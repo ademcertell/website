@@ -21,8 +21,8 @@ const AboutPage = () => {
       <>
         <div className="text-neutral-800 dark:text-neutral-200 text-base">
           <p>
-            I&rsquo;m a self-taught Frontend Developer and writer, designer, living in Istanbul,
-            I also do freelance interface designs and I&rsquo;m interested in bodybuilding.
+            I&rsquo;m a self-taught Frontend Developer and writer, designer, I
+            live in Istanbul, I write game reviews.
           </p>
           <hr className="my-5 opacity-40" />
           <div className="flex flex-col gap-3">
@@ -53,11 +53,6 @@ const AboutPage = () => {
                 text="Instagram"
                 url="https://www.instagram.com/ademcertell/"
                 iconKey="instagram"
-              />
-              <CustomLink
-                text="Discord"
-                url="https://discord.gg/5JAP5M3rTt"
-                iconKey="discord"
               />
             </div>
           </div>
