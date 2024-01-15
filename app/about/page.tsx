@@ -21,10 +21,10 @@ const AboutPage = () => {
       <>
         <div className="text-neutral-800 dark:text-neutral-200 text-base">
           <p>
-            I&rsquo;m a self-taught Frontend Developer and writer, designer, I
-            live in Istanbul, I write game reviews.
+            I am a self-taught <strong>Frontend developer</strong> and I develop
+            interface designs.
           </p>
-          <hr className="my-5 opacity-40" />
+          <hr className="my-5 opacity-30" />
           <div className="flex flex-col gap-3">
             <p>
               I love working in coding and design . Some of the things that
@@ -33,12 +33,12 @@ const AboutPage = () => {
             </p>
             <p>
               I enjoy reading books, playing games and I have a passion for
-              creating creative content. I try to produce creative content as
-              much as I can.
+              producing creative content. I try to produce creative content as
+              much as I can. I broadcast games on the Twitch platform.
             </p>
           </div>
           <div className="mt-10">
-            <div className="grid gap-4 md:grid-cols-4">
+            <div className="grid gap-2 md:grid-cols-4 ">
               <CustomLink
                 text="Twitter"
                 url="https://twitter.com/ademcertell"
@@ -48,11 +48,6 @@ const AboutPage = () => {
                 text="GitHub"
                 url="https://github.com/ademcertell"
                 iconKey="github"
-              />
-              <CustomLink
-                text="Instagram"
-                url="https://www.instagram.com/ademcertell/"
-                iconKey="instagram"
               />
             </div>
           </div>

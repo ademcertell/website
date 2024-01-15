@@ -9,8 +9,7 @@ const links = {
   "/": "Home",
   "/about": "About",
   "/post": "Blog",
-  "/photos": "Photos",
-};
+  };
 
 const Header = () => {
   const pathname = usePathname();

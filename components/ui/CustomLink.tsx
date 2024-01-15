@@ -18,9 +18,9 @@ const CustomLink: React.FC<CustomLinkProps> = ({ text, url, iconKey }) => {
         href={url}
         passHref
         target="_blank"
-        className="border border-neutral-300 dark:border-neutral-800 dark:text-neutral-200 text-neutral-500 hover:dark:bg-neutral-800 hover:bg-neutral-100 rounded flex items-center justify-between p-4 overflow-x-hidden transition duration-200"
+        className="border-neutral-300 dark:border-neutral-800 dark:text-neutral-200 text-neutral-500 hover:dark:bg-neutral-800 hover:bg-neutral-100 transition duration-200 flex w-full border rounded-lg p-4 items-center justify-between"
       >
-        <span className="flex-shrink-0"> {text} </span>
+        <span className="flex flex-row items-center"> {text} </span>
         <div> {icon} </div>
       </Link>
     </div>
