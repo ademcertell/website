@@ -32,7 +32,7 @@ const Hero = () => {
         <Image
           alt="Adem Can Certel"
           className="rounded-full my-3"
-          src="/avatar.png"
+          src="/favicon.png"
           height={165}
           width={165}
           priority
