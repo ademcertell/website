@@ -51,21 +51,21 @@ const Hero = () => {
             <Link
               href="mailto:ademcancertel619@gmail.com"
               target="_blank"
-              className="bg-zinc-200 text-zinc-600 hover:bg-blue-500 hover:text-white flex items-center rounded-full p-3 transition-colors"
+              className="bg-zinc-200 text-zinc-600 hover:bg-zinc-400 hover:text-white flex items-center rounded-full p-3 transition-colors"
             >
               <span className="font-medium">Email</span>
             </Link>
             <Link
               href="https://twitter.com/ademcertell"
               target="_blank"
-              className="bg-zinc-200 text-zinc-600 hover:bg-blue-500 hover:text-white flex items-center rounded-full p-3 transition-colors"
+              className="bg-zinc-200 text-zinc-600 hover:bg-zinc-400 hover:text-white flex items-center rounded-full p-3 transition-colors"
             >
               <span className="font-medium">Twitter</span>
             </Link>
             <Link
               href="https://www.twitch.tv/ademcertell"
               target="_blank"
-              className="bg-zinc-200 text-zinc-600 hover:bg-blue-500 hover:text-white flex items-center rounded-full p-3 transition-colors"
+              className="bg-zinc-200 text-zinc-600 hover:bg-zinc-400 hover:text-white flex items-center rounded-full p-3 transition-colors"
             >
               <span className="font-medium">Twitch</span>
             </Link>
