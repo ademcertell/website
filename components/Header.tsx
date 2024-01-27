@@ -19,7 +19,7 @@ const Header = () => {
       <nav
         id="nav"
         className={
-          "font-medium text-medium items-center flex grow gap-3"
+          "items-center flex grow gap-3"
         }
       >
         {Object.entries(links).map(([path, text]) => {
@@ -29,8 +29,8 @@ const Header = () => {
               <span
                 className={`${
                   active
-                    ? "dark:text-white text-black font-bold"
-                    : "dark:text-white text-black"
+                    ? "text-black dark:text-white font-semibold"
+                    : "dark:text-white text-black opacity-60"
                 }`}
               >
                 {text}

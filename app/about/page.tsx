@@ -9,20 +9,18 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <section id="about">
-      <header>
+    <main id="about">
+      <div>
         <h1 className="text-black dark:text-white text-2xl font-semibold">
-          About me
+          <b>About me</b>
         </h1>
-        <p className="text-neutral-800 dark:text-neutral-200 my-5">
+        <span className="text-black dark:text-white my-5">
           Hi, I&rsquo;m Adem Can
-        </p>
-      </header>
-      <>
-        <div className="text-neutral-800 dark:text-neutral-200 text-base">
+        </span>
+      </div>
+        <div className="text-black dark:text-white text-base">
           <p>
-            I am a self-taught <strong>Frontend developer</strong> and I develop
-            interface designs.
+            I am a self-taught <strong>Frontend developer</strong> and jr. product designer producing small projects.
           </p>
           <hr className="my-5 opacity-30" />
           <div className="flex flex-col gap-3">
@@ -52,8 +50,7 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-      </>
-    </section>
+    </main>
   );
 };
 
