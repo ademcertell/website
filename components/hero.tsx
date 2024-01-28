@@ -50,7 +50,6 @@ const Hero = () => {
           <div className="flex items-center space-x-3">
             <Link
               href="mailto:ademcancertel619@gmail.com"
-              target
               className="bg-zinc-200 text-zinc-600 hover:bg-zinc-400 hover:text-white flex items-center rounded-full p-3 transition-colors"
             >
               <span className="font-medium">Email</span>
