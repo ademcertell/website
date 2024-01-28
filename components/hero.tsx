@@ -61,19 +61,12 @@ const Hero = () => {
             >
               <span className="font-medium">Twitter</span>
             </Link>
-            <Link
-              href="https://www.twitch.tv/ademcertell"
-              target="_blank"
-              className="bg-zinc-200 text-zinc-600 hover:bg-zinc-400 hover:text-white flex items-center rounded-full p-3 transition-colors"
-            >
-              <span className="font-medium">Twitch</span>
-            </Link>
           </div>
         </div>
       </div>
       <section id="projects">
         <div className="mt-40">
-          <h3 className="text-black dark:text-white text-xl font-semibold">
+          <h3 className="font-semibold text-black dark:text-white text-xl">
             Featured projects
           </h3>
           <div className="grid gap-4 md:grid-cols-2">

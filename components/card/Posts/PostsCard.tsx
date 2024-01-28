@@ -20,20 +20,20 @@ const PostCard = ({ data }: PostCardProps) => {
   return (
     <section>
       <div className="flex flex-col rounded-lg py-4 no-underline text-neutral-800 dark:text-neutral-200 transition-all">
-        <NextLink href={`/post/${data.slug}`}>
-          <h4 className="text-xl font-medium cursor-pointer my-1.5">
-            {data.title}
-          </h4>
-        </NextLink>
-        <p className="text-sm">{data.subtitle}</p>
-        <div className="flex items-center my-1.5 space-x-1">
-          <time
-            dateTime={data.date}
-            className="text-sm text-slate-500 dark:text-white/70"
-          >
-            {format(parseISO(data.date), "d LLLL yyyy")}
-          </time>
-        </div>
+        <article>
+          <NextLink href={`/post/${data.slug}`}>
+            <h4 className="text-xl font-semibold">{data.title}</h4>
+          </NextLink>
+          <p className="text-sm mt-1 opacity-70 dark:opacity-60">{data.subtitle}</p>
+          <div className="flex items-center my-1.5 space-x-1">
+            <time
+              dateTime={data.date}
+              className="opacity-70 dark:opacity-60 text-sm"
+            >
+              {format(parseISO(data.date), "d LLLL yyyy")}
+            </time>
+          </div>
+        </article>
       </div>
     </section>
   );

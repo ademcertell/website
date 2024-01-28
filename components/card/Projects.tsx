@@ -24,7 +24,7 @@ const ProjectsCard = ({ project }: ProjectsCardProps) => {
               <h2 className="text-black dark:text-white font-medium">
                 {project.title}
               </h2>
-              <p className="dark:text-neutral-200 text-neutral-500 text-sm line-clamp-2 mb-2.5">
+              <p className="text-black dark:text-white opacity-70 dark:opacity-60 text-sm line-clamp-2 mb-2.5">
                 {project.description}
               </p>
             </div>
