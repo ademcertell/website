@@ -27,8 +27,7 @@ Depending on your application, there are various ways to authenticate with the S
 We will obtain the necessary authorization for our application by logging in with the required scopes. Here is an example of how the URL might look, please replace `client_id` and scopes with your own
 
 ```bash
-https://accounts.spotify.com/authorize?client_id=CLIENT_ID_HERE&response_type=code&redirect_uri=http
-%3A%2F%2Flocalhost:3000&scope=user-read-currently-playing
+https://accounts.spotify.com/authorize?client_id=<client_id>&response_type=code&redirect_uri=http://localhost:3000/callback&scope=user-read-currently-playing+user-top-read 
 ```
 
 After the authorization, there will be a code query parameter in the `redirect_uri` URL. Please save this value
