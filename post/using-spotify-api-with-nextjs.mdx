@@ -27,9 +27,8 @@ Depending on your application, there are various ways to authenticate with the S
 We will obtain the necessary authorization for our application by logging in with the required scopes. Here is an example of how the URL might look, please replace `client_id` and scopes with your own
 
 ```bash
-https://accounts.spotify.com/authorize?client_id=<clientİD>&response_type=code&redirect_uri=http
-%3A%2F%2Flocalhost:3000&scope=user-read-currently-playing%20
-user-top-read
+https://accounts.spotify.com/authorize?client_id=CLIENT_ID_HERE&response_type=code&redirect_uri=http
+%3A%2F%2Flocalhost:3000&scope=user-read-currently-playing
 ```
 
 After the authorization, there will be a code query parameter in the `redirect_uri` URL. Please save this value
@@ -41,9 +40,9 @@ http://localhost:3000/callback?code=AnNCg..BkTQ
 Next, we will need to obtain the refresh token. You need to create a Base64-encoded string of the Client Secret and the previous Client ID. To encode it online, you can use a tool like [Base64Encode](https://www.base64encode.org/) Paste it in the format `client_id:client_secret` to encode it.
 
 ```bash
-curl -H "Authorization: Basic base64 code" -d grant_type=authorization_code -d code=<code> -d
-redirect_uri=http%3A%2F%2Flocalhost:3000
-https://accounts.spotify.com/api/token
+curl -H "Authorization: Basic <base64 encoded client_id:client_secret>"
+-d grant_type=authorization_code -d code=<code> -d redirect_uri=http%3A
+%2F%2Flocalhost:3000 https://accounts.spotify.com/api/token
 ```
 
 It will return a JSON response containing the `refresh_token`. This token is valid indefinitely unless revoked, so we will want to save it to an environment variable
@@ -91,4 +90,4 @@ Use this access_token to securely request your top tracks. It is assumed that yo
 
 You're welcome! Thank you for reading my blog post.
 
-Sure, I can take a look at the Spotify API codes you are using on your personal website. [source code](https://github.com/ademcertell/homepage).
+Sample code here. [source code](https://github.com/ademcertell/beatify).
