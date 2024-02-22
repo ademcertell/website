@@ -9,10 +9,8 @@
 
 ## Overview
 - `/` - Home page.
-- `/blog` - All my posts are here!
 - `pages/about` - About me, what I like to do, what is my current job, and more...
-- `pages/repository` - All my open source repositories.
-- `pages/dashboard` My dashboard built through the Next.js API.
+- `/blog` - All my posts are here!
 
 ## Local run
 ```bash
