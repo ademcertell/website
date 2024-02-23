@@ -10,8 +10,10 @@
 ## Overview
 - `app/*` - Static pages.
 - `app/posts/*` - Static blog pages created using Contentlayer
-- `pages/api/*` [API Routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)
+- `pages/api/*` - [API Routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)
 - `components/*` - All components.
+- `styles/*` - Tailwind CSS styles.
+- `public/*` - Static files.
 
 ## Running Locally
 ```bash
