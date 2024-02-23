@@ -10,7 +10,7 @@
 ## Overview
 - `/` - Home page.
 - `pages/about` - About me, what I like to do, what is my current job, and more...
-- `/blog` - All my posts are here!
+- `/posts` - All my posts are here!
 
 ## Local run
 ```bash
