@@ -28,14 +28,14 @@ const AboutPage = () => {
             Additionally, I create innovative products in interface design
           </p>
           <p>
-            I enjoy playing games and reading books. I write creative blog posts
-            and stream on Twitch.
+            I enjoy playing games and reading books. I write creative blog
+            posts.
           </p>
         </div>
         <div className="mt-5">
           <div className="grid gap-2 md:grid-cols-4 ">
             <CustomLink
-              text="Twitter"
+              text="(X)Twitter"
               url="https://twitter.com/ademcertell"
               iconKey="twitter"
             />

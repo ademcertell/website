@@ -1,6 +1,7 @@
 ### ademcan.dev
 
 ## İnfo
+
 - [Next.js](https://nextjs.org/)
 - [Styling](https://tailwindcss.com/)
 - [Deployment](https://vercel.com)
@@ -8,6 +9,7 @@
 - [Analytics](https://vercel.com/analytics)
 
 ## Overview
+
 - `app/*` - Static pages.
 - `app/posts/*` - Static blog pages created using Contentlayer
 - `pages/api/*` - [API Routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes)
@@ -16,6 +18,7 @@
 - `public/*` - Static files.
 
 ## Running Locally
+
 ```bash
 $ git clone https://github.com/ademcertell/website
 $ cd website

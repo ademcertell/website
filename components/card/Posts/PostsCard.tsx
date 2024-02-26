@@ -24,7 +24,9 @@ const PostCard = ({ data }: PostCardProps) => {
           <NextLink href={`/post/${data.slug}`}>
             <h4 className="text-xl font-semibold">{data.title}</h4>
           </NextLink>
-          <p className="text-sm mt-1 opacity-70 dark:opacity-60">{data.subtitle}</p>
+          <p className="text-sm mt-1 opacity-70 dark:opacity-60">
+            {data.subtitle}
+          </p>
           <div className="flex items-center my-1.5 space-x-1">
             <time
               dateTime={data.date}

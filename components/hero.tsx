@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import ProjectsCard from "./card/Projects";
+import ProjectsCard from "./card/ProjectsCard";
 
 const projects: Project[] = [
   {
@@ -13,10 +13,10 @@ const projects: Project[] = [
     href: "https://github.com/ademcertell/website",
   },
   {
-    title: "ozel-gun",
+    title: "beatify",
     description:
-      "A simple tool to keep track of special occasions and receive reminder notifications.",
-    href: "https://github.com/ademcertell/ozel-gun",
+      "A project that displays the music you listen to on Spotify in real-time on a web page coded using Next.js.",
+    href: "https://github.com/ademcertell/beatify",
   },
 ];
 

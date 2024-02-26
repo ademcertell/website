@@ -3,25 +3,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { ThemeToggle } from "./theme-toggle";
+import { ThemeToggle } from "./ui/theme-toggle";
 
 const links = {
   "/": "Home",
   "/about": "About",
   "/post": "Blog",
-  };
+};
 
 const Header = () => {
   const pathname = usePathname();
 
   return (
     <header className="flex flex-col sm:flex-row mt-5 md:mb-10 items-center">
-      <nav
-        id="nav"
-        className={
-          "items-center flex grow gap-3"
-        }
-      >
+      <nav id="nav" className={"items-center flex grow gap-3"}>
         {Object.entries(links).map(([path, text]) => {
           const active = path === pathname;
           return (
