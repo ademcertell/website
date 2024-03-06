@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/favicon.png",
+        url: "/favicon.jpg",
         alt: "Adem Can Certel",
       },
     ],
