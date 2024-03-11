@@ -12,6 +12,7 @@ const BlogPage = () => {
   return (
     <header>
       <h1 className="text-2xl font-semibold">Blog</h1>
+      
       <div className="mt-4">
         <Lists />
       </div>
