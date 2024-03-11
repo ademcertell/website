@@ -10,6 +10,6 @@
 
 @layer {
   body {
-    @apply dark:bg-[#171717] bg-gray-50 text-gray-900;
+    @apply dark:bg-[#0a0a0a] bg-gray-50 text-black dark:text-white;
   }
 }

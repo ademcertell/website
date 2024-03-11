@@ -1,9 +1,6 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
 
-import ProjectsCard from "./card/ProjectsCard";
+import ProjectsCard from "@/components/card/ProjectsCard";
 
 const projects: Project[] = [
   {
@@ -28,47 +25,35 @@ type Project = {
 
 const Hero = () => {
   return (
-    <section id="home">
-      <div>
-        <div className="w-full flex justify-center flex-col-reverse lg:flex-row items-center">
-          <Image
-            alt="Adem Can Certel"
-            className="rounded-full my-3"
-            src="/favicon.jpg"
-            height={165}
-            width={165}
-            priority
-          />
-        </div>
-        <div className="space-y-6">
-          <h1 className="w-full flex justify-center items-center flex-col-reverse text-black dark:text-white text-xl sm:text-2xl">
-            <span className="opacity-60">Frontend developer</span>
-            <b>Adem Can Certel</b>
-          </h1>
-        </div>
-        <div className="mt-10 w-full flex justify-center items-center flex-col-reverse">
-          <div className="flex items-center space-x-3">
-            <Link
-              href="mailto:ademcancertel619@gmail.com"
-              className="bg-zinc-200 text-zinc-600 hover:bg-zinc-400 hover:text-white flex items-center rounded-full p-3 transition-colors"
-            >
-              <span className="font-medium">Email</span>
-            </Link>
-            <Link
-              href="https://twitter.com/ademcertell"
-              target="_blank"
-              className="bg-zinc-200 text-zinc-600 hover:bg-zinc-400 hover:text-white flex items-center rounded-full p-3 transition-colors"
-            >
-              <span className="font-medium">Twitter</span>
-            </Link>
+    <section>
+      <div className="">
+        <h1 className="w-full flex flex-col-reverse text-xl sm:text-2xl">
+          <span className="opacity-60 text-xl">Frontend developer</span>
+          <b className="mt-0 mb-1">Adem Can Certel</b>
+        </h1>
+        <div className="mt-8">
+          <div className="space-y-5">
+            <p>
+              I am a 20 years old multidisciplinary developer specialised in web
+              projects. I also create innovative products in interface design
+            </p>
+
+            <p>
+              I enjoy playing games and reading books. I write creative blog
+              posts.{" "}
+              <Link
+                href="/about"
+                className="inline-flex underline underline-offset-2 relative decoration-sky-600 hover:decoration-blue-400 decoration-2 transition-colors"
+              >
+                about me{" "}
+              </Link>
+            </p>
           </div>
         </div>
       </div>
-      <section id="projects">
+      <section>
         <div className="mt-40">
-          <h3 className="font-semibold text-black dark:text-white text-xl">
-            Featured projects
-          </h3>
+          <h3 className="font-semibold text-xl">Featured projects</h3>
           <div className="grid gap-4 md:grid-cols-2">
             {projects.map((project, index) => (
               <ProjectsCard key={index} project={project} />

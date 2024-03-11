@@ -65,14 +65,14 @@ export default async function BlogPost({ params, data }: any) {
         )}
         <div className="space-x-4">
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <div className="flex items-center space-x-2 text-black dark:text-white opacity-60">
+            <div className="flex items-center space-x-2 opacity-60">
               <span>{format(parseISO(post.date), "MMMM dd, yyyy")}</span>
               <span>&middot;</span>
               <span>{post.readingTime.text}</span>
             </div>
           </div>
           <div className="space-y-2 mt-2">
-            <Balancer className="block mx-auto text-2xl md:w-11/12 text-black dark:text-white font-bold">
+            <Balancer className="block mx-auto text-2xl md:w-11/12 font-bold">
               {post.title}
             </Balancer>
           </div>

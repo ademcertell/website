@@ -9,45 +9,45 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <main id="about">
+    <section>
       <div>
-        <h1 className="text-black dark:text-white text-2xl font-semibold">
-          <b>About me</b>
-        </h1>
+        <h1 className="text-2xl font-semibold mb-6">About me</h1>
       </div>
-      <div className="text-black dark:text-white">
-        <p>Hi, I&rsquo;m Adem Can</p>
+      <div className="flex flex-col gap-6">
+        <p>Hi there, I&rsquo;m Adem Can</p>
         <p>
-          I am a self-taught <strong>Frontend developer</strong> and jr. product
-          designer producing small projects.
+          My journey in frontend development started with scripting in Lua for
+          MTA (Multi Theft Auto). Later on, I delved into coding Discord bots,
+          crafting various bots for different purposes, finding immense pleasure
+          in the process.
         </p>
-        <hr className="my-5 opacity-30" />
-        <div className="flex flex-col gap-3">
-          <p>
-            I am a multidisciplinary developer specializing in web projects.
-            Additionally, I create innovative products in interface design
-          </p>
-          <p>
-            I enjoy playing games and reading books. I write creative blog
-            posts.
-          </p>
-        </div>
-        <div className="mt-5">
-          <div className="grid gap-2 md:grid-cols-4 ">
-            <CustomLink
-              text="(X)Twitter"
-              url="https://twitter.com/ademcertell"
-              iconKey="twitter"
-            />
-            <CustomLink
-              text="GitHub"
-              url="https://github.com/ademcertell"
-              iconKey="github"
-            />
-          </div>
+        <p>
+          Subsequently, I ventured into web development, where I explored
+          various technology libraries and frameworks, while also gaining
+          knowledge about databases.
+        </p>
+        <p>Currently, I&rsquo;m working on projects and freelancing.</p>
+      </div>
+      <div className="mt-5">
+        <div className="grid gap-2 md:grid-cols-4">
+          <CustomLink
+            text="(X)Twitter"
+            url="https://twitter.com/ademcertell"
+            iconKey="twitter"
+          />
+          <CustomLink
+            text="GitHub"
+            url="https://github.com/ademcertell"
+            iconKey="github"
+          />
+          <CustomLink
+            text="Email"
+            url="mailto:ademcancertel619@gmail.com"
+            iconKey="mail"
+          />
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 

@@ -19,21 +19,22 @@ interface PostCardProps {
 const PostCard = ({ data }: PostCardProps) => {
   return (
     <section>
-      <div className="flex flex-col rounded-lg py-4 no-underline text-neutral-800 dark:text-neutral-200 transition-all">
-        <article>
+      <div className="w-full text-neutral-800 dark:text-neutral-200">
+        <article className="w-full py-3">
+          <div className="flex flex-col sm:flex-row justify-between sm:items-center">
+          <div className="flex items-center">
           <NextLink href={`/post/${data.slug}`}>
-            <h4 className="text-xl font-semibold">{data.title}</h4>
+            <h4 className="w-full text-lg font-semibold">{data.title}</h4>
           </NextLink>
-          <p className="text-sm mt-1 opacity-70 dark:opacity-60">
-            {data.subtitle}
-          </p>
-          <div className="flex items-center my-1.5 space-x-1">
-            <time
-              dateTime={data.date}
-              className="opacity-70 dark:opacity-60 text-sm"
-            >
-              {format(parseISO(data.date), "d LLLL yyyy")}
-            </time>
+          </div>
+            <div className="flex items-center mt-2 sm:mt-0 justify-between">
+              <time
+                dateTime={data.date}
+                className="opacity-70 dark:opacity-60 text-sm"
+              >
+                {format(parseISO(data.date), "d LLLL yyyy")}
+              </time>
+            </div>
           </div>
         </article>
       </div>

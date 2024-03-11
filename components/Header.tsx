@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { ThemeToggle } from "./ui/theme-toggle";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { NavMenu } from "./nav-menu";
 
 const links = {
   "/": "Home",
@@ -33,6 +34,7 @@ const Header = () => {
             </Link>
           );
         })}
+        <NavMenu />
       </nav>
       <div className="flex flex-row items-center justify-center sm:ml-4 space-x-4 mt-3">
         <ThemeToggle />

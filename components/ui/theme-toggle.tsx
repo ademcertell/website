@@ -59,7 +59,7 @@ export function ThemeToggle() {
           isHovering && !isHoveringOverride
             ? "bg-gray-200 dark:bg-[#313131]"
             : ""
-        } active:bg-gray-500 transition-[background-color] dark:active:bg-[#242424] rounded-md p-2 
+        } active:bg-gray-500 transition-[background-color] dark:active:bg-[#242424] rounded-md p-1.5
           bg-gray-200
           dark:bg-[#313131]
           theme-system:!bg-inherit
