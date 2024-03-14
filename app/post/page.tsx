@@ -11,8 +11,11 @@ export const metadata: Metadata = {
 const BlogPage = () => {
   return (
     <header>
-      <h1 className="text-2xl font-semibold">Blog</h1>
-      
+      <h1 className="text-2xl font-semibold mb-6">Blog</h1>
+      <p className="mb-6">
+        She jots down information, notes, tips and tricks on her blog to show
+        what she has learnt from her experiences and what she wants to tell.
+      </p>
       <div className="mt-4">
         <Lists />
       </div>

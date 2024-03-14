@@ -46,8 +46,8 @@ export const metadata: Metadata = {
   },
   themeColor: "#d5d5d7",
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/favicon.jpg",
+    apple: "/favicon.jpg",
   },
   manifest: `/manifest.json`,
 };

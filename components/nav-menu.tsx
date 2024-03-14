@@ -21,11 +21,11 @@ export function NavMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem className="p-0">
-          <NavigationMenuTrigger className="font-semibold text-base -mt-25 rounded-full px-3 py-1 hover:bg-black/30 h-auto">
+          <NavigationMenuTrigger className="text-base -mt-25 rounded-full px-3 py-1 hover:bg-gray-100 hover:dark:bg-neutral-900 h-auto">
             More
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[150px] gap-3 p-4 md:w-[300px] md:grid-cols-2 lg:w-[350px] bg-white dark:bg-white text-white">
+            <ul className="text-white grid w-[150px] gap-3 p-4 md:w-[300px] md:grid-cols-2 lg:w-[350px] bg-white dark:bg-neutral-900">
               <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-md">
                 <ListItem title="Books" href="/books" />
               </div>
