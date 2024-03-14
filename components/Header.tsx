@@ -25,8 +25,8 @@ const Header = () => {
               <span
                 className={`${
                   active
-                    ? "text-black dark:text-white font-semibold"
-                    : "dark:text-white text-black opacity-60"
+                    ? "text-black dark:text-white font-semibold underline decoration-sky-500 decoration-2                    "
+                    : "dark:text-white text-black hover:underline"
                 }`}
               >
                 {text}

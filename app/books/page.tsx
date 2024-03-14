@@ -21,7 +21,7 @@ const booksPage = () => {
       {booksData.map(
         (book) => book.readingNow && <Book key={book.url} {...book} />
       )}
-      <p className="mt-6 ">Books I finished</p>
+      <p className="mt-6 ">My favourite books I&rsquo;ve finished</p>
       <div className="mt-8 grid md:grid-cols-2 gap-8">
         {booksData.map(
           (book) => !book.readingNow && <Book key={book.url} {...book} />

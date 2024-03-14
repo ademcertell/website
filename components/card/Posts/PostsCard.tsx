@@ -22,17 +22,18 @@ const PostCard = ({ data }: PostCardProps) => {
       <div className="w-full text-neutral-800 dark:text-neutral-200">
         <article className="w-full py-3">
           <div className="flex flex-col sm:flex-row justify-between sm:items-center">
-          <div className="flex items-center">
-          <NextLink href={`/post/${data.slug}`}>
-            <h4 className="w-full text-lg font-semibold">{data.title}</h4>
-          </NextLink>
-          </div>
+            <div className="flex items-center">
+              <NextLink href={`/post/${data.slug}`}>
+                <h4 className="w-full text-lg font-semibold">{data.title}</h4>
+                <span>{data.subtitle}</span>
+              </NextLink>
+            </div>
             <div className="flex items-center mt-2 sm:mt-0 justify-between">
               <time
                 dateTime={data.date}
-                className="opacity-70 dark:opacity-60 text-sm"
+                className="text-sm"
               >
-                {format(parseISO(data.date), "d LLLL yyyy")}
+                {format(parseISO(data.date), "MMMM dd, yyyy")}
               </time>
             </div>
           </div>
