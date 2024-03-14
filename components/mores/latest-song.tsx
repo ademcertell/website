@@ -123,7 +123,7 @@ const LatestSong = () => {
             </>
           ) : (
             <p className="text-gray-500">
-              En son dinlenen şarkı bilgisi bulunamadı.
+             
             </p>
           )}
         </div>
