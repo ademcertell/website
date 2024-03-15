@@ -5,7 +5,6 @@ import { formatDistanceToNow, isToday, isYesterday } from "date-fns";
 import type { Transition, Variants } from "framer-motion";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMemo } from "react";
-import { BookOpenText, Star } from "lucide-react";
 
 import { Skeleton } from "@/components/utils/Skeleton";
 import { capitalizeFirstLetter } from "@/lib/utils";
