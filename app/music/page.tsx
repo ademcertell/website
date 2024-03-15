@@ -20,7 +20,6 @@ const AboutPage = () => {
         </p>
       </div>
       <LatestSong />
-      <TopAblums />
     </section>
   );
 };
