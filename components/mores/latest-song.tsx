@@ -30,13 +30,11 @@ interface CurrentlyPlaying {
   artist: string;
   album: string;
   songUrl: string;
-  playing: boolean;
 }
 
 const LatestSong = () => {
   const [currentlyPlaying, setCurrentlyPlaying] =
     useState<CurrentlyPlaying | null>(null);
-  const [lastListenedDate, setLastListenedDate] = useState<Date | null>(null);
 
   useEffect(() => {
     const fetchCurrentlyPlaying = async () => {
@@ -45,7 +43,6 @@ const LatestSong = () => {
         if (response.ok) {
           const data = await response.json();
           setCurrentlyPlaying(data);
-          setLastListenedDate(new Date());
         } else {
           console.error(
             "Failed to fetch currently playing song:",
@@ -59,22 +56,6 @@ const LatestSong = () => {
 
     fetchCurrentlyPlaying();
   }, []);
-
-  const relativeLastListenedDate = useMemo(() => {
-    if (!lastListenedDate) return "Unknown";
-
-    const secondsSinceLastListen = differenceInSeconds(
-      new Date(),
-      lastListenedDate
-    );
-    if (secondsSinceLastListen < 60) {
-      return "Less than a minute ago";
-    } else {
-      return isYesterday(lastListenedDate)
-        ? "Yesterday"
-        : formatDistanceToNow(lastListenedDate, { addSuffix: true });
-    }
-  }, [lastListenedDate]);
 
   return (
     <>
@@ -95,9 +76,7 @@ const LatestSong = () => {
                 variants={variants}
               />
             ) : (
-              <div className="w-full h-full bg-gray-200 flex items-center justify-center text-black">
-                <span>Not playing</span>
-              </div>
+              <></>
             )}
           </AnimatePresence>
         </div>
@@ -122,9 +101,7 @@ const LatestSong = () => {
               </motion.p>
             </>
           ) : (
-            <p className="text-gray-500">
-             
-            </p>
+            <></>
           )}
         </div>
       </div>

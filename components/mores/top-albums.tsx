@@ -50,6 +50,9 @@ const TopTracks = () => {
               {track.title}
             </h2>
             <p className="text-sm text-gray-600">{track.artist}</p>
+            <a href={track.url} className="text-rose-500 no:underline">
+              Listen on Spotify
+            </a>
           </div>
         ))}
       </div>
