@@ -1,16 +1,17 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import type { Transition, Variants } from "framer-motion";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
 import {
   formatDistanceToNow,
   isYesterday,
   parseISO,
   differenceInSeconds,
 } from "date-fns";
+import { MusicIcon } from "../ui/music-icon";
 
-const variants: Variants = {
+const variants = {
   hidden: {
     opacity: 0,
   },
@@ -19,7 +20,7 @@ const variants: Variants = {
   },
 };
 
-const fade: Transition = {
+const fade = {
   ease: "easeInOut",
   duration: 0.6,
 };
@@ -61,10 +62,10 @@ const LatestSong = () => {
     <>
       <div className="min-w-0 max-w-full flex w-fit gap-4 rounded pr-2 ring-offset-4 transition hover:opacity-60">
         <div className="relative aspect-square h-20 flex-none overflow-hidden rounded bg-zinc-100 dark:bg-zinc-800">
+          <MusicIcon className="absolute h-full w-full text-zinc-300 dark:text-zinc-600" />
           <AnimatePresence>
             {currentlyPlaying ? (
               <motion.img
-                alt={`${currentlyPlaying.title} by ${currentlyPlaying.artist}`}
                 animate="visible"
                 className="absolute h-full w-full object-cover rounded-md"
                 exit="hidden"
@@ -101,7 +102,9 @@ const LatestSong = () => {
               </motion.p>
             </>
           ) : (
-            <></>
+            <>
+              <p className="my-1 flex items-center">Not Playing</p>
+            </>
           )}
         </div>
       </div>
