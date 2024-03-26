@@ -24,7 +24,7 @@ const AboutPage = () => {
         <p>
           Subsequently, I ventured into web development, where I explored
           various technology libraries and frameworks, while also gaining
-          knowledge about databases.
+          knowledge about databases. Currently studying Graphic Design at the university
         </p>
         <p>Currently, I&rsquo;m working on projects and freelancing.</p>
       </div>
