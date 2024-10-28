@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*  text highlighting
+::selection {
+  color:  #fff;
+  background-color: #fff;
+}
+*/
+
+@layer base {
+
+}
