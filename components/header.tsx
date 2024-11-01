@@ -35,7 +35,7 @@ const Header = () => {
                 <span className="text-medium inline-block font-medium text-zinc-50">
                   Adem Can Certel
                 </span>
-                <span className="text-zinc-300">Frontend Developer</span>
+                <span className="text-zinc-300">Frontend developer</span>
               </div>
             </Link>
             <div className="flex items-center">
@@ -54,7 +54,7 @@ const Header = () => {
             </div>
           </div>
         </nav>
-        <hr />
+        <hr className="opacity-40" />
       </Container>
     </header>
   );

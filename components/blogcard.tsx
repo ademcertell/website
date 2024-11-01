@@ -26,21 +26,24 @@ const BlogCard = ({ blog }: BlogCardProps) => {
     const wordsPerMinute = 200;
     const words = content.split(/\s+/).length;
     const minutes = Math.ceil(words / wordsPerMinute);
-    return `${minutes} min read`;
+    return `${minutes} Min read`;
   };
-
-
   return (
-    <article>
-      <h3 className="font-semibold mb-1">
+  <article>
+    <header>
+      <h3 className="font-semibold mb-1 text-zinc-100">
         <Link href={`/blog/${blog.slug}`}>
           {blog.metadata.title}
         </Link>
       </h3>
-      <p className="opacity-60 text-zinc-50 mt-1">{blog.metadata.description}</p>
-      <p className="opacity-70 text-zinc-50 font-serif mt-1">{formatDate(blog.metadata.date)}</p>
-      <p className="opacity-50">{calculateReadingTime(blog.content)}</p>
-    </article>
+      <p className="mt-1 opacity-70 text-zinc-200">{blog.metadata.description}</p>
+    </header>
+       <div className='mt-1 flex items-center font-seris space-x-2 text-sm tracking-wider opacity-50 text-zinc-200'>
+        <span>{formatDate(blog.metadata.date)}</span>
+        <span>·</span>
+        <span>{calculateReadingTime(blog.content)}</span>
+      </div>
+  </article>
   );
 };
 

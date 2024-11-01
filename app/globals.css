@@ -10,5 +10,64 @@
 */
 
 @layer base {
+  .prose pre {
+    @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900;
+  }
 
+  .prose img {
+    /* Don't apply styles to next/image */
+    @apply m-0;
+  }
+  
+  .prose strong {
+    @apply font-medium;
+  }
+
+  .prose code {
+    @apply px-1 py-0.5 rounded-lg;
+  }
+
+  .prose pre code {
+    @apply p-0;
+    border: initial;
+    line-height: 1.5;
+  }
+
+  .prose code span {
+    @apply font-medium;
+  }
+
+  .prose code {
+    color: #5eb8f5; /* Inline open theme color for code */
+    background-color: #f9fafb;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+  }
 }
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--foreground);
+  border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--foreground);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--foreground);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--background);
+}
+
