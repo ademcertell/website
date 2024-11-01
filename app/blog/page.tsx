@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import { getBlogPosts } from "@/lib/getBlogPosts";
 import Container from "@/components/common/container";
-import BlogCard  from "@/components/blogcard";
+import BlogCard from "@/components/blogcard";
 
 export const metadata: Metadata = {
   title: "Blog",
