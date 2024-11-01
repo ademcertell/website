@@ -15,11 +15,13 @@ interface CustomLinkProps extends LinkProps {
   children: ReactNode;
 }
 
+// Code component with syntax highlighting
 function Code({ children, ...props }: { children: ReactNode }) {
   const codeHTML = highlight(String(children));
   return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
 }
 
+// CustomLink component for different link types
 function CustomLink({ href, children, ...props }: CustomLinkProps) {
   if (href.startsWith("/")) {
     return (
@@ -40,6 +42,7 @@ function CustomLink({ href, children, ...props }: CustomLinkProps) {
   );
 }
 
+// RoundedImage component with alt and rounded style
 interface RoundedImageProps extends ImageProps {
   alt: string;
 }
@@ -48,6 +51,7 @@ function RoundedImage({ alt, ...props }: RoundedImageProps) {
   return <Image alt={alt} className="rounded-lg" {...props} />;
 }
 
+// Table component for rendering tables with headers and rows
 interface TableProps {
   data: {
     headers: string[];
@@ -77,6 +81,7 @@ function Table({ data }: TableProps) {
   );
 }
 
+// Utility function to create slugs for headings
 function slugify(str: string) {
   return str
     .toString()
@@ -88,6 +93,7 @@ function slugify(str: string) {
     .replace(/\-\-+/g, "-");
 }
 
+// Function to create heading components with anchor links
 function createHeading(level: number) {
   const Component: React.FC<{ children: ReactNode }> = ({ children }) => {
     const slug = slugify(String(children));
@@ -106,19 +112,21 @@ function createHeading(level: number) {
   return Component;
 }
 
+// Define MDX components
 const components = {
   h1: createHeading(1),
   h2: createHeading(2),
   h3: createHeading(3),
   h4: createHeading(4),
   h5: createHeading(5),
-  code: Code,
   h6: createHeading(6),
+  code: Code,
   img: RoundedImage,
   a: CustomLink,
   Table,
 };
 
+// CustomMDX component to render MDX content
 const CustomMDX: React.FC<CustomMDXProps> = ({ source }) => {
   return (
     <div className="prose prose-zinc dark:prose-invert max-w-none text-justify">
