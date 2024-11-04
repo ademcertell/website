@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Adem Can Certel",
     description: "Frontend developer",
-    url: "ademcan.dev",
+    url: "https://ademcan.dev",
     siteName: "Adem Can Certel",
     locale: "en_US",
     type: "website",

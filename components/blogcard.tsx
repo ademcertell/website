@@ -29,7 +29,7 @@ const BlogCard = ({ blog }: BlogCardProps) => {
     return `${minutes} Min read`;
   };
   return (
-  <article>
+  <article className='py-2 sm:py-4'>
     <header>
       <h3 className="font-semibold mb-1 text-zinc-100">
         <Link href={`/blog/${blog.slug}`}>

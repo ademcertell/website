@@ -10,6 +10,7 @@
 */
 
 @layer base {
+
   /* fixed default heading colors */
   .prose h1,
   .prose h2,
@@ -17,7 +18,8 @@
   .prose h4,
   .prose h5,
   .prose h6 {
-    color: inherit; /* default heading colors */
+    color: inherit;
+    /* default heading colors */
   }
 
   .prose p {
@@ -56,13 +58,39 @@
   }
 
   .prose code {
-    color: #5eb8f5; /* Inline open theme color for code */
+    color: #5eb8f5;
+    /* Inline open theme color for code */
     background-color: #f9fafb;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     font-weight: 500;
   }
 }
+
+.prose table {
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.prose thead {
+  background-color: #333333;
+}
+
+.prose th {
+  color: #ffffff;
+  padding: 0.75rem;
+  border: 1px solid #4a4a4a;
+  text-align: left;
+  font-weight: 600;
+}
+
+.prose td {
+  color: #e0e0e0;
+  padding: 0.75rem;
+  border: 1px solid #4a4a4a;
+}
+
 
 ::-webkit-scrollbar {
   width: 0.5rem;

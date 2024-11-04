@@ -50,31 +50,29 @@ function RoundedImage({ alt, ...props }: RoundedImageProps) {
   return <Image alt={alt} className="rounded-lg" {...props} />;
 }
 
-interface TableProps {
-  data: {
-    headers: string[];
-    rows: string[][];
-  };
-}
-
-function Table({ data }: TableProps) {
-  const headers = data.headers.map((header, index) => (
-    <th key={index}>{header}</th>
-  ));
-  const rows = data.rows.map((row, rowIndex) => (
-    <tr key={rowIndex}>
-      {row.map((cell, cellIndex) => (
-        <td key={cellIndex}>{cell}</td>
-      ))}
-    </tr>
-  ));
-
+function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   return (
-    <table>
+    <table className="w-full border-collapse border border-gray-700 text-left">
       <thead>
-        <tr>{headers}</tr>
+        <tr className="bg-gray-800">
+          {data.headers.map((header, index) => (
+            <th key={index} className="p-2 border border-gray-600 text-white font-semibold">
+              {header}
+            </th>
+          ))}
+        </tr>
       </thead>
-      <tbody>{rows}</tbody>
+      <tbody>
+        {data.rows.map((row, rowIndex) => (
+          <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}>
+            {row.map((cell, cellIndex) => (
+              <td key={cellIndex} className="p-2 border border-gray-700 text-gray-300">
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 }
@@ -114,11 +112,11 @@ const components = {
   h3: createHeading(3),
   h4: createHeading(4),
   h5: createHeading(5),
-  code: Code,
   h6: createHeading(6),
+  code: Code,
   img: RoundedImage,
   a: CustomLink,
-  Table,
+  table: Table,
 };
 
 const CustomMDX: React.FC<CustomMDXProps> = ({ source }) => {
