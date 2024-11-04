@@ -41,7 +41,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
   return (
     <Container size="large" className="text-zinc-200 container animate-enter overflow-x-hidden">
       <h1 className="text-3xl font-bold tracking-tight mb-4">{data.title}</h1>
-      <div className="flex justify-start items-center mt-2 mb-8 text-sm text-neutral-400">
+      <div className="flex justify-start items-center mt-2 mb-8 text-sm font-mono text-neutral-400">
         <time dateTime={data.date}>{formatDate(data.date)}</time>
         <span className="mx-2 text-neutral-500"> — </span>
         <span>{calculateReadingTime(content)}</span>

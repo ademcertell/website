@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/react';
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -27,6 +29,10 @@ export const metadata: Metadata = {
       }
     ]
   },
+  icons: {
+    icon: "logo.png",
+    apple: "logo.png",
+  },
   twitter: {
     title: "Adem Can Certel",
     card: "summary_large_image",
@@ -41,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`{inter.className} bg-[#111010] `}
+        className={`${inter.className} bg-[#111010] `}
       >
         <main className="lg:max-w-2xl md:max-w-full mx-4 mb-4 flex flex-col md:flex-row mt-2 sm:mt-8 lg:mx-auto">
           <section className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
@@ -50,6 +56,7 @@ export default function RootLayout({
             {children}
           </section>
         </main>
+        <Analytics mode={'production'} />;
       </body>
     </html>
   );

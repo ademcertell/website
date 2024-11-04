@@ -35,7 +35,7 @@ const Header = () => {
                 <span className="text-medium inline-block font-medium text-zinc-50">
                   Adem Can Certel
                 </span>
-                <span className="text-zinc-300">Frontend developer</span>
+                <span className="text-zinc-300 font-mono">Frontend developer</span>
               </div>
             </Link>
             <div className="flex items-center">
@@ -44,7 +44,7 @@ const Header = () => {
                   key={name}
                   href={href}
                   className={classNames(
-                    pathname === href ? "font-semibold" : "font-normal",
+                    pathname === href ? "font-normal" : "font-mono",
                     "transition-all text-neutral-100 hover:text-neutral-400 flex align-middle relative py-1 px-2"
                   )}
                 >
@@ -54,7 +54,7 @@ const Header = () => {
             </div>
           </div>
         </nav>
-        <hr className="opacity-40" />
+        <hr className="border-0 border-b border-dashed border-zinc-300 opacity-40" />
       </Container>
     </header>
   );

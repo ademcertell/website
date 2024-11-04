@@ -38,7 +38,7 @@ const BlogCard = ({ blog }: BlogCardProps) => {
       </h3>
       <p className="mt-1 opacity-70 text-zinc-200">{blog.metadata.description}</p>
     </header>
-       <div className='mt-1 flex items-center font-seris space-x-2 text-sm tracking-wider opacity-50 text-zinc-200'>
+       <div className='mt-1 flex items-center space-x-2 text-sm tracking-wider opacity-50 text-zinc-200 font-mono'>
         <span>{formatDate(blog.metadata.date)}</span>
         <span>·</span>
         <span>{calculateReadingTime(blog.content)}</span>

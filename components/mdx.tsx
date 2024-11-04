@@ -6,11 +6,10 @@ import Link, { LinkProps } from "next/link";
 import React, { ReactNode } from "react";
 import { highlight } from "sugar-high";
 
-// MDXRemote'u dinamik import ile yükleyin
 const MDXRemote = dynamic(() => import("next-mdx-remote").then(mod => mod.MDXRemote), { ssr: false });
 
 interface CustomMDXProps {
-  source: any; // Server'dan gelen serialize edilmiş veri tipi
+  source: any;
 }
 
 interface CustomLinkProps extends LinkProps {
