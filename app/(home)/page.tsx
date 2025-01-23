@@ -7,14 +7,17 @@ export default function Home() {
       size="large"
       className="text-zinc-200 container animate-enter"
     >
-      <div className="space-y-4">
-        <p className="">
-          Hi, I&apos;m Adem Can👋
+      <div className="space-y-4 mb-5">
+        <p>
+          Hi, I&apos;m Adem Can.
         </p>
-        <p> As a self-taught frontend developer, I create independent projects and design web systems. I have experience in user interface design.</p>
-        <p>Solving problems encountered in the web development process is a great passion of mine. I continuously research and improve myself to find the most efficient solutions.</p>
-        <p>Additionally, I enjoy designing minimalist digital tools that make workflows more efficient. My goal is to maximize user experience and add value to projects.</p>
       </div>
+        <div className="space-y-8">
+        <p>Currently studying in the Graphic Design department, my true passion and expertise lie in frontend development. Although graphic design wasn’t my initial choice, it has provided me with valuable insights into visual design and user interfaces. Over time, I self-taught frontend development and started creating user-centered web applications that combine aesthetics and functionality.</p>
+        <hr className="border-0 border-b border-zinc-300 opacity-40" />
+        <p>I'm passionate about creating minimalist and functional designs. By combining <strong>UI/UX</strong> design with frontend development, I focus on building intuitive interfaces that prioritize user experience, making them both visually appealing and effective.</p>
+        <p>Outside of web development, I love playing story-driven games. Writing reviews after finishing a game has become a hobby.</p>
+        </div>
       <Social />
     </Container>
   )

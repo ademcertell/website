@@ -47,16 +47,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-[#111010] `}
+        className={`${inter.className} bg-[#111010]`}
       >
-        <main className="lg:max-w-2xl md:max-w-full mx-4 mb-4 flex flex-col md:flex-row mt-2 sm:mt-8 lg:mx-auto">
-          <section className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+        <main className="container max-w-4xl xl:max-w-6xl mx-auto mb-8 flex flex-col mt-8 px-6">
+          <section className="flex-auto min-w-0 mt-6 flex flex-col px-4 md:px-6">
             <Header />
 
             {children}
           </section>
         </main>
-        <Analytics mode={'production'} />;
+        <Analytics mode={"production"} />;
       </body>
     </html>
   );

@@ -29,21 +29,21 @@ const BlogCard = ({ blog }: BlogCardProps) => {
     return `${minutes} Min read`;
   };
   return (
-  <article className='py-2 sm:py-4'>
-    <header>
-      <h3 className="font-semibold mb-1 text-zinc-100">
-        <Link href={`/blog/${blog.slug}`}>
-          {blog.metadata.title}
-        </Link>
-      </h3>
-      <p className="mt-1 opacity-70 text-zinc-200">{blog.metadata.description}</p>
-    </header>
-       <div className='mt-1 flex items-center space-x-2 text-sm tracking-wider opacity-50 text-zinc-200 font-mono'>
+    <article className='py-2 sm:py-4'>
+      <header>
+        <h3 className="text-zinc-100 mb-1">
+          <Link href={`/blog/${blog.slug}`}>
+            {blog.metadata.title}
+          </Link>
+        </h3>
+        <p className="mt-1 opacity-70 text-zinc-200">{blog.metadata.description}</p>
+      </header>
+      <div className='mt-1 flex items-center space-x-2 text-sm tracking-wider opacity-50 text-zinc-200 font-mono uppercase'>
         <span>{formatDate(blog.metadata.date)}</span>
         <span>·</span>
         <span>{calculateReadingTime(blog.content)}</span>
       </div>
-  </article>
+    </article>
   );
 };
 
