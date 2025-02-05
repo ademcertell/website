@@ -13,10 +13,10 @@ export default function Home() {
         </p>
       </div>
         <div className="space-y-8">
-        <p>Currently studying in the Graphic Design department, my true passion and expertise lie in frontend development. Although graphic design wasnt my initial choice, it has provided me with valuable insights into visual design and user interfaces. Over time, I self-taught frontend development and started creating user-centered web applications that combine aesthetics and functionality.</p>
+        <p>As a Junior UI/UX Designer, my focus is on crafting intuitive and visually engaging user experiences. I believe design is more than just aesthetics—it&apos;s a problem-solving process centered around user needs.</p>
         <hr className="border-0 border-b border-zinc-300 opacity-40" />
-        <p>I&apos;m passionate about creating minimalist and functional designs. By combining <strong>UI/UX</strong> design with frontend development, I focus on building intuitive interfaces that prioritize user experience, making them both visually appealing and effective.</p>
-        <p>Outside of web development, I love playing story-driven games. Writing reviews after finishing a game has become a hobby.</p>
+        <p>By prioritizing usability, I create interfaces that balance functionality and aesthetics, ensuring seamless digital interactions. I am continuously learning, leveraging user feedback to refine processes, and enhancing digital accessibility.</p>
+        <p>Beyond design, I develop small-scale frontend projects to make everyday digital experiences more meaningful. I enjoy building practical and minimalist tools that streamline workflows and improve efficiency.</p>
         </div>
       <Social />
     </Container>
