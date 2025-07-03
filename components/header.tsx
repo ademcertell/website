@@ -35,7 +35,7 @@ const Header = () => {
                 <span className="text-medium inline-block font-medium text-zinc-50">
                   Adem Can Certel
                 </span>
-                <span className="text-zinc-300">Junior UI Designer</span>
+                <span className="text-zinc-300">web Designer</span>
               </div>
             </Link>
             <div className="flex items-center">
