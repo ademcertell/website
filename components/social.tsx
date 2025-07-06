@@ -13,14 +13,6 @@ const Social = () => {
         <span className="ml-3 text-white font-semibold">Behance</span>
       </Link>
       <Link
-        href="https://medium.com/@ademcertel"
-        target="_blank"
-        className="flex flex-row items-center border border-neutral-500/60 rounded p-3 hover:bg-neutral-800 hover:border-neutral-400/80 transition-all duration-300 shadow-md hover:shadow-lg"
-      >
-        <ArrowRightUp />
-        <span className="ml-3 text-white font-semibold">Medium</span>
-      </Link>
-      <Link
         href="https://www.youtube.com/@ademcancertel"
         target="_blank"
         className="flex flex-row items-center border border-neutral-500/60 rounded p-3 hover:bg-neutral-800 hover:border-neutral-400/80 transition-all duration-300 shadow-md hover:shadow-lg"
