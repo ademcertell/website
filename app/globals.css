@@ -2,117 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-/*  text highlighting
-::selection {
-  color:  #fff;
-  background-color: #fff;
-}
-*/
-
 @layer base {
-
-  /* fixed default heading colors */
-  .prose h1,
-  .prose h2,
-  .prose h3,
-  .prose h4,
-  .prose h5,
-  .prose h6 {
-    color: inherit;
-    /* default heading colors */
+  :root {
+    --background: 228 10% 6%;              /* #0C0C0F */
+    --foreground: 210 20% 98%;             /* #F1F5F9 */
+    --primary: 213 90% 58%;                /* #1F8DED */
+    --muted-foreground: 215 20% 85%;
+    --card: 228 12% 8%;
+    --card-foreground: 213 20% 90%;
   }
 
-  .prose p {
-    color: #d1d5db;
+  .dark {
+    --background: 228 10% 6%;
+    --foreground: 210 20% 98%;
+    --primary: 213 90% 58%;
+    --muted-foreground: 215 20% 85%;
+    --card: 228 12% 8%;
+    --card-foreground: 213 20% 90%;
   }
 
-  .dark .prose p {
-    color: #9ca3af;
+@layer components {
+
+  .prose {
+    --tw-prose-body: hsl(var(--foreground) / 0.82); 
+    --tw-prose-headings: hsl(var(--foreground)); 
+    --tw-prose-links: hsl(var(--primary));
+    --tw-prose-bold: hsl(var(--foreground));
+    --tw-prose-quotes: hsl(var(--foreground) / 0.90);
+    --tw-prose-code: hsl(var(--foreground));
+    --tw-prose-pre-code: hsl(var(--foreground));
+    --tw-prose-pre-bg: hsl(var(--card));
+    --tw-prose-hr: hsl(var(--foreground) / 0.10);
+    --tw-prose-th-borders: hsl(var(--foreground) / 0.14);
+    --tw-prose-td-borders: hsl(var(--foreground) / 0.10);
+    --tw-prose-captions: hsl(var(--muted-foreground));
   }
 
-  .prose pre {
-    @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900;
+  .prose-invert {
+    --tw-prose-body: hsl(var(--foreground) / 0.82); 
+    --tw-prose-headings: hsl(var(--foreground));
+    --tw-prose-links: hsl(var(--primary));
+    --tw-prose-bold: hsl(var(--foreground));
+    --tw-prose-quotes: hsl(var(--foreground) / 0.90);
+    --tw-prose-code: hsl(var(--foreground));
+    --tw-prose-pre-code: hsl(var(--foreground));
+    --tw-prose-pre-bg: hsl(var(--card));
+    --tw-prose-hr: hsl(var(--foreground) / 0.12);
+    --tw-prose-th-borders: hsl(var(--foreground) / 0.18);
+    --tw-prose-td-borders: hsl(var(--foreground) / 0.12);
   }
 
-  .prose img {
-    /* Don't apply styles to next/image */
-    @apply m-0;
+  .prose p { line-height: 1.75; }
+  .prose a { text-decoration: underline; }
+}
+
+  .prose a { color: hsl(var(--primary)); text-decoration: underline; }
+
+
+  html {
+    @apply bg-background text-foreground font-sans;
   }
 
-  .prose strong {
-    @apply font-medium;
+  h1, h2, h3, h4, h5 {
+    @apply font-heading;
   }
 
-  .prose code {
-    @apply px-1 py-0.5 rounded-lg;
+  .hide-header #site-header { display: none; }
+
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--foreground));
   }
 
-  .prose pre code {
-    @apply p-0;
-    border: initial;
-    line-height: 1.5;
+  ::-webkit-scrollbar {
+    width: 0.5rem;
   }
 
-  .prose code span {
-    @apply font-medium;
-  }
-
-  .prose code {
-    color: #5eb8f5;
-    /* Inline open theme color for code */
-    background-color: #f9fafb;
-    padding: 0.25rem 0.5rem;
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--foreground));
     border-radius: 0.25rem;
-    font-weight: 500;
   }
-}
 
-.prose table {
-  border-collapse: collapse;
-  overflow: hidden;
-  border-radius: 0.5rem;
-}
+  ::-webkit-scrollbar-track {
+    background-color: hsl(var(--background));
+  }
 
-.prose thead {
-  background-color: #333333;
-}
-
-.prose th {
-  color: #ffffff;
-  padding: 0.75rem;
-  border: 1px solid #4a4a4a;
-  text-align: left;
-  font-weight: 600;
-}
-
-.prose td {
-  color: #e0e0e0;
-  padding: 0.75rem;
-  border: 1px solid #4a4a4a;
-}
-
-
-::-webkit-scrollbar {
-  width: 0.5rem;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--foreground);
-  border-radius: 0.25rem;
-}
-
-::-webkit-scrollbar-track {
-  background-color: var(--background);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--foreground);
-}
-
-::-webkit-scrollbar-thumb:active {
-  background-color: var(--foreground);
-}
-
-::-webkit-scrollbar-corner {
-  background-color: var(--background);
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--primary));
+  }
 }

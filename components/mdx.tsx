@@ -6,75 +6,14 @@ import Link, { LinkProps } from "next/link";
 import React, { ReactNode } from "react";
 import { highlight } from "sugar-high";
 
-const MDXRemote = dynamic(() => import("next-mdx-remote").then(mod => mod.MDXRemote), { ssr: false });
+// MDXRemote client dynamic upload
+const MDXRemote = dynamic(
+  () => import("next-mdx-remote").then((m) => m.MDXRemote),
+  { ssr: false }
+);
 
 interface CustomMDXProps {
   source: any;
-}
-
-interface CustomLinkProps extends LinkProps {
-  href: string;
-  children: ReactNode;
-}
-
-function Code({ children, ...props }: { children: ReactNode }) {
-  const codeHTML = highlight(String(children));
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
-}
-
-function CustomLink({ href, children, ...props }: CustomLinkProps) {
-  if (href.startsWith("/")) {
-    return (
-      <Link href={href} {...props}>
-        {children}
-      </Link>
-    );
-  }
-
-  if (href.startsWith("#")) {
-    return <a href={href} {...props}>{children}</a>;
-  }
-
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
-      {children}
-    </a>
-  );
-}
-
-interface RoundedImageProps extends ImageProps {
-  alt: string;
-}
-
-function RoundedImage({ alt, ...props }: RoundedImageProps) {
-  return <Image alt={alt} className="rounded-lg" {...props} />;
-}
-
-function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
-  return (
-    <table className="w-full border-collapse border border-gray-700 text-left">
-      <thead>
-        <tr className="bg-gray-800">
-          {data.headers.map((header, index) => (
-            <th key={index} className="p-2 border border-gray-600 text-white font-semibold">
-              {header}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.rows.map((row, rowIndex) => (
-          <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-gray-900" : "bg-gray-800"}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex} className="p-2 border border-gray-700 text-gray-300">
-                {cell}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
 }
 
 function slugify(str: string) {
@@ -93,17 +32,121 @@ function createHeading(level: number) {
     const slug = slugify(String(children));
     return React.createElement(
       `h${level}`,
-      { id: slug },
-      [
-        <a key={`link-${slug}`} href={`#${slug}`} className="anchor">
+      { id: slug, className: "group scroll-mt-24" },
+      <>
+        <a
+          href={`#${slug}`}
+          className="mr-2 inline-block select-none opacity-0 transition group-hover:opacity-60"
+          aria-label="Anchor link"
+        >
           #
-        </a>,
-      ],
-      children
+        </a>
+        {children}
+      </>
     );
   };
   Component.displayName = `Heading${level}`;
   return Component;
+}
+
+function Code({
+  children,
+  ...props
+}: {
+  children: ReactNode;
+} & React.HTMLAttributes<HTMLElement>) {
+  const code = String(children ?? "");
+  const isMultiline = code.includes("\n");
+
+  if (isMultiline) {
+    return (
+      <pre
+        className="not-prose overflow-x-auto rounded-lg border border-white/10 bg-black/50 p-4 text-sm"
+        {...props}
+      >
+        <code dangerouslySetInnerHTML={{ __html: highlight(code) }} />
+      </pre>
+    );
+  }
+
+  // inline code
+  return (
+    <code
+      className="rounded-md bg-white/5 px-1.5 py-0.5"
+      dangerouslySetInnerHTML={{ __html: highlight(code) }}
+      {...props}
+    />
+  );
+}
+
+interface CustomLinkProps extends LinkProps {
+  href: string;
+  children: ReactNode;
+}
+
+function CustomLink({ href, children, ...props }: CustomLinkProps) {
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} {...props}>
+        {children}
+      </Link>
+    );
+  }
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} {...(props as any)}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      {...(props as any)}
+    >
+      {children}
+    </a>
+  );
+}
+
+interface RoundedImageProps extends ImageProps {
+  alt: string;
+}
+
+function RoundedImage({ alt, className = "", ...props }: RoundedImageProps) {
+  return <Image alt={alt} className={`rounded-lg ${className}`} {...props} />;
+}
+
+function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
+  return (
+    <table className="w-full border-collapse text-left">
+      <thead>
+        <tr>
+          {data.headers.map((h, i) => (
+            <th
+              key={i}
+              className="border-b border-white/10 px-3 py-2 text-sm font-semibold"
+            >
+              {h}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.rows.map((row, ri) => (
+          <tr key={ri} className="odd:bg-white/5">
+            {row.map((cell, ci) => (
+              <td key={ci} className="px-3 py-2 text-sm">
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 }
 
 const components = {
@@ -121,7 +164,7 @@ const components = {
 
 const CustomMDX: React.FC<CustomMDXProps> = ({ source }) => {
   return (
-    <div className="prose prose-zinc dark:prose-invert max-w-none text-justify">
+    <div className="prose prose-invert mx-auto max-w-2xl md:max-w-3xl prose-p:leading-7">
       <MDXRemote {...source} components={components} />
     </div>
   );

@@ -13,6 +13,7 @@ const Header = () => {
   const NAV_ITEMS = useMemo(() => ({
     home: '/',
     blog: '/blog',
+    playlog: '/playlog'
   }), []);
 
   return (
@@ -27,15 +28,15 @@ const Header = () => {
               <Image
                 src="/logo.png"
                 alt="Logo"
-                width={40}
-                height={40}
+                width={45}
+                height={45}
                 priority={true}
               />
               <div className="flex flex-col ml-4">
                 <span className="text-medium inline-block font-medium text-zinc-50">
                   Adem Can Certel
                 </span>
-                <span className="text-zinc-300">web Designer</span>
+                <span className="text-zinc-300">Designer</span>
               </div>
             </Link>
             <div className="flex items-center">

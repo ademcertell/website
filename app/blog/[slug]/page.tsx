@@ -23,7 +23,11 @@ const calculateReadingTime = (content: string) => {
 };
 
 const formatDate = (dateString: string) => {
-  const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric" };
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
   return new Date(dateString).toLocaleDateString("en-US", options);
 };
 
@@ -39,7 +43,10 @@ export default async function BlogPost({ params }: BlogPostProps) {
   const mdxSource = await serialize(content);
 
   return (
-    <Container size="large" className="text-zinc-200 container animate-enter overflow-x-hidden">
+    <Container
+      size="large"
+      className="text-zinc-200 container animate-enter overflow-x-hidden"
+    >
       <h1 className="text-3xl font-bold tracking-tight mb-4">{data.title}</h1>
       <div className="flex justify-start items-center mt-2 mb-8 text-sm font-mono text-neutral-400">
         <time dateTime={data.date}>{formatDate(data.date)}</time>
