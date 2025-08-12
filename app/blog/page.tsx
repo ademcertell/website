@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Fragment } from "react";
+
 import { getPostsByType } from "@/lib/getBlogPosts";
+
 import Container from "@/components/common/container";
-import BlogCard from "@/components/blogcard";
+import BlogCard from "@/components/common/Blog/blogcard";
 
 export const metadata: Metadata = {
   title: "Blog",
