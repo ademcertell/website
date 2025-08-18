@@ -17,7 +17,7 @@ const socials = [
 
 export default function Social() {
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 mt-6">
+    <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 mt-6 btn-neon">
       {socials.map((social) => (
         <Link
           key={social.name}
