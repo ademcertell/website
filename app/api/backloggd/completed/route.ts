@@ -9,9 +9,9 @@ async function fetchHtml(url: string) {
   const res = await fetch(url, {
     headers: {
       "User-Agent": UA,
-      "Accept": "text/html,*/*",
+      Accept: "text/html,*/*",
       "Accept-Language": "en-US,en;q=0.9,tr;q=0.8",
-      "Referer": BASE,
+      Referer: BASE,
     },
     cache: "no-store",
   });
@@ -38,11 +38,18 @@ async function parseFinished(username: string, year: string, limit: number) {
         /^\/games\/[^/]+\/?$/.test($(a).attr("href") || "")
       );
 
-      const items: Array<{ title: string; url: string; date: string | null; platform: string | null }> = [];
+      const items: Array<{
+        title: string;
+        url: string;
+        date: string | null;
+        platform: string | null;
+      }> = [];
 
       anchors.each((_, a) => {
         const link = $(a);
-        const row = link.closest(".log, .journal-item, .entry, .log-row, .row, li, .journal__entry");
+        const row = link.closest(
+          ".log, .journal-item, .entry, .log-row, .row, li, .journal__entry"
+        );
         const rowText = row.text();
         if (!/Finished/i.test(rowText)) return;
 
@@ -58,7 +65,11 @@ async function parseFinished(username: string, year: string, limit: number) {
 
         const platform =
           clean(
-            row.find('a[href*="played_platform:"], .platform, .log-platform, .col-platform').first()
+            row
+              .find(
+                'a[href*="played_platform:"], .platform, .log-platform, .col-platform'
+              )
+              .first()
               .text()
           ) || null;
 
@@ -81,10 +92,13 @@ async function parseFinished(username: string, year: string, limit: number) {
       });
 
       if (uniq.length) {
-        return { mode: "finished" as const, source: url, items: uniq.slice(0, limit) };
+        return {
+          mode: "finished" as const,
+          source: url,
+          items: uniq.slice(0, limit),
+        };
       }
-    } catch {
-    }
+    } catch {}
   }
 
   return { mode: "finished" as const, source: urls, items: [] as any[] };
@@ -137,7 +151,11 @@ async function parseInspect(username: string) {
   $('a[href^="/games/"]').each((_, a) => {
     const href = $(a).attr("href") || "";
     if (!/^\/games\/[^/]+\/?$/.test(href)) return;
-    anchors.push({ href, text: clean($(a).text()), alt: $(a).find("img[alt]").attr("alt") });
+    anchors.push({
+      href,
+      text: clean($(a).text()),
+      alt: $(a).find("img[alt]").attr("alt"),
+    });
   });
 
   return {
@@ -152,7 +170,11 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const username = process.env.BACKLOGGD_USERNAME;
-    if (!username) return NextResponse.json({ error: "Missing BACKLOGGD_USERNAME" }, { status: 500 });
+    if (!username)
+      return NextResponse.json(
+        { error: "Missing BACKLOGGD_USERNAME" },
+        { status: 500 }
+      );
 
     const view = searchParams.get("view") ?? "auto"; // auto | finished | played | inspect
     const year = searchParams.get("year") ?? String(new Date().getFullYear());
@@ -165,20 +187,44 @@ export async function GET(req: Request) {
 
     if (view === "finished") {
       const out = await parseFinished(username, year, limit);
-      return NextResponse.json({ mode: out.mode, year, count: out.items.length, items: out.items, source: out.source });
+      return NextResponse.json({
+        mode: out.mode,
+        year,
+        count: out.items.length,
+        items: out.items,
+        source: out.source,
+      });
     }
 
     if (view === "played") {
       const out = await parsePlayed(username, limit);
-      return NextResponse.json({ mode: out.mode, year, count: out.items.length, items: out.items, source: out.source });
+      return NextResponse.json({
+        mode: out.mode,
+        year,
+        count: out.items.length,
+        items: out.items,
+        source: out.source,
+      });
     }
 
     const fin = await parseFinished(username, year, limit);
     if (fin.items.length) {
-      return NextResponse.json({ mode: fin.mode, year, count: fin.items.length, items: fin.items, source: fin.source });
+      return NextResponse.json({
+        mode: fin.mode,
+        year,
+        count: fin.items.length,
+        items: fin.items,
+        source: fin.source,
+      });
     }
     const pl = await parsePlayed(username, limit);
-    return NextResponse.json({ mode: pl.mode, year, count: pl.items.length, items: pl.items, source: pl.source });
+    return NextResponse.json({
+      mode: pl.mode,
+      year,
+      count: pl.items.length,
+      items: pl.items,
+      source: pl.source,
+    });
   } catch {
     return NextResponse.json({ error: "parse-error" }, { status: 500 });
   }

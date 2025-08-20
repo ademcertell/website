@@ -9,51 +9,43 @@ const contentDirectory = path.join(process.cwd(), "content");
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(contentDirectory);
-
-  return files.map((filename) => ({
-    slug: filename.replace(".mdx", ""),
-  }));
+  return files
+    .filter((f) => f.endsWith(".mdx"))
+    .map((filename) => ({ slug: filename.replace(".mdx", "") }));
 }
 
-const calculateReadingTime = (content: string) => {
-  const wordsPerMinute = 200;
-  const words = content.split(/\s+/).length;
-  const minutes = Math.ceil(words / wordsPerMinute);
-  return `${minutes} min read`;
-};
-
-const formatDate = (dateString: string) => {
-  const options: Intl.DateTimeFormatOptions = {
+const formatDate = (dateString: string) =>
+  new Date(dateString).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
-  };
-  return new Date(dateString).toLocaleDateString("en-US", options);
-};
+  });
 
-interface BlogPostProps {
+interface NotePageProps {
   params: { slug: string };
 }
 
-export default async function BlogPost({ params }: BlogPostProps) {
+export default async function NotePage({ params }: NotePageProps) {
   const filePath = path.join(contentDirectory, `${params.slug}.mdx`);
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const { content, data } = matter(fileContent);
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const { content, data } = matter(raw);
 
   const mdxSource = await serialize(content);
 
+  const title = (data.title as string | undefined) ?? params.slug;
+
   return (
-    <Container
-      size="large"
-      className="text-zinc-200 container animate-enter overflow-x-hidden"
-    >
-      <h1 className="text-3xl font-bold tracking-tight mb-4">{data.title}</h1>
-      <div className="flex justify-start items-center mt-2 mb-8 text-sm font-mono text-neutral-400">
-        <time dateTime={data.date}>{formatDate(data.date)}</time>
-        <span className="mx-2 text-neutral-500"> — </span>
-        <span>{calculateReadingTime(content)}</span>
-      </div>
-      <article className="prose prose-quoteless prose-neutral dark:prose-invert text-justify w-auto">
+    <Container size="large" className="container animate-enter">
+      <header className="mb-6">
+        <h1 className="text-2xl font-heading tracking-tight">{title}</h1>
+        {data.date && (
+          <div className="mt-1 text-xs text-muted-foreground">
+            {formatDate(String(data.date))}
+          </div>
+        )}
+      </header>
+
+      <article className="prose prose-invert mx-auto max-w-2xl md:max-w-3xl prose-p:leading-7">
         <CustomMDX source={mdxSource} />
       </article>
     </Container>

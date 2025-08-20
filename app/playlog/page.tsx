@@ -2,8 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Activity from "@/components/Activity/Activity";
 import Container from "@/components/common/container";
-import CompletedList from "@/components/CompletedList";
-import ReviewTeasers from "@/components/ReviewTeasers";
+import CompletedList from "@/components/common/CompletedList";
+import ReviewTeasers from "@/components/common/ReviewTeasers";
 
 export const metadata: Metadata = {
   title: "Playlog",
@@ -23,18 +23,16 @@ export default function PlaylogPage() {
           reviews.
         </p>
       </header>
-
+      <div className="my-2 select-none text-muted-foreground/70">———</div>
       <section className="mt-6">
         <Activity />
       </section>
-
       <section className="mt-10">
         <h2 className="text-lg font-heading text-foreground mb-3">
           🏆 Recently Completed
         </h2>
         <CompletedList year="2025" limit={8} view="auto" />
       </section>
-
       <section className="mt-10">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="text-lg font-heading text-foreground">

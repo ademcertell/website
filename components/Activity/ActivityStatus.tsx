@@ -18,10 +18,13 @@ const STYLE_MAP: Record<StatusLabel, string> = {
 };
 
 export default function ActivityStatus({ label }: { label?: string }) {
-  const classes = STYLE_MAP[(label as StatusLabel) ?? "Unknown"] ?? STYLE_MAP.Unknown;
+  const classes =
+    STYLE_MAP[(label as StatusLabel) ?? "Unknown"] ?? STYLE_MAP.Unknown;
 
   return (
-    <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs border ${classes}`}>
+    <span
+      className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs border ${classes}`}
+    >
       <span className="size-1.5 rounded-full bg-current" />
       {label ?? "Unknown"}
     </span>

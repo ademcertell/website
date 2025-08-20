@@ -35,7 +35,12 @@ function toTitleCase(raw: string) {
     .trim()
     .replace(/\s+/g, " ")
     .split(" ")
-    .map((w) => (w ? w[0].toLocaleUpperCase("tr-TR") + w.slice(1).toLocaleLowerCase("tr-TR") : w))
+    .map((w) =>
+      w
+        ? w[0].toLocaleUpperCase("tr-TR") +
+          w.slice(1).toLocaleLowerCase("tr-TR")
+        : w
+    )
     .join(" ");
 }
 
@@ -56,7 +61,9 @@ export default function Comments({ slug }: { slug: string }) {
 
   const load = async () => {
     try {
-      const r = await fetch(`/api/reviews/${slug}/comments`, { cache: "no-store" });
+      const r = await fetch(`/api/reviews/${slug}/comments`, {
+        cache: "no-store",
+      });
       const j = await r.json();
       setItems(j.items ?? []);
     } finally {
@@ -69,7 +76,10 @@ export default function Comments({ slug }: { slug: string }) {
   }, [slug]);
 
   const nameValid = useMemo(() => isLikelyRealName(name), [name]);
-  const msgValid = useMemo(() => !!message.trim() && message.length <= MSG_MAX, [message]);
+  const msgValid = useMemo(
+    () => !!message.trim() && message.length <= MSG_MAX,
+    [message]
+  );
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,7 +120,10 @@ export default function Comments({ slug }: { slug: string }) {
       });
       if (!r.ok) throw new Error();
       const j = await r.json();
-      setItems((prev) => [j.item, ...prev.filter((x) => x.id !== optimistic.id)]);
+      setItems((prev) => [
+        j.item,
+        ...prev.filter((x) => x.id !== optimistic.id),
+      ]);
       setMessage("");
     } catch {
       setItems((prev) => prev.filter((x) => x.id !== optimistic.id));
@@ -124,14 +137,19 @@ export default function Comments({ slug }: { slug: string }) {
     <section className="mt-12">
       <h3 className="mb-3 text-lg font-heading text-foreground">Yorum</h3>
 
-      <form onSubmit={onSubmit} className="space-y-3 rounded-xl border border-white/10 bg-card/60 p-4">
+      <form
+        onSubmit={onSubmit}
+        className="space-y-3 rounded-xl border border-white/10 bg-card/60 p-4"
+      >
         <div className="flex gap-3">
           <div className="w-full sm:w-1/2">
             <input
               ref={nameRef}
               className={`w-full min-w-[200px] rounded-md border px-3 py-2 text-sm outline-none
                 bg-black/30 border-white/10 focus:border-white/30
-                ${nameError ? "border-rose-400/50 focus:border-rose-400/70" : ""}`}
+                ${
+                  nameError ? "border-rose-400/50 focus:border-rose-400/70" : ""
+                }`}
               placeholder="İsim"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -206,7 +224,10 @@ export default function Comments({ slug }: { slug: string }) {
           <p className="text-sm text-muted-foreground">Henüz yorum yok.</p>
         ) : (
           items.map((c) => (
-            <div key={c.id} className="rounded-xl border border-white/10 bg-card/60 p-4">
+            <div
+              key={c.id}
+              className="rounded-xl border border-white/10 bg-card/60 p-4"
+            >
               <div className="mb-1 text-xs text-muted-foreground">
                 <span className="font-medium text-foreground/90">
                   {c.name || "Guest"}

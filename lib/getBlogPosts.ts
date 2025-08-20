@@ -1,55 +1,61 @@
+// lib/getBlogPosts.ts
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const contentDirectory = path.join(process.cwd(), "content");
-
-export interface BlogMetadata {
+export type PostType = "note" | "blog" | "review" | "game";
+export type BlogItem = BlogPost
+export type Frontmatter = {
   title: string;
-  date: string;                 // ISO
-  description: string;
-  type?: "post" | "review";     // default
-  rating?: number;              // review 
-  game?: {                      // review 
+  date: string;
+  description?: string;
+  /**
+   * Yoksa "blog" gibi davranırız.
+   */
+  type?: PostType;
+
+  // --- review / game odaklı opsiyonel alanlar ---
+  rating?: number; // 0..10
+  game?: {
     title?: string;
     platform?: string;
-    hours?: number;
   };
-  cover?: string;               // cover
-}
+};
 
-export interface BlogPost {
+export type BlogPost = {
   slug: string;
-  metadata: BlogMetadata;
+  metadata: Frontmatter;
   content: string;
-}
+};
+
+const CONTENT_DIR = path.join(process.cwd(), "content");
 
 export function getBlogPosts(): BlogPost[] {
-  if (!fs.existsSync(contentDirectory)) return [];
-  const files = fs.readdirSync(contentDirectory).filter(f => f.endsWith(".mdx"));
+  const files = fs
+    .readdirSync(CONTENT_DIR)
+    .filter((f) => f.endsWith(".mdx") || f.endsWith(".md"));
 
-  return files.map((filename) => {
-    const filePath = path.join(contentDirectory, filename);
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-    const { data, content } = matter(fileContent);
+  return files
+    .map((filename) => {
+      const slug = filename.replace(/\.mdx?$/, "");
+      const raw = fs.readFileSync(path.join(CONTENT_DIR, filename), "utf8");
+      const { content, data } = matter(raw);
 
-    return {
-      slug: filename.replace(/\.mdx$/i, ""),
-      metadata: {
-        ...(data as any),
-        type: (data as any)?.type ?? "post",
-      } as BlogMetadata,
-      content,
-    };
-  });
+      // `data` (frontmatter) -> Frontmatter tipine cast
+      const metadata = data as Frontmatter;
+
+      return { slug, metadata, content };
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.date).getTime() -
+        new Date(a.metadata.date).getTime()
+    );
 }
 
-export function getPostsByType(type: "post" | "review"): BlogPost[] {
-  return getBlogPosts()
-    .filter(p => (p.metadata.type ?? "post") === type)
-    .sort((a, b) => (new Date(a.metadata.date) > new Date(b.metadata.date) ? -1 : 1));
-}
-
-export function getSlugsByType(type: "post" | "review"): { slug: string }[] {
-  return getPostsByType(type).map(p => ({ slug: p.slug }));
+/** Belirli type’a göre filtre */
+export function getPostsByType(type: PostType): BlogPost[] {
+  return getBlogPosts().filter(
+    (p) => (p.metadata.type ?? "blog") === type
+  );
 }

@@ -4,9 +4,9 @@
 
 @layer base {
   :root {
-    --background: 228 10% 6%;              /* #0C0C0F */
-    --foreground: 210 20% 98%;             /* #F1F5F9 */
-    --primary: 213 90% 58%;                /* #1F8DED */
+    --background: 228 10% 6%; /* #0C0C0F */
+    --foreground: 210 20% 98%; /* #F1F5F9 */
+    --primary: 213 90% 58%; /* #1F8DED */
     --muted-foreground: 215 20% 85%;
     --card: 228 12% 8%;
     --card-foreground: 213 20% 90%;
@@ -21,53 +21,64 @@
     --card-foreground: 213 20% 90%;
   }
 
-@layer components {
+  @layer components {
+    .prose {
+      --tw-prose-body: hsl(var(--foreground) / 0.82);
+      --tw-prose-headings: hsl(var(--foreground));
+      --tw-prose-links: hsl(var(--primary));
+      --tw-prose-bold: hsl(var(--foreground));
+      --tw-prose-quotes: hsl(var(--foreground) / 0.9);
+      --tw-prose-code: hsl(var(--foreground));
+      --tw-prose-pre-code: hsl(var(--foreground));
+      --tw-prose-pre-bg: hsl(var(--card));
+      --tw-prose-hr: hsl(var(--foreground) / 0.1);
+      --tw-prose-th-borders: hsl(var(--foreground) / 0.14);
+      --tw-prose-td-borders: hsl(var(--foreground) / 0.1);
+      --tw-prose-captions: hsl(var(--muted-foreground));
+    }
 
-  .prose {
-    --tw-prose-body: hsl(var(--foreground) / 0.82); 
-    --tw-prose-headings: hsl(var(--foreground)); 
-    --tw-prose-links: hsl(var(--primary));
-    --tw-prose-bold: hsl(var(--foreground));
-    --tw-prose-quotes: hsl(var(--foreground) / 0.90);
-    --tw-prose-code: hsl(var(--foreground));
-    --tw-prose-pre-code: hsl(var(--foreground));
-    --tw-prose-pre-bg: hsl(var(--card));
-    --tw-prose-hr: hsl(var(--foreground) / 0.10);
-    --tw-prose-th-borders: hsl(var(--foreground) / 0.14);
-    --tw-prose-td-borders: hsl(var(--foreground) / 0.10);
-    --tw-prose-captions: hsl(var(--muted-foreground));
+    .prose-invert {
+      --tw-prose-body: hsl(var(--foreground) / 0.82);
+      --tw-prose-headings: hsl(var(--foreground));
+      --tw-prose-links: hsl(var(--primary));
+      --tw-prose-bold: hsl(var(--foreground));
+      --tw-prose-quotes: hsl(var(--foreground) / 0.9);
+      --tw-prose-code: hsl(var(--foreground));
+      --tw-prose-pre-code: hsl(var(--foreground));
+      --tw-prose-pre-bg: hsl(var(--card));
+      --tw-prose-hr: hsl(var(--foreground) / 0.12);
+      --tw-prose-th-borders: hsl(var(--foreground) / 0.18);
+      --tw-prose-td-borders: hsl(var(--foreground) / 0.12);
+    }
+
+    .prose p {
+      line-height: 1.75;
+    }
+    .prose a {
+      text-decoration: underline;
+    }
   }
 
-  .prose-invert {
-    --tw-prose-body: hsl(var(--foreground) / 0.82); 
-    --tw-prose-headings: hsl(var(--foreground));
-    --tw-prose-links: hsl(var(--primary));
-    --tw-prose-bold: hsl(var(--foreground));
-    --tw-prose-quotes: hsl(var(--foreground) / 0.90);
-    --tw-prose-code: hsl(var(--foreground));
-    --tw-prose-pre-code: hsl(var(--foreground));
-    --tw-prose-pre-bg: hsl(var(--card));
-    --tw-prose-hr: hsl(var(--foreground) / 0.12);
-    --tw-prose-th-borders: hsl(var(--foreground) / 0.18);
-    --tw-prose-td-borders: hsl(var(--foreground) / 0.12);
+  .prose a {
+    color: hsl(var(--primary));
+    text-decoration: underline;
   }
-
-  .prose p { line-height: 1.75; }
-  .prose a { text-decoration: underline; }
-}
-
-  .prose a { color: hsl(var(--primary)); text-decoration: underline; }
-
 
   html {
     @apply bg-background text-foreground font-sans;
   }
 
-  h1, h2, h3, h4, h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     @apply font-heading;
   }
 
-  .hide-header #site-header { display: none; }
+  .hide-header #site-header {
+    display: none;
+  }
 
   ::selection {
     background-color: hsl(var(--primary));

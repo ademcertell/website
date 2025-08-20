@@ -17,10 +17,21 @@ type CommentDoc = {
 };
 
 const NAME_CHARS = /^[A-Za-zÇĞİÖŞÜçğıöşü' -]+$/;
-const BAD_NAMES = ["test", "guest", "anon", "anonymous", "admin", "user", "asdf", "qwerty"];
+const BAD_NAMES = [
+  "test",
+  "guest",
+  "anon",
+  "anonymous",
+  "admin",
+  "user",
+  "asdf",
+  "qwerty",
+];
 
 function isLikelyRealName(raw: unknown) {
-  const s = String(raw ?? "").trim().replace(/\s+/g, " ");
+  const s = String(raw ?? "")
+    .trim()
+    .replace(/\s+/g, " ");
   if (!s) return false;
   if (s.length > 60) return false;
   if (!NAME_CHARS.test(s)) return false;
@@ -37,7 +48,10 @@ function toTitleCaseTR(raw: string) {
     .replace(/\s+/g, " ")
     .split(" ")
     .map((w) =>
-      w ? w[0].toLocaleUpperCase("tr-TR") + w.slice(1).toLocaleLowerCase("tr-TR") : w
+      w
+        ? w[0].toLocaleUpperCase("tr-TR") +
+          w.slice(1).toLocaleLowerCase("tr-TR")
+        : w
     )
     .join(" ");
 }
@@ -49,7 +63,20 @@ function sanitizeMessage(s: unknown) {
 }
 
 const BAD_WORDS = [
-  "salak","aptal","gerizekalı","orospu","sik","s*ik","piç","amk","aq","yarrak","mal","oç","çalıntı","yapay zeka"
+  "salak",
+  "aptal",
+  "gerizekalı",
+  "orospu",
+  "sik",
+  "s*ik",
+  "piç",
+  "amk",
+  "aq",
+  "yarrak",
+  "mal",
+  "oç",
+  "çalıntı",
+  "yapay zeka",
 ];
 const badWordRe = new RegExp(`\\b(${BAD_WORDS.join("|")})\\b`, "i");
 const urlRe = /(https?:\/\/|www\.)/i;
@@ -99,7 +126,10 @@ export async function POST(
     if (!message)
       return NextResponse.json({ error: "Mesaj zorunludur." }, { status: 400 });
     if (urlRe.test(message))
-      return NextResponse.json({ error: "Bağlantılar yasaktır.." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Bağlantılar yasaktır.." },
+        { status: 400 }
+      );
     if (badWordRe.test(message))
       return NextResponse.json({ error: "Uygunsuz dil." }, { status: 400 });
 

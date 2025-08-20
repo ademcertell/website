@@ -1,9 +1,15 @@
 "use client";
 
-import LikeButton from "./Blog/LikeButton";
-import ViewCounter from "./Blog/ViewCounter";
+import LikeButton from "./Notes/LikeButton";
+import ViewCounter from "./Notes/ViewCounter";
 
-export default function EngagementBar({ slug, title }: { slug: string; title: string }) {
+export default function EngagementBar({
+  slug,
+  title,
+}: {
+  slug: string;
+  title: string;
+}) {
   const share = async () => {
     const url = typeof window !== "undefined" ? window.location.href : "";
     try {

@@ -48,7 +48,7 @@ export default function Activity() {
     };
 
     load();
-    const id = setInterval(load, 30_000); 
+    const id = setInterval(load, 30_000);
     return () => {
       alive = false;
       clearInterval(id);
@@ -59,7 +59,7 @@ export default function Activity() {
     data?.gameName ??
     (loading ? "Loading…" : "Steam verisi alınamadı ya da hiç oyun yok.");
 
-  // SKELETON 
+  // SKELETON
   if (loading) {
     return (
       <section className="mt-12">
@@ -95,7 +95,7 @@ export default function Activity() {
           </div>
 
           <h3 className="text-xl md:text-2xl mt-5 font-semibold tracking-tight text-foreground">
-          🎮 {subtitle}
+            🎮 {subtitle}
           </h3>
 
           {data?.error && (

@@ -9,10 +9,10 @@ import Container from "@/components/common/container";
 import CustomMDX from "@/components/mdx";
 import HideHeader from "@/components/common/HideHeader";
 
-import SimilarReviews from "@/components/common/Blog/SimilarReviews";
+import SimilarReviews from "@/components/common/Notes/SimilarReviews";
 import Comments from "@/components/common/Comments";
-import LikeButton from "@/components/common/Blog/LikeButton";
-import ViewCounter from "@/components/common/Blog/ViewCounter";
+import LikeButton from "@/components/common/Notes/LikeButton";
+import ViewCounter from "@/components/common/Notes/ViewCounter";
 
 const contentDir = path.join(process.cwd(), "content");
 
@@ -127,14 +127,15 @@ export default async function ReviewPost({
         <article className="prose prose-invert mx-auto max-w-3xl prose-p:leading-7">
           <CustomMDX source={mdx} />
         </article>
+        <div className="my-4 select-none text-muted-foreground/70">———</div>
         <Comments slug={params.slug} />
         <div className="mx-auto mt-10 w-full max-w-6xl">
           <SimilarReviews currentSlug={params.slug} />
         </div>
       </Container>
       <div className="mx-auto mt-8 flex w-full max-w-3xl items-center justify-center gap-3">
-        <LikeButton slug={params.slug} />
-        <span className="h-4 w-px bg-white/10" aria-hidden />
+        {/*<LikeButton slug={params.slug} />
+        <span className="h-4 w-px bg-white/10" aria-hidden />*/}
         <ViewCounter slug={params.slug} />
       </div>
     </>

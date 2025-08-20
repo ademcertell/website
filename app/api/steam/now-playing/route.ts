@@ -38,10 +38,11 @@ export async function GET() {
       `${API}/ISteamUser/GetPlayerSummaries/v0002/?key=${key}&steamids=${steamId}`,
       { cache: "no-store" }
     );
-    const player: Player | undefined =
-      (await sumRes.json())?.response?.players?.[0];
+    const player: Player | undefined = (await sumRes.json())?.response
+      ?.players?.[0];
 
-    if (!player) return NextResponse.json({ error: "player-not-found" }, { status: 404 });
+    if (!player)
+      return NextResponse.json({ error: "player-not-found" }, { status: 404 });
 
     const inGame = Boolean(player.gameid);
     const status = mapStatus(player.personastate ?? 0, inGame);
@@ -59,7 +60,11 @@ export async function GET() {
           steamProfileUrl: player.profileurl,
           avatar: player.avatarfull,
         },
-        { headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=300" } }
+        {
+          headers: {
+            "Cache-Control": "s-maxage=60, stale-while-revalidate=300",
+          },
+        }
       );
     }
 
@@ -72,7 +77,9 @@ export async function GET() {
 
     const mostRecent = recentGames
       .slice()
-      .sort((a, b) => (b.rtime_last_played ?? 0) - (a.rtime_last_played ?? 0))[0];
+      .sort(
+        (a, b) => (b.rtime_last_played ?? 0) - (a.rtime_last_played ?? 0)
+      )[0];
 
     if (mostRecent) {
       return NextResponse.json(
@@ -87,7 +94,11 @@ export async function GET() {
           steamProfileUrl: player.profileurl,
           avatar: player.avatarfull,
         },
-        { headers: { "Cache-Control": "s-maxage=300, stale-while-revalidate=600" } }
+        {
+          headers: {
+            "Cache-Control": "s-maxage=300, stale-while-revalidate=600",
+          },
+        }
       );
     }
 
@@ -112,7 +123,9 @@ export async function GET() {
       fallback: ownedPick ? "owned" : null,
       appId: ownedPick?.appid ?? null,
       gameName: ownedPick?.name ?? null,
-      storeUrl: ownedPick ? `https://store.steampowered.com/app/${ownedPick.appid}` : null,
+      storeUrl: ownedPick
+        ? `https://store.steampowered.com/app/${ownedPick.appid}`
+        : null,
       headerImage: ownedPick
         ? `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${ownedPick.appid}/header.jpg`
         : null,

@@ -9,7 +9,8 @@ export default function ViewCounter({ slug }: { slug: string }) {
     let live = true;
 
     const key = `viewed:${slug}`;
-    const already = typeof window !== "undefined" && sessionStorage.getItem(key) === "1";
+    const already =
+      typeof window !== "undefined" && sessionStorage.getItem(key) === "1";
 
     (async () => {
       try {

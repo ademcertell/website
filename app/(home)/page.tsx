@@ -1,41 +1,55 @@
 import Container from "@/components/common/container";
-import HomeBlogCards from "@/components/common/HomeBlogCards";
+import HomeBlogCards from "@/components/common/Notes/HomeNotesCards";
+import NowPlayingText from "@/components/common/NowPlayingText";
+import ReadingNow from "@/components/common/ReadingNow";
 import Social from "@/components/social";
+import StickyNote from "@/components/ui/StickyNote";
 
 export default function Home() {
   return (
     <Container size="large" className="text-foreground container animate-enter">
-      <div className="space-y-4 mb-5">Hi, I&apos;m Adem Can.</div>
-      <div className="space-y-8 text-muted-foreground">
-        <p>
-          I am a UI/UX Designer who focuses on creating intuitive and visually
-          appealing mobile designs using Figma. I believe that design is not
-          only about aesthetics but also about solving problems based on user
-          needs.
+      <header className="mb-6">
+        <h1 className="text-2xl md:text-2xl font-heading tracking-tight">
+          Hi, I&apos;m Adem Can.
+        </h1>
+        <p className="text-sm text-muted-foreground mt-2 max-w-2xl">
+          I keep a small digital journal here—notes I&apos;m collecting, things
+          I&apos;m designing, and games I&apos;m currently into.
         </p>
+      </header>
 
-        <hr className="border-0 border-b border-muted opacity-40" />
+      <StickyNote variant="pin" tone="yellow" className="mt-2">
+        I&apos;m a UI/UX Designer focused on clear, humane interfaces. I like
+        building small, useful tools and writing down what I learn. This site is
+        where those trails meet.
+      </StickyNote>
 
-        <p>
-          I always prioritize usability and build interfaces that combine
-          functionality and clean visual style to ensure smooth digital
-          experiences. I constantly improve my skills by learning,
-          experimenting, and listening to user feedback to refine my design
-          approach and improve digital accessibility.
-        </p>
+      <div className="my-8 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        <p>
-          I also work as a freelance frontend developer, creating small-scale
-          projects that help people with practical and minimalist tools. In
-          addition, I enjoy writing game reviews in my spare time. I see myself
-          as a Web Designer who combines design and development to make daily
-          digital life more efficient and meaningful.
-        </p>
-      </div>
+      <section className="mb-6">
+        <h2 className="text-sm font-heading text-foreground/90 mb-3">
+          Elsewhere
+        </h2>
+        <Social />
+      </section>
 
-      <Social />
+      <section className="mt-8">
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-lg font-heading">Latest Notes</h2>
+        </div>
+        <HomeBlogCards />
+      </section>
 
-      <HomeBlogCards />
+      <footer className="mt-10 text-xs text-muted-foreground">
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          <span>
+            <ReadingNow />
+          </span>
+          <span>
+            <NowPlayingText />
+          </span>
+        </div>
+      </footer>
     </Container>
   );
 }
