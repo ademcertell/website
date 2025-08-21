@@ -1,93 +1,150 @@
+// app/api/photos/route.ts
 import { NextResponse } from "next/server";
+import fs from "fs";
+import path from "path";
 
-const BASE = "https://api.unsplash.com";
-
-type UPhoto = {
+type Item = {
   id: string;
-  width: number;
-  height: number;
-  alt_description: string | null;
-  created_at: string;
+  w: number;
+  h: number;
+  alt: string;
+  createdAt: string;
   likes: number;
-  urls: { small: string; regular: string };
-  links: { html: string };
-  user: { name: string; links: { html: string } };
+  urlSmall: string;
+  urlRegular: string;
+  pageUrl: string;
+  author: { name: string; url: string };
 };
 
-export async function GET(req: Request) {
+const LOCAL_DIR = path.join(process.cwd(), "public", "game-shots");
+
+// Ortak small/regular ölçü defaultları (yerel görseller için)
+const FALLBACK_W = 1200;
+const FALLBACK_H = 800;
+
+function humanize(name: string) {
+  return name
+    .replace(/\.[a-z0-9]+$/i, "")
+    .replace(/[-_]+/g, " ")
+    .replace(/\b\w/g, (m) => m.toUpperCase());
+}
+
+function readLocalPhotos(): Item[] {
+  if (!fs.existsSync(LOCAL_DIR)) return [];
+
+  const files = fs
+    .readdirSync(LOCAL_DIR)
+    .filter((f) => /\.(jpe?g|png|webp|avif)$/i.test(f));
+
+  const items: Item[] = files.map((file) => {
+    const full = path.join(LOCAL_DIR, file);
+    const stat = fs.statSync(full);
+    const url = `/game-shots/${file}`;
+    return {
+      id: `local-${file}`,
+      w: FALLBACK_W,
+      h: FALLBACK_H,
+      alt: humanize(file),
+      createdAt: new Date(stat.mtimeMs || stat.mtime || Date.now()).toISOString(),
+      likes: 0,
+      urlSmall: url,
+      urlRegular: url,
+      pageUrl: url, // istersen lightbox/ayrı sayfa yaparsın
+      author: {
+        name: process.env.SITE_AUTHOR || "Adem Can Certel",
+        url: process.env.SITE_URL || "https://ademcan.dev",
+      },
+    };
+  });
+
+  // En yeni dosya en üstte
+  items.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
+  return items;
+}
+
+async function readUnsplashPhotos(): Promise<Item[]> {
   const key = process.env.UNSPLASH_ACCESS_KEY;
   const username = process.env.UNSPLASH_USERNAME;
 
-  if (!key || !username) {
-    return NextResponse.json(
-      { items: [], nextPage: null, error: "Missing UNSPLASH env" },
-      { status: 500 }
-    );
-  }
+  if (!key || !username) return [];
 
+  // Kendi fotoğrafların:
+  // https://api.unsplash.com/users/{username}/photos
+  const resp = await fetch(
+    `https://api.unsplash.com/users/${username}/photos?per_page=30&order_by=latest`,
+    {
+      headers: { Authorization: `Client-ID ${key}` },
+      // Not: bu API “kişisel” olduğundan dinamik bırakıyoruz
+      // ISR/SWR kullanmak istersen “next: { revalidate: 300 }” ekleyebilirsin
+      cache: "no-store",
+    }
+  );
+
+  if (!resp.ok) return [];
+
+  const arr = await resp.json();
+
+  const items: Item[] = (Array.isArray(arr) ? arr : []).map((p: any) => {
+    const small = p.urls?.small || p.urls?.regular || p.urls?.full;
+    const regular = p.urls?.regular || p.urls?.full || p.urls?.small;
+    const width = Number(p.width || FALLBACK_W);
+    const height = Number(p.height || FALLBACK_H);
+
+    return {
+      id: String(p.id),
+      w: width,
+      h: height,
+      alt: p.alt_description || p.description || "Untitled",
+      createdAt: p.created_at || new Date().toISOString(),
+      likes: Number(p.likes || 0),
+      urlSmall: small,
+      urlRegular: regular,
+      pageUrl: p.links?.html || p.links?.self || `https://unsplash.com/photos/${p.id}`,
+      author: {
+        name: p.user?.name || username,
+        url: p.user?.links?.html || `https://unsplash.com/@${username}`,
+      },
+    };
+  });
+
+  // En yeni üste
+  items.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
+  return items;
+}
+
+export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const page = Number(searchParams.get("page") ?? 1);
-    const perPage = Math.min(Number(searchParams.get("per_page") ?? 12), 30);
+    const page = Math.max(1, Number(searchParams.get("page") || 1));
+    const perPage = Math.min(48, Math.max(1, Number(searchParams.get("per_page") || 12)));
 
-    const r = await fetch(
-      `${BASE}/users/${encodeURIComponent(
-        username
-      )}/photos?page=${page}&per_page=${perPage}&order_by=latest`,
-      { headers: { Authorization: `Client-ID ${key}` }, cache: "no-store" }
+    // 1) Yerel “oyun içi” fotoğraflar
+    const localItems = readLocalPhotos();
+
+    // 2) Unsplash’teki “kendi hesabın” fotoğraflar
+    const unsplashItems = await readUnsplashPhotos();
+
+    // 3) Birleştir + tarihe göre sırala (yeniden)
+    const all = [...localItems, ...unsplashItems].sort((a, b) =>
+      a.createdAt > b.createdAt ? -1 : 1
     );
 
-    // Unsplash hata cevabını da items=[] şeklinde sar
-    if (!r.ok) {
-      const body = await r.text().catch(() => "");
-      return NextResponse.json(
-        { items: [], nextPage: null, error: `unsplash:${r.status}`, body },
-        { status: 500 }
-      );
-    }
-
-    const data = (await r.json()) as unknown;
-
-    // Beklenmeyen response güvenliği
-    if (!Array.isArray(data)) {
-      return NextResponse.json(
-        { items: [], nextPage: null, error: "unexpected-response" },
-        { status: 500 }
-      );
-    }
-
-    const items = (data as UPhoto[]).map((p) => ({
-      id: p.id,
-      w: p.width,
-      h: p.height,
-      alt: p.alt_description ?? "Photo",
-      createdAt: p.created_at,
-      likes: p.likes,
-      urlSmall: p.urls.small,
-      urlRegular: p.urls.regular,
-      pageUrl: p.links.html,
-      author: { name: p.user.name, url: p.user.links.html },
-    }));
-
-    const uniq: typeof items = [];
+    // 4) ID bazlı dublike kırp (ihtiyaten)
     const seen = new Set<string>();
-    for (const it of items) {
-      if (seen.has(it.id)) continue;
-      seen.add(it.id);
-      uniq.push(it);
-    }
+    const unique = all.filter((x) => {
+      if (seen.has(x.id)) return false;
+      seen.add(x.id);
+      return true;
+    });
 
-    const nextPage = uniq.length >= perPage ? page + 1 : null;
-    return NextResponse.json(
-      { items: uniq, nextPage },
-      {
-        headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=300" },
-      }
-    );
-  } catch {
-    return NextResponse.json(
-      { items: [], nextPage: null, error: "server-fail" },
-      { status: 500 }
-    );
+    // 5) Sayfalama
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    const slice = unique.slice(start, end);
+    const nextPage = end < unique.length ? page + 1 : null;
+
+    return NextResponse.json({ items: slice, nextPage });
+  } catch (e) {
+    return NextResponse.json({ items: [], nextPage: null, error: "photos-failed" }, { status: 500 });
   }
 }
