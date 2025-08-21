@@ -1,4 +1,3 @@
-// app/api/photos/route.ts
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
@@ -18,7 +17,6 @@ type Item = {
 
 const LOCAL_DIR = path.join(process.cwd(), "public", "game-shots");
 
-// Ortak small/regular ölçü defaultları (yerel görseller için)
 const FALLBACK_W = 1200;
 const FALLBACK_H = 800;
 
@@ -49,7 +47,7 @@ function readLocalPhotos(): Item[] {
       likes: 0,
       urlSmall: url,
       urlRegular: url,
-      pageUrl: url, // istersen lightbox/ayrı sayfa yaparsın
+      pageUrl: url,
       author: {
         name: process.env.SITE_AUTHOR || "Adem Can Certel",
         url: process.env.SITE_URL || "https://ademcan.dev",
@@ -57,7 +55,6 @@ function readLocalPhotos(): Item[] {
     };
   });
 
-  // En yeni dosya en üstte
   items.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
   return items;
 }
@@ -68,14 +65,10 @@ async function readUnsplashPhotos(): Promise<Item[]> {
 
   if (!key || !username) return [];
 
-  // Kendi fotoğrafların:
-  // https://api.unsplash.com/users/{username}/photos
   const resp = await fetch(
     `https://api.unsplash.com/users/${username}/photos?per_page=30&order_by=latest`,
     {
       headers: { Authorization: `Client-ID ${key}` },
-      // Not: bu API “kişisel” olduğundan dinamik bırakıyoruz
-      // ISR/SWR kullanmak istersen “next: { revalidate: 300 }” ekleyebilirsin
       cache: "no-store",
     }
   );
@@ -107,7 +100,6 @@ async function readUnsplashPhotos(): Promise<Item[]> {
     };
   });
 
-  // En yeni üste
   items.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
   return items;
 }
@@ -118,18 +110,14 @@ export async function GET(req: Request) {
     const page = Math.max(1, Number(searchParams.get("page") || 1));
     const perPage = Math.min(48, Math.max(1, Number(searchParams.get("per_page") || 12)));
 
-    // 1) Yerel “oyun içi” fotoğraflar
     const localItems = readLocalPhotos();
 
-    // 2) Unsplash’teki “kendi hesabın” fotoğraflar
     const unsplashItems = await readUnsplashPhotos();
 
-    // 3) Birleştir + tarihe göre sırala (yeniden)
     const all = [...localItems, ...unsplashItems].sort((a, b) =>
       a.createdAt > b.createdAt ? -1 : 1
     );
 
-    // 4) ID bazlı dublike kırp (ihtiyaten)
     const seen = new Set<string>();
     const unique = all.filter((x) => {
       if (seen.has(x.id)) return false;
