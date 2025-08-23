@@ -2,6 +2,7 @@ import Container from "@/components/common/container";
 import HomeBlogCards from "@/components/common/Notes/HomeNotesCards";
 import NowPlayingText from "@/components/common/NowPlayingText";
 import ReadingNow from "@/components/common/ReadingNow";
+import NowPlaying from "@/components/NowPlaying";
 import Social from "@/components/social";
 import StickyNote from "@/components/ui/StickyNote";
 
@@ -48,6 +49,7 @@ export default function Home() {
           <span>
             <NowPlayingText />
           </span>
+          <NowPlaying />
         </div>
       </footer>
     </Container>
