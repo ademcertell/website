@@ -41,10 +41,11 @@ export default function Home() {
       </section>
 
       <footer className="mt-10 text-xs text-muted-foreground">
-        <div className="flex flex-wrap gap-x-4 gap-y-1">
+        <div className=" gap-x-4 gap-y-1">
           <span>
             <ReadingNow />
           </span>
+          <br/>
           <span>
             <NowPlayingText />
           </span>
