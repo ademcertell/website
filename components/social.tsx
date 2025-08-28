@@ -6,10 +6,6 @@ const socials = [
     href: "https://www.behance.net/ademcancertel",
   },
   {
-    name: "YouTube",
-    href: "https://www.youtube.com/@ademcancertel",
-  },
-  {
     name: "GitHub",
     href: "https://github.com/ademcertell",
   },
