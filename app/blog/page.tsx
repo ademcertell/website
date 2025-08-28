@@ -21,16 +21,17 @@ export default function Blog() {
 
   return (
     <Container size="large">
-      <header className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-heading text-foreground">
+      <header className="mb-10">
+        <h1 className="text-3xl md:text-4xl font-heading font-bold tracking-tight">
           Blog
         </h1>
-        <p className="text-sm text-muted-foreground mt-1">
+        <div className="mt-2 h-[2px] w-16 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+        <p className="text-base text-muted-foreground mt-4 leading-relaxed max-w-2xl">
           Here you&apos;ll find reflections from books I&apos;ve read, thoughts
           on life, and my personal blog posts.
         </p>
       </header>
-      <div className="my-2 select-none text-muted-foreground/70">———</div>
+
       {filtered.map((blog) => (
         <Fragment key={blog.slug}>
           <BlogCard blog={blog} />

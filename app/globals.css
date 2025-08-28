@@ -6,7 +6,12 @@
   :root {
     --background: 228 10% 6%; /* #0C0C0F */
     --foreground: 210 20% 98%; /* #F1F5F9 */
-    --primary: 213 90% 58%; /* #1F8DED */
+
+    /* Marka ve accent renkleri */
+    --primary: 213 90% 58%;   /* #1F8DED - ana mavi */
+    --accent: 278 85% 60%;    /* #7C3AED - mor/lila vurgusu */
+    --highlight: 45 95% 55%;  /* #FACC15 - sarı hover vurgusu */
+
     --muted-foreground: 215 20% 85%;
     --card: 228 12% 8%;
     --card-foreground: 213 20% 90%;
@@ -15,7 +20,11 @@
   .dark {
     --background: 228 10% 6%;
     --foreground: 210 20% 98%;
+
     --primary: 213 90% 58%;
+    --accent: 278 85% 60%;
+    --highlight: 45 95% 55%;
+
     --muted-foreground: 215 20% 85%;
     --card: 228 12% 8%;
     --card-foreground: 213 20% 90%;
@@ -62,6 +71,11 @@
   .prose a {
     color: hsl(var(--primary));
     text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  .prose a:hover {
+    color: hsl(var(--highlight));
   }
 
   html {
@@ -99,6 +113,6 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: hsl(var(--primary));
+    background-color: hsl(var(--accent));
   }
 }

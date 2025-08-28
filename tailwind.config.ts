@@ -14,6 +14,8 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: "hsl(var(--primary))",
+        accent: "hsl(var(--accent))",
+        highlight: "hsl(var(--highlight))",
         muted: {
           foreground: "hsl(var(--muted-foreground))",
         },
@@ -28,8 +30,8 @@ const config: Config = {
         sm: "0.5rem",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Sora", "sans-serif"],
+        sans: ["var(--font-sans)", "Inter", "sans-serif"],
+        heading: ["var(--font-heading)", "Space Grotesk", "sans-serif"],
       },
     },
   },

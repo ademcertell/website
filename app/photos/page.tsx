@@ -9,15 +9,16 @@ export const metadata = {
 export default function PhotosPage() {
   return (
     <Container size="large" className="container animate-enter">
-      <header className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-heading text-foreground">
+      <header className="mb-12">
+        <h1 className="text-3xl md:text-4xl font-heading font-bold tracking-tight">
           Photos
         </h1>
-        <p className="text-sm text-muted-foreground mt-1">
+        <div className="mt-2 h-[2px] w-16 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+        <p className="text-base text-muted-foreground mt-4 leading-relaxed">
           Memories from real life and the gaming worlds. 🌍🎮✨
         </p>
       </header>
-      <div className="my-4 select-none text-muted-foreground/70">———</div>
+
       <PhotosGrid />
     </Container>
   );

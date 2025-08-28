@@ -1,10 +1,11 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google"; // Space Grotesk import
 import LayoutShell from "@/components/common/LayoutShell";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-heading" });
 
 export const metadata: Metadata = {
   title: { default: "Adem Can Certel", template: "%s - Adem Can Certel" },
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.className} bg-background text-foreground font-sans`}
+        className={`${inter.variable} ${spaceGrotesk.variable} bg-background text-foreground font-sans`}
       >
         <LayoutShell>{children}</LayoutShell>
         <Analytics mode="production" />

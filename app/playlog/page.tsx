@@ -14,33 +14,42 @@ export const metadata: Metadata = {
 export default function PlaylogPage() {
   return (
     <Container size="large" className="text-foreground container animate-enter">
-      <header className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-heading text-foreground">
+      {/* Page Header */}
+      <header className="mb-12">
+        <h1 className="text-3xl md:text-4xl font-heading font-bold tracking-tight">
           Gaming Journal
         </h1>
-        <p className="text-sm text-muted-foreground mt-1">
+        <div className="mt-2 h-[2px] w-16 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+        <p className="text-base text-muted-foreground mt-4 leading-relaxed max-w-2xl">
           Track my current gaming activity, completed titles, and latest
           reviews.
         </p>
       </header>
-      <div className="my-2 select-none text-muted-foreground/70">———</div>
-      <section className="mt-6">
+
+      {/* Current Activity */}
+      <section className="mt-8">
         <Activity />
       </section>
-      <section className="mt-10">
-        <h2 className="text-lg font-heading text-foreground mb-3">
+
+      {/* Recently Completed */}
+      <section className="mt-14">
+        <h2 className="text-lg font-heading font-semibold flex items-center gap-3 mb-3">
           🏆 Recently Completed
+          <span className="h-[2px] w-12 bg-gradient-to-r from-accent to-highlight rounded-full"></span>
         </h2>
         <CompletedList year="2025" limit={8} view="auto" />
       </section>
-      <section className="mt-10">
-        <div className="mb-3 flex items-center justify-between">
-          <h2 className="text-lg font-heading text-foreground">
+
+      {/* Latest Reviews */}
+      <section className="mt-14">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-heading font-semibold flex items-center gap-3">
             Latest Reviews
+            <span className="h-[2px] w-12 bg-gradient-to-r from-primary to-accent rounded-full"></span>
           </h2>
           <Link
             href="/reviews"
-            className="text-sm text-primary hover:underline"
+            className="text-sm text-primary transition-colors hover:text-highlight"
           >
             View All Reviews →
           </Link>
