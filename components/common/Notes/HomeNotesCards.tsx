@@ -56,7 +56,7 @@ export default function HomeBlogCards() {
   if (!latestNote && !latestReview) return null;
 
   return (
-    <section className="mt-12 grid gap-6 md:grid-cols-2">
+    <section className="grid gap-6 md:grid-cols-2">
       {latestNote && (
         <Card
           href={`/blog/${latestNote.slug}`}

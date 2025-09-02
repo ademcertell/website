@@ -11,68 +11,87 @@ export default function Header() {
   const pathname = usePathname();
 
   const NAV_ITEMS = useMemo(
-    () => ({
-      home: "/",
-      blog: "/blog",
-      playlog: "/playlog",
-      photos: "/photos",
-    }),
+    () => [
+      { name: "home", href: "/" },
+      { name: "about", href: "/about" },
+      { name: "blog", href: "/blog" },
+      { name: "photos", href: "/photos" },
+    ],
     []
   );
 
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) =>
+    pathname === href || (href !== "/" && pathname.startsWith(href));
 
   return (
     <header>
       <Container size="large">
         <nav
-          aria-label="navigation"
-          className="flex flex-col items-center md:items-start justify-start py-4 tracking-tight w-full sm:pr-0 md:pr-6 lg:pr-0"
+          aria-label="primary"
+          className="flex flex-col items-center md:items-start py-4 tracking-tight w-full"
         >
           <div className="flex items-center justify-between w-full gap-3">
-            <Link href="/" className="flex items-center">
+            <Link
+              href="/"
+              className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 rounded-full"
+            >
               <Image
-                src="/logo.png"
-                alt="Logo"
-                width={45}
-                height={45}
+                src="/ademcancertel.png"
+                alt="Adem Can Certel"
+                width={44}
+                height={44}
+                className="rounded-full border border-white/10"
                 priority
               />
-              <div className="flex flex-col ml-4">
-                <span className="text-medium inline-block font-medium text-zinc-50">
+              <div className="flex flex-col ml-3 leading-tight">
+                <span className="text-[15px] font-medium text-foreground">
                   Adem Can Certel
                 </span>
-                <span className="text-zinc-300">Designer</span>
+                <span className="text-[15px] text-foreground/70">
+                  UI/UX Designer
+                </span>
               </div>
             </Link>
             <div className="hidden md:flex items-center">
-              {Object.entries(NAV_ITEMS).map(([name, href]) => (
+              {NAV_ITEMS.map(({ name, href }) => {
+                const active = isActive(href);
+                return (
+                  <Link
+                    key={name}
+                    href={href}
+                    aria-current={active ? "page" : undefined}
+                    className={classNames(
+                      "relative mx-1 px-3 py-1.5 rounded-full transition-colors",
+                      "text-foreground/90 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60",
+                      active
+                        ? "bg-white/10 text-foreground"
+                        : "hover:bg-white/5"
+                    )}
+                  >
+                    {name}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+          <div className="mt-3 flex w-full justify-center gap-1.5 md:hidden flex-wrap">
+            {NAV_ITEMS.map(({ name, href }) => {
+              const active = isActive(href);
+              return (
                 <Link
                   key={name}
                   href={href}
+                  aria-current={active ? "page" : undefined}
                   className={classNames(
-                    isActive(href) ? "font-semibold" : "font-normal",
-                    "transition-all text-neutral-100 hover:text-neutral-200 flex align-middle relative py-1 px-2"
+                    "px-3 py-1.5 rounded-full text-sm transition-colors",
+                    "text-foreground/90 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60",
+                    active ? "bg-white/10 text-foreground" : "hover:bg-white/5"
                   )}
                 >
                   {name}
                 </Link>
-              ))}
-            </div>
-          </div>
-          <div className="mt-3 flex w-full justify-center gap-2 md:hidden flex-wrap">
-            {Object.entries(NAV_ITEMS).map(([name, href]) => (
-              <Link
-                key={name}
-                href={href}
-                className={classNames(
-                  isActive(href) ? "font-semibold" : "font-normal",
-                  "transition-all text-neutral-100 hover:text-neutral-200 py-1 px-2"
-                )}
-              >
-                {name}
-              </Link>
-            ))}
+              );
+            })}
           </div>
         </nav>
       </Container>

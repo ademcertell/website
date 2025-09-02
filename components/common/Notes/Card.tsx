@@ -16,30 +16,17 @@ function readingTime(content: string) {
   return `${minutes} min read`;
 }
 
+/** minimalist, borderless badge — just colored uppercase text */
 function TypeBadge({ type }: { type: PostType }) {
   const map: Record<PostType, { label: string; cls: string }> = {
-    note: {
-      label: "note",
-      cls: "bg-amber-500/15 text-amber-300 border-amber-400/20",
-    },
-    blog: {
-      label: "blog",
-      cls: "bg-sky-500/15 text-sky-300 border-sky-400/20",
-    },
-    review: {
-      label: "review",
-      cls: "bg-rose-500/15 text-rose-300 border-rose-400/20",
-    },
-    game: {
-      label: "game",
-      cls: "bg-violet-500/15 text-violet-300 border-violet-400/20",
-    },
+    note:   { label: "note",   cls: "text-amber-400" },
+    blog:   { label: "blog",   cls: "text-sky-400" },
+    review: { label: "review", cls: "text-rose-400" },
+    game:   { label: "game",   cls: "text-violet-400" },
   };
   const { label, cls } = map[type] ?? map.blog;
   return (
-    <span
-      className={`rounded-md border px-2 py-[2px] text-[10px] uppercase tracking-wider ${cls}`}
-    >
+    <span className={`text-[10px] uppercase tracking-[0.14em] ${cls}`}>
       {label}
     </span>
   );
@@ -49,38 +36,35 @@ export default function BlogCard({ blog }: { blog: BlogPost }) {
   const type = (blog.metadata.type ?? "blog") as PostType;
 
   return (
-    <div className="text-center">
-      <article className="py-6 text-left">
-        <header className="space-y-2">
-          <div className="flex items-center gap-2 text-xs">
-            <TypeBadge type={type} />
-            <span className="text-muted-foreground">
-              {formatDate(blog.metadata.date)}
-            </span>
-            <span className="text-muted-foreground">•</span>
-            <span className="text-muted-foreground">
-              {readingTime(blog.content)}
-            </span>
-          </div>
+    <article className="text-left">
+      {/* meta line */}
+      <div className="mb-2 flex flex-wrap items-center gap-3 text-xs text-foreground/60">
+        <TypeBadge type={type} />
+        {blog.metadata.date && (
+          <>
+            <span>{formatDate(blog.metadata.date)}</span>
+            <span>•</span>
+            <span>{readingTime(blog.content)}</span>
+          </>
+        )}
+      </div>
 
-          <h3 className="text-lg sm:text-xl font-semibold text-foreground">
-            <Link
-              href={`/blog/${blog.slug}`}
-              className="underline-offset-2 hover:underline"
-            >
-              {blog.metadata.title}
-            </Link>
-          </h3>
+      {/* title */}
+      <h3 className="text-xl sm:text-2xl font-semibold text-foreground leading-snug">
+        <Link
+          href={`/blog/${blog.slug}`}
+          className="hover:underline underline-offset-2"
+        >
+          {blog.metadata.title}
+        </Link>
+      </h3>
 
-          {blog.metadata.description && (
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {blog.metadata.description}
-            </p>
-          )}
-        </header>
-      </article>
-
-      <div className="my-4 select-none text-muted-foreground/70">• • •</div>
-    </div>
+      {/* description */}
+      {blog.metadata.description && (
+        <p className="mt-2 text-sm text-foreground/70 leading-relaxed max-w-2xl">
+          {blog.metadata.description}
+        </p>
+      )}
+    </article>
   );
 }

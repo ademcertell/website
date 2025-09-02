@@ -1,43 +1,65 @@
 import Link from "next/link";
+import clsx from "clsx";
 
-const socials = [
-  {
-    name: "Behance",
-    href: "https://www.behance.net/ademcancertel",
-  },
-  {
-    name: "GitHub",
-    href: "https://github.com/ademcertell",
-  },
-];
+export type SocialItem = {
+  href: string;
+  label: string;
+  primary?: boolean;
+  external?: boolean;
+};
 
-export default function Social() {
+type Props = {
+  variant?: "cta" | "pill";
+  items?: SocialItem[];
+  align?: "start" | "center";
+  className?: string;
+};
+
+export default function SocialLinks({
+  variant = "cta",
+  items,
+  align = "start",
+  className,
+}: Props) {
+  const defaults: SocialItem[] = [
+    { href: "https://www.behance.net/ademcancertel", label: "View Full Portfolio", primary: true, external: true },
+    { href: "https://www.linkedin.com/in/ademcertel/", label: "LinkedIn", external: true },
+  ];
+
+  const list = items ?? defaults;
+  const isCTA = variant === "cta";
+
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 mt-6 btn-neon">
-      {socials.map((social) => (
-        <Link
-          key={social.name}
-          href={social.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center justify-between w-full sm:w-auto px-5 py-3 rounded-xl border border-white/10 bg-card/60 hover:border-white/20 hover:bg-card transition-all duration-300 shadow-sm hover:shadow-md"
-        >
-          <span className="text-foreground font-medium">{social.name}</span>
-          <svg
-            className="size-4 text-muted-foreground group-hover:text-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={1.5}
-            viewBox="0 0 24 24"
+    <div className={clsx(isCTA ? "mt-1" : "", className)}>
+      <div
+        className={clsx(
+          "flex flex-wrap md:flex-nowrap gap-3",
+          align === "center" ? "justify-center items-center" : "justify-start items-center"
+        )}
+      >
+        {list.map(({ href, label, primary, external }) => (
+          <Link
+            key={label}
+            href={href}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
+            className={clsx(
+              "inline-flex items-center gap-2 rounded-full transition whitespace-nowrap",
+              isCTA
+                ? [
+                    "px-4 py-2 min-h-[40px] text-[13px] sm:text-sm border border-white/10",
+                    primary
+                      ? "bg-white/5 text-foreground/90 hover:bg-white/10"
+                      : "text-foreground/80 hover:bg-white/5",
+                  ]
+                : "px-3.5 py-1.5 text-sm border border-white/10 text-foreground/90 hover:bg-white/5"
+            )}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M7 17 17 7M9 7h8v8"
-            />
-          </svg>
-        </Link>
-      ))}
+            <span>{label}</span>
+            {isCTA && primary && <span aria-hidden className="translate-y-[1px]">→</span>}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

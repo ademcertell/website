@@ -36,7 +36,7 @@ export default function PhotosGrid() {
   const [error, setError] = useState<string | null>(null);
   const seenIds = useRef<Set<string>>(new Set());
 
-  const [tab, setTab] = useState<TabKey>("real"); // varsayılan: real
+  const [tab, setTab] = useState<TabKey>("real");
   const [gameFilter, setGameFilter] = useState<string | null>(null);
 
   const [open, setOpen] = useState(false);
@@ -59,16 +59,16 @@ export default function PhotosGrid() {
     setLoading(true);
     setError(null);
     try {
-      const r = await fetch(
-        `/api/photos?page=${p}&per_page=24&source=${which}`,
-        { cache: "no-store" }
-      );
+      const r = await fetch(`/api/photos?page=${p}&per_page=24&source=${which}`, {
+        cache: "no-store",
+      });
       const j: ApiResp = await r.json();
 
       if (!Array.isArray(j.items)) {
         setError(j?.error || "Failed to load photos");
         return;
       }
+
       const fresh = j.items.filter((it) => {
         if (seenIds.current.has(it.id)) return false;
         seenIds.current.add(it.id);
@@ -82,6 +82,7 @@ export default function PhotosGrid() {
       setLoading(false);
     }
   }
+
   const games = useMemo(() => {
     if (tab !== "game") return [];
     const s = new Set(items.filter((p) => p.game).map((p) => p.game as string));
@@ -90,10 +91,10 @@ export default function PhotosGrid() {
 
   const filtered = useMemo(() => {
     let arr = items;
-    if (tab === "game" && gameFilter)
-      arr = arr.filter((p) => p.game === gameFilter);
+    if (tab === "game" && gameFilter) arr = arr.filter((p) => p.game === gameFilter);
     return arr;
   }, [items, tab, gameFilter]);
+
   const openAt = (i: number) => {
     setIdx(i);
     setOpen(true);
@@ -137,21 +138,20 @@ export default function PhotosGrid() {
             className={[
               "px-3 py-1.5 rounded-full text-sm transition",
               tab === t.key
-                ? "bg-white/10 text-white shadow"
-                : "bg-white/5 text-white/70 hover:bg-white/10",
+                ? "bg-white/10 text-white"
+                : "bg-white/5 text-foreground/70 hover:bg-white/10",
             ].join(" ")}
           >
             {t.label}
           </button>
         ))}
+
         {tab === "game" && games.length > 0 && (
           <div className="ml-2 flex flex-wrap items-center gap-2 pl-3 border-l border-white/10">
-            <span className="text-xs text-white/50">Games:</span>
+            <span className="text-xs text-foreground/60">Games:</span>
             <button
               className={`px-2 py-1 rounded-full text-xs ${
-                gameFilter === null
-                  ? "bg-white/10"
-                  : "bg-white/5 hover:bg-white/10"
+                gameFilter === null ? "bg-white/10" : "bg-white/5 hover:bg-white/10"
               }`}
               onClick={() => setGameFilter(null)}
             >
@@ -162,9 +162,7 @@ export default function PhotosGrid() {
                 key={g}
                 onClick={() => setGameFilter((prev) => (prev === g ? null : g))}
                 className={`px-2 py-1 rounded-full text-xs ${
-                  gameFilter === g
-                    ? "bg-white/10"
-                    : "bg-white/5 hover:bg-white/10"
+                  gameFilter === g ? "bg-white/10" : "bg-white/5 hover:bg-white/10"
                 }`}
                 title={g}
               >
@@ -178,7 +176,7 @@ export default function PhotosGrid() {
         {filtered.map((p, i) => (
           <figure
             key={p.id}
-            className="relative mb-5 break-inside-avoid overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10"
+            className="relative mb-5 break-inside-avoid overflow-hidden rounded-2xl bg-white/5"
           >
             <button
               type="button"
@@ -189,7 +187,7 @@ export default function PhotosGrid() {
               <img
                 src={p.urlRegular}
                 alt={p.alt || "photo"}
-                className="w-full object-cover transition duration-300 ease-out group-hover:scale-[1.02] group-hover:opacity-95"
+                className="w-full object-cover transition duration-300 ease-out group-hover:scale-[1.015] group-hover:opacity-95"
                 loading="lazy"
               />
             </button>
@@ -200,24 +198,21 @@ export default function PhotosGrid() {
           Array.from({ length: 6 }).map((_, i) => (
             <div
               key={`sk-${i}`}
-              className="mb-5 h-[320px] break-inside-avoid animate-pulse rounded-2xl border border-white/10 bg-white/5"
+              className="mb-5 h-[320px] break-inside-avoid animate-pulse rounded-2xl bg-white/[0.06]"
             />
           ))}
       </div>
-
       <div className="mt-8 flex justify-center">
         {nextPage ? (
           <button
             onClick={() => load(nextPage)}
             disabled={loading}
-            className="rounded-lg border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium tracking-wide hover:border-white/25 disabled:opacity-60"
+            className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm hover:bg-white/10 disabled:opacity-60"
           >
             {loading ? "Loading…" : "Load more photos"}
           </button>
         ) : filtered.length ? (
-          <p className="text-xs text-muted-foreground">
-            {error ? error : "That’s all ✨"}
-          </p>
+          <p className="text-xs text-foreground/60">{error ? error : "That’s all ✨"}</p>
         ) : null}
       </div>
       {open && filtered[idx] && (
@@ -262,24 +257,15 @@ export default function PhotosGrid() {
                 <div className="truncate">
                   {filtered[idx].source === "game" ? (
                     <>
-                      🎮{" "}
-                      <span className="font-medium">
-                        {filtered[idx].game ?? "In-game"}
-                      </span>
+                      🎮 <span className="font-medium">{filtered[idx].game ?? "In-game"}</span>
                     </>
                   ) : filtered[idx].location ? (
                     <>
-                      📍{" "}
-                      <span className="font-medium">
-                        {filtered[idx].location}
-                      </span>
+                      📍 <span className="font-medium">{filtered[idx].location}</span>
                     </>
                   ) : (
                     <>
-                      📷{" "}
-                      <span className="font-medium">
-                        {filtered[idx].author?.name}
-                      </span>
+                      📷 <span className="font-medium">{filtered[idx].author?.name}</span>
                     </>
                   )}
                 </div>

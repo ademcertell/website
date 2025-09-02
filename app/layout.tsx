@@ -9,19 +9,19 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-headi
 
 export const metadata: Metadata = {
   title: { default: "Adem Can Certel", template: "%s - Adem Can Certel" },
-  description: "Designer",
+  description: "UI/UX Designer",
   openGraph: {
     title: "Adem Can Certel",
-    description: "Designer",
+    description: "UI/UX Designer",
     url: "https://ademcan.dev",
     siteName: "Adem Can Certel",
     locale: "en_US",
     type: "website",
     images: [
-      { url: "logo.png", width: 1200, height: 630, alt: "Adem Can Certel" },
+      { url: "ademcancertel.png", width: 1200, height: 630, alt: "Adem Can Certel" },
     ],
   },
-  icons: { icon: "logo.png", apple: "logo.png" },
+  icons: { icon: "ademcancertel.png", apple: "logo.png" },
   twitter: { title: "Adem Can Certel", card: "summary_large_image" },
 };
 

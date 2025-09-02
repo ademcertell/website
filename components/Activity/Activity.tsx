@@ -23,7 +23,6 @@ export default function Activity() {
 
   useEffect(() => {
     let alive = true;
-
     const load = async () => {
       try {
         const r = await fetch("/api/steam/now-playing", { cache: "no-store" });
@@ -55,56 +54,53 @@ export default function Activity() {
     };
   }, []);
 
-  const subtitle =
-    data?.gameName ??
-    (loading ? "Loading…" : "Steam verisi alınamadı ya da hiç oyun yok.");
-
-  // SKELETON
   if (loading) {
     return (
-      <section className="mt-12">
+      <section className="mt-2">
         <ActivitySkeleton />
       </section>
     );
   }
 
+  const subtitle =
+    data?.gameName ?? "No current activity (or Steam unreachable).";
+
   return (
-    <section className="mt-12">
-      <div className="group relative overflow-hidden rounded-md border border-white/10 bg-card/60">
-        {data?.headerImage ? (
+    <section className="mt-2">
+      <article className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] supports-[backdrop-filter]:backdrop-blur-md">
+        {data?.headerImage && (
           <div className="relative aspect-[16/9] md:aspect-[21/9]">
             <img
               src={data.headerImage}
-              alt={subtitle ?? ""}
+              alt={subtitle}
               className="absolute inset-0 h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
           </div>
-        ) : null}
-
-        <div className="p-6">
+        )}
+        <div className="p-5 md:p-6">
           <div className="mb-2 flex items-center gap-2">
             <ActivityStatus label={data?.status?.label ?? "Unknown"} />
-            <p className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-muted-foreground">
+            <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-muted-foreground">
               {data?.inGame
-                ? "Now Playing"
+                ? "Now playing"
                 : data?.fallback
                 ? "Last played"
                 : "Activity"}
-            </p>
+            </span>
           </div>
-
-          <h3 className="text-xl md:text-2xl mt-5 font-semibold tracking-tight text-foreground">
+          <h3 className="text-xl md:text-2xl font-semibold tracking-tight mt-5">
             🎮 {subtitle}
           </h3>
-
-          {data?.error && (
-            <p className="mt-2 text-xs text-rose-300/80">
-              Steam’e ulaşılamadı. Lütfen tekrar deneyin.
-            </p>
-          )}
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            {data?.error && (
+              <span className="text-xs text-rose-300/80">
+                Steam error — try again later.
+              </span>
+            )}
+          </div>
         </div>
-      </div>
+      </article>
     </section>
   );
 }

@@ -94,6 +94,16 @@
     display: none;
   }
 
+  /* Global CSS (örneğin globals.css içine ekleyebilirsin) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;  /* IE ve Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
   ::selection {
     background-color: hsl(var(--primary));
     color: hsl(var(--foreground));

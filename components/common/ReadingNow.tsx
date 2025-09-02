@@ -19,7 +19,7 @@ export default function ReadingNow() {
 
   return (
     <span>
-      📖 Currently reading: <em>{text}</em>
+    Reading: <em>{text}</em>
     </span>
   );
 }
