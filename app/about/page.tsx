@@ -24,7 +24,6 @@ const photos = [
   { src: "/cardak.jpg", alt: "Shelter" },
   { src: "/gok.jpg", alt: "Sky" },
 ];
-
 function DraggablePhoto({
   src,
   alt,
