@@ -38,15 +38,11 @@ function DraggablePhoto({
   const springX = useSpring(x, { stiffness: 200, damping: 20, mass: 0.6 });
   const springY = useSpring(y, { stiffness: 200, damping: 20, mass: 0.6 });
 
-  // ❌ Eskisi: rotate'u x hareketinden türetiyordu
-  // const rotate = useTransform(springX, [-200, 200], [-6, 6]);
-
   const baseRotate = [-6, -2, 2, 6][index % 4];
 
   return (
     <motion.div
       className="relative w-[220px] h-[300px] sm:w-[260px] sm:h-[340px] rounded-[22px] border border-white/10 overflow-hidden shadow-[0_18px_60px_-20px_rgba(0,0,0,0.6)] bg-white/5"
-      // ✅ rotate'u sabitliyoruz
       style={{ x: springX, y: springY, rotate: baseRotate }}
       drag
       dragElastic={0.2}
