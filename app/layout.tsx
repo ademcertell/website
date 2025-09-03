@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       { url: "ademcancertel.png", width: 1200, height: 630, alt: "Adem Can Certel" },
     ],
   },
-  icons: { icon: "ademcancertel.png", apple: "logo.png" },
+  icons: { icon: "ademcancertel.png", apple: "ademcertel.png" },
   twitter: { title: "Adem Can Certel", card: "summary_large_image" },
 };
 
