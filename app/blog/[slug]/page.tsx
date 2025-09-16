@@ -6,6 +6,7 @@ import matter from "gray-matter";
 import CustomMDX from "@/components/mdx";
 import Container from "@/components/common/container";
 import BlogIntroduction from "@/components/common/Blog/BlogIntroduction";
+import ShareButton from "@/components/common/Blog/ShareButton";
 
 const contentDirectory = path.join(process.cwd(), "content");
 
@@ -54,9 +55,10 @@ export default async function NotePage({ params }: NotePageProps) {
           <article className="prose prose-invert prose-p:leading-7">
             <CustomMDX source={mdxSource} />
           </article>
+          <div className="mt-8">
+            <ShareButton title={title} />
+          </div>
         </div>
-
-        {/* TOC burada yan yana */}
         <BlogIntroduction />
       </Container>
     </div>
