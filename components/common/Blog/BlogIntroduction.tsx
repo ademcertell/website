@@ -10,78 +10,103 @@ interface Heading {
 
 export default function BlogIntroduction() {
   const [headings, setHeadings] = useState<Heading[]>([]);
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const collectHeadings = () => {
-      const elements = Array.from(
-        document.querySelectorAll("h2, h3")
-      ) as HTMLHeadingElement[];
-      setHeadings(
-        elements.map((el) => ({
+      const elements = Array.from(document.querySelectorAll("h2, h3"));
+      const collected = elements
+        .filter((el) => el.id && el.textContent) // boş id'leri filtrele
+        .map((el) => ({
           id: el.id,
-          text: el.innerText,
+          text: el.textContent || "",
           level: Number(el.tagName.replace("H", "")),
-        }))
-      );
+        }));
+      setHeadings(collected);
     };
 
     collectHeadings();
 
+    // DOM değişirse tekrar çalışsın
     const observer = new MutationObserver(() => collectHeadings());
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const offsets = headings
-        .map((h) => {
-          const el = document.getElementById(h.id);
-          return el ? { id: h.id, top: el.getBoundingClientRect().top } : null;
-        })
-        .filter(Boolean) as { id: string; top: number }[];
-
-      const visible = offsets.find((o) => o.top >= 0 && o.top <= 200);
-      setActiveId(visible ? visible.id : null);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [headings]);
-
-  if (headings.length === 0) return null;
+  if (!headings.length) return null;
 
   return (
-    <aside className="hidden xl:block fixed top-32 right-10 w-64">
-      <div className="border-l border-white/10 pl-5 space-y-2">
-        <h4 className="text-xs tracking-wider text-muted-foreground mb-3">
-          Introduction
-        </h4>
-        <ul className="space-y-2">
-          {headings.map((h) => (
-            <li key={h.id}>
-              <a
-                href={`#${h.id}`}
-                className={`block text-sm transition-colors ${
-                  activeId === h.id
-                    ? "text-primary font-semibold border-l-2 border-primary pl-2"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById(h.id)
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
+    <>
+      {/* Desktop TOC */}
+      <aside className="hidden xl:block fixed right-12 top-28 w-64">
+        <div className="rounded-lg border border-white/10 bg-white/5 p-4 backdrop-blur">
+          <ul className="space-y-2 text-sm">
+            {headings.map((h, i) => (
+              <li key={h.id || `heading-${i}`}>
+                <a
+                  href={`#${h.id}`}
+                  className="block text-foreground/70 hover:text-primary transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById(h.id)?.scrollIntoView({
+                      behavior: "smooth",
+                    });
+                  }}
+                >
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+
+      {/* Mobile Floating Button */}
+      <button
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-4 py-2 text-sm text-white shadow-lg md:hidden"
+        onClick={() => setIsOpen(true)}
+      >
+        Table of Contents
+      </button>
+
+      {/* Mobile Modal */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/40 md:hidden">
+          <div className="rounded-t-2xl bg-black/70 backdrop-blur-md p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-sm font-semibold text-muted-foreground">
+                Table of Contents
+              </h2>
+              <button
+                className="text-xs text-white/70 hover:text-white"
+                onClick={() => setIsOpen(false)}
               >
-                {h.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </aside>
+                Close ✕
+              </button>
+            </div>
+            <ul className="space-y-3">
+              {headings.map((h, i) => (
+                <li key={h.id || `heading-mobile-${i}`}>
+                  <a
+                    href={`#${h.id}`}
+                    className="block text-white/80 hover:text-white transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById(h.id)?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                      setIsOpen(false);
+                    }}
+                  >
+                    {h.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

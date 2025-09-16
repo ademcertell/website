@@ -41,6 +41,7 @@ export default async function NotePage({ params }: NotePageProps) {
         size="large"
         className="container animate-enter flex flex-col md:flex-row gap-10"
       >
+        {/* İçerik */}
         <div className="flex-1">
           <header className="mb-6">
             <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
@@ -54,8 +55,10 @@ export default async function NotePage({ params }: NotePageProps) {
             <CustomMDX source={mdxSource} />
           </article>
         </div>
+
+        {/* TOC burada yan yana */}
+        <BlogIntroduction />
       </Container>
-      <BlogIntroduction />
     </div>
   );
 }
