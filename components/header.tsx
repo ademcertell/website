@@ -110,7 +110,7 @@ export default function Header() {
                 aria-expanded={panelOpen}
                 aria-controls="quick-panel"
               >
-                Daha{" "}
+                More{" "}
                 <ChevronDown
                   className={classNames(
                     "h-4 w-4 transition-transform",
@@ -145,7 +145,7 @@ export default function Header() {
               aria-expanded={panelOpen}
               aria-controls="quick-panel"
             >
-              Daha{" "}
+              More{" "}
               <ChevronDown
                 className={classNames(
                   "h-4 w-4 transition-transform",
