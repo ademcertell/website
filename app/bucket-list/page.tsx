@@ -85,7 +85,7 @@ export default function BucketListPage() {
       {bucketItems.length === 0 ? (
         <div className="text-center py-16">
           <p className="text-white/70 text-lg font-medium">
-            I haven't created my bucket list yet.
+            I haven&apos;t created my bucket list yet.
           </p>
         </div>
       ) : (
@@ -142,6 +142,7 @@ export default function BucketListPage() {
     </Container>
   );
 }
+
 function HoverableImage({
   src,
   setPreview,

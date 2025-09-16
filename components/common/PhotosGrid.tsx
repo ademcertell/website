@@ -30,17 +30,11 @@ export default function PhotosGrid() {
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(0);
 
-  useEffect(() => {
-    seenIds.current.clear();
-    setItems([]);
-    setNextPage(1);
-    void load(1);
-  }, []);
-
   async function load(p: number | null) {
-    if (!p || loading) return;
+    if (!p || loading) return; // Aynı anda tekrar yüklemeyi engelle
     setLoading(true);
     setError(null);
+
     try {
       const r = await fetch(`/api/photos?page=${p}&per_page=24&source=real`, {
         cache: "no-store",
@@ -57,6 +51,7 @@ export default function PhotosGrid() {
         seenIds.current.add(it.id);
         return true;
       });
+
       if (fresh.length) setItems((prev) => [...prev, ...fresh]);
       setNextPage(j.nextPage);
     } catch {
@@ -66,15 +61,24 @@ export default function PhotosGrid() {
     }
   }
 
+  // İlk yükleme - sadece 1 kez
+  useEffect(() => {
+    if (items.length === 0) {
+      void load(1);
+    }
+  }, []); // boş dependency array → yalnızca ilk mount
+
   const openAt = (i: number) => {
     setIdx(i);
     setOpen(true);
     document.documentElement.style.overflow = "hidden";
   };
+
   const close = () => {
     setOpen(false);
     document.documentElement.style.overflow = "";
   };
+
   const prev = () => setIdx((i) => (i - 1 + items.length) % items.length);
   const next = () => setIdx((i) => (i + 1) % items.length);
 

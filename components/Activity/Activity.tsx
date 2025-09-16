@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import ActivityStatus from "./ActivityStatus";
 import ActivitySkeleton from "./ActivitySkeleton";
 
@@ -21,38 +21,40 @@ export default function Activity() {
   const [data, setData] = useState<Resp | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const load = useCallback(async () => {
+    try {
+      const r = await fetch("/api/steam/now-playing", { cache: "no-store" });
+      const j = (await r.json()) as Resp;
+      setData(j);
+    } catch {
+      setData({
+        inGame: false,
+        gameName: null,
+        appId: null,
+        headerImage: null,
+        storeUrl: null,
+        steamProfileUrl: null,
+        avatar: null,
+        error: "fetch-failed",
+      });
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     let alive = true;
-    const load = async () => {
-      try {
-        const r = await fetch("/api/steam/now-playing", { cache: "no-store" });
-        const j = (await r.json()) as Resp;
-        if (!alive) return;
-        setData(j);
-      } catch {
-        if (!alive) return;
-        setData({
-          inGame: false,
-          gameName: null,
-          appId: null,
-          headerImage: null,
-          storeUrl: null,
-          steamProfileUrl: null,
-          avatar: null,
-          error: "fetch-failed",
-        });
-      } finally {
-        if (alive) setLoading(false);
-      }
-    };
+    if (alive) void load();
 
-    load();
-    const id = setInterval(load, 30_000);
+    const id = setInterval(() => {
+      if (alive) void load();
+    }, 30_000);
+
     return () => {
       alive = false;
       clearInterval(id);
     };
-  }, []);
+  }, [load]);
 
   if (loading) {
     return (
@@ -64,11 +66,13 @@ export default function Activity() {
 
   const subtitle =
     data?.gameName ?? "No current activity (or Steam unreachable).";
+
   return (
     <section className="mt-2">
       <article className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] supports-[backdrop-filter]:backdrop-blur-md">
         {data?.headerImage && (
           <div className="relative aspect-[16/9] md:aspect-[21/9]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={data.headerImage}
               alt={subtitle}
@@ -91,13 +95,11 @@ export default function Activity() {
           <h3 className="text-xl md:text-2xl font-semibold tracking-tight mt-5">
             🎮 {subtitle}
           </h3>
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            {data?.error && (
-              <span className="text-xs text-rose-300/80">
-                Steam error — try again later.
-              </span>
-            )}
-          </div>
+          {data?.error && (
+            <p className="mt-4 text-xs text-rose-300/80">
+              Steam error — try again later.
+            </p>
+          )}
         </div>
       </article>
     </section>

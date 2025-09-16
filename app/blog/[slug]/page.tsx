@@ -50,13 +50,11 @@ export default async function NotePage({ params }: NotePageProps) {
               </div>
             )}
           </header>
-
           <article className="prose prose-invert prose-p:leading-7">
             <CustomMDX source={mdxSource} />
           </article>
         </div>
       </Container>
-
       <BlogIntroduction />
     </div>
   );
