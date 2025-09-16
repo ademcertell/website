@@ -19,14 +19,14 @@ const projects: Project[] = [
     title: "Hapify",
     description: "Habit Tracker UI/UX Mobile App Design",
     tools: ["Figma"],
-    image: "/habify-cover.jpg",
+    image: "/projects-banner/habify-cover.jpg",
     link: "https://www.behance.net/gallery/233745411/Habit-Tracker-App-UIUX-Design",
   },
   {
     title: "Camping Desing",
     description: "Camping Design Mobile App UI/UX Design.",
     tools: ["Figma"],
-    image: "/camping-design.png",
+    image: "/projects-banner/camping-design.png",
     link: "https://www.behance.net/gallery/233561175/Camping-Mobile-App-UI",
   },
   {
@@ -34,7 +34,7 @@ const projects: Project[] = [
     description:
       "Sprout is a minimalist Pomodoro app that helps you stay productive by growing a virtual tree as you work. Stay focused, stay motivated",
     tools: ["TypeScript", "Next.js", "TailwindCSS"],
-    image: "/sprout-cover.png",
+    image: "/projects-banner/sprout-cover.png",
     link: "https://github.com/ademcertell/sprout",
     live: "https://sproutid.vercel.app/",
   },
@@ -42,7 +42,7 @@ const projects: Project[] = [
     title: "Car Market",
     description: "Find your dreams car, fast and easy.",
     tools: ["Figma"],
-    image: "/car-market.png",
+    image: "/projects-banner/car-market.png",
     link: "https://www.behance.net/gallery/234422847/CarMarket-Car-Sales-App-UIUX-Design",
   },
 ];
