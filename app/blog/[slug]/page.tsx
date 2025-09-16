@@ -2,8 +2,10 @@ import { serialize } from "next-mdx-remote/serialize";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Container from "@/components/common/container";
+
 import CustomMDX from "@/components/mdx";
+import Container from "@/components/common/container";
+import BlogIntroduction from "@/components/common/Blog/BlogIntroduction";
 
 const contentDirectory = path.join(process.cwd(), "content");
 
@@ -31,23 +33,31 @@ export default async function NotePage({ params }: NotePageProps) {
   const { content, data } = matter(raw);
 
   const mdxSource = await serialize(content);
-
   const title = (data.title as string | undefined) ?? params.slug;
 
   return (
-    <Container size="large" className="container animate-enter">
-      <header className="mb-6">
-        <h1 className="text-2xl font-heading tracking-tight">{title}</h1>
-        {data.date && (
-          <div className="mt-1 text-xs text-muted-foreground">
-            {formatDate(String(data.date))}
-          </div>
-        )}
-      </header>
+    <div className="relative">
+      <Container
+        size="large"
+        className="container animate-enter flex flex-col md:flex-row gap-10"
+      >
+        <div className="flex-1">
+          <header className="mb-6">
+            <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
+            {data.date && (
+              <div className="mt-1 text-sm text-muted-foreground">
+                {formatDate(String(data.date))}
+              </div>
+            )}
+          </header>
 
-      <article className="prose prose-invert mx-auto max-w-2xl md:max-w-3xl prose-p:leading-7">
-        <CustomMDX source={mdxSource} />
-      </article>
-    </Container>
+          <article className="prose prose-invert prose-p:leading-7">
+            <CustomMDX source={mdxSource} />
+          </article>
+        </div>
+      </Container>
+
+      <BlogIntroduction />
+    </div>
   );
 }

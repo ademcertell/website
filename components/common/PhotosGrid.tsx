@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Item = {
   id: string;
@@ -13,21 +13,12 @@ type Item = {
   urlRegular: string;
   pageUrl: string;
   author: { name: string; url: string };
-
-  source?: "game" | "real";
-  game?: string;
-  platform?: string;
+  source?: "real";
   location?: string;
   note?: string;
 };
 
 type ApiResp = { items: Item[]; nextPage: number | null; error?: string };
-
-const TABS = [
-  { key: "real", label: "Real life" },
-  { key: "game", label: "In-game" },
-] as const;
-type TabKey = (typeof TABS)[number]["key"];
 
 export default function PhotosGrid() {
   const [items, setItems] = useState<Item[]>([]);
@@ -36,9 +27,6 @@ export default function PhotosGrid() {
   const [error, setError] = useState<string | null>(null);
   const seenIds = useRef<Set<string>>(new Set());
 
-  const [tab, setTab] = useState<TabKey>("real");
-  const [gameFilter, setGameFilter] = useState<string | null>(null);
-
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(0);
 
@@ -46,20 +34,15 @@ export default function PhotosGrid() {
     seenIds.current.clear();
     setItems([]);
     setNextPage(1);
-    setGameFilter(null);
-    void load(1, tab);
-  }, [tab]);
-
-  useEffect(() => {
-    if (items.length === 0) void load(1, tab);
+    void load(1);
   }, []);
 
-  async function load(p: number | null, which: TabKey = tab) {
+  async function load(p: number | null) {
     if (!p || loading) return;
     setLoading(true);
     setError(null);
     try {
-      const r = await fetch(`/api/photos?page=${p}&per_page=24&source=${which}`, {
+      const r = await fetch(`/api/photos?page=${p}&per_page=24&source=real`, {
         cache: "no-store",
       });
       const j: ApiResp = await r.json();
@@ -83,18 +66,6 @@ export default function PhotosGrid() {
     }
   }
 
-  const games = useMemo(() => {
-    if (tab !== "game") return [];
-    const s = new Set(items.filter((p) => p.game).map((p) => p.game as string));
-    return Array.from(s).sort();
-  }, [items, tab]);
-
-  const filtered = useMemo(() => {
-    let arr = items;
-    if (tab === "game" && gameFilter) arr = arr.filter((p) => p.game === gameFilter);
-    return arr;
-  }, [items, tab, gameFilter]);
-
   const openAt = (i: number) => {
     setIdx(i);
     setOpen(true);
@@ -104,8 +75,8 @@ export default function PhotosGrid() {
     setOpen(false);
     document.documentElement.style.overflow = "";
   };
-  const prev = () => setIdx((i) => (i - 1 + filtered.length) % filtered.length);
-  const next = () => setIdx((i) => (i + 1) % filtered.length);
+  const prev = () => setIdx((i) => (i - 1 + items.length) % items.length);
+  const next = () => setIdx((i) => (i + 1) % items.length);
 
   useEffect(() => {
     if (!open) return;
@@ -116,64 +87,12 @@ export default function PhotosGrid() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open, filtered.length]);
-
-  useEffect(() => {
-    if (!open || filtered.length === 0) return;
-    const nextIdx = (idx + 1) % filtered.length;
-    const prevIdx = (idx - 1 + filtered.length) % filtered.length;
-    [nextIdx, prevIdx].forEach((i) => {
-      const img = new Image();
-      img.src = filtered[i]?.urlRegular || "";
-    });
-  }, [open, idx, filtered]);
+  }, [open, items.length]);
 
   return (
     <section>
-      <div className="mb-6 flex flex-wrap items-center gap-2">
-        {TABS.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setTab(t.key)}
-            className={[
-              "px-3 py-1.5 rounded-full text-sm transition",
-              tab === t.key
-                ? "bg-white/10 text-white"
-                : "bg-white/5 text-foreground/70 hover:bg-white/10",
-            ].join(" ")}
-          >
-            {t.label}
-          </button>
-        ))}
-
-        {tab === "game" && games.length > 0 && (
-          <div className="ml-2 flex flex-wrap items-center gap-2 pl-3 border-l border-white/10">
-            <span className="text-xs text-foreground/60">Games:</span>
-            <button
-              className={`px-2 py-1 rounded-full text-xs ${
-                gameFilter === null ? "bg-white/10" : "bg-white/5 hover:bg-white/10"
-              }`}
-              onClick={() => setGameFilter(null)}
-            >
-              All
-            </button>
-            {games.map((g) => (
-              <button
-                key={g}
-                onClick={() => setGameFilter((prev) => (prev === g ? null : g))}
-                className={`px-2 py-1 rounded-full text-xs ${
-                  gameFilter === g ? "bg-white/10" : "bg-white/5 hover:bg-white/10"
-                }`}
-                title={g}
-              >
-                {g}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
       <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [column-fill:_balance]">
-        {filtered.map((p, i) => (
+        {items.map((p, i) => (
           <figure
             key={p.id}
             className="relative mb-5 break-inside-avoid overflow-hidden rounded-2xl bg-white/5"
@@ -202,6 +121,7 @@ export default function PhotosGrid() {
             />
           ))}
       </div>
+
       <div className="mt-8 flex justify-center">
         {nextPage ? (
           <button
@@ -211,11 +131,14 @@ export default function PhotosGrid() {
           >
             {loading ? "Loading…" : "Load more photos"}
           </button>
-        ) : filtered.length ? (
-          <p className="text-xs text-foreground/60">{error ? error : "That’s all ✨"}</p>
+        ) : items.length ? (
+          <p className="text-xs text-foreground/60">
+            {error ? error : "That’s all ✨"}
+          </p>
         ) : null}
       </div>
-      {open && filtered[idx] && (
+
+      {open && items[idx] && (
         <div
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm"
           onClick={close}
@@ -228,8 +151,8 @@ export default function PhotosGrid() {
           >
             <figure className="relative max-h-[90vh] w-full max-w-6xl">
               <img
-                src={filtered[idx].urlRegular}
-                alt={filtered[idx].alt || "photo"}
+                src={items[idx].urlRegular}
+                alt={items[idx].alt || "photo"}
                 className="mx-auto max-h-[90vh] w-auto rounded-lg shadow-2xl"
               />
               <button
@@ -255,30 +178,30 @@ export default function PhotosGrid() {
               </button>
               <figcaption className="mt-3 flex items-center justify-between text-sm text-white/85">
                 <div className="truncate">
-                  {filtered[idx].source === "game" ? (
+                  {items[idx].location ? (
                     <>
-                      🎮 <span className="font-medium">{filtered[idx].game ?? "In-game"}</span>
-                    </>
-                  ) : filtered[idx].location ? (
-                    <>
-                      📍 <span className="font-medium">{filtered[idx].location}</span>
+                      📍{" "}
+                      <span className="font-medium">{items[idx].location}</span>
                     </>
                   ) : (
                     <>
-                      📷 <span className="font-medium">{filtered[idx].author?.name}</span>
+                      📷{" "}
+                      <span className="font-medium">
+                        {items[idx].author?.name}
+                      </span>
                     </>
                   )}
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <a
-                    href={filtered[idx].urlRegular}
+                    href={items[idx].urlRegular}
                     download
                     className="rounded-md bg-white/10 px-3 py-1 hover:bg-white/20"
                   >
                     Download
                   </a>
                   <a
-                    href={filtered[idx].pageUrl}
+                    href={items[idx].pageUrl}
                     target="_blank"
                     className="rounded-md bg-white/10 px-3 py-1 hover:bg-white/20"
                   >

@@ -13,11 +13,28 @@ type FinishedItem = {
 };
 type PlayedItem = { title: string; url: string };
 type ManualItem = FinishedItem & { cover?: string | null };
-
 type Payload =
-  | { mode: "finished"; year: string; count: number; items: FinishedItem[]; source: string }
-  | { mode: "played"; year: string; count: number; items: PlayedItem[]; source: string }
-  | { mode: "manual"; year: string; count: number; items: ManualItem[]; source: string }
+  | {
+      mode: "finished";
+      year: string;
+      count: number;
+      items: FinishedItem[];
+      source: string;
+    }
+  | {
+      mode: "played";
+      year: string;
+      count: number;
+      items: PlayedItem[];
+      source: string;
+    }
+  | {
+      mode: "manual";
+      year: string;
+      count: number;
+      items: ManualItem[];
+      source: string;
+    }
   | { error: string };
 
 function CardSkeleton() {
@@ -28,7 +45,6 @@ function CardSkeleton() {
     </li>
   );
 }
-
 export default function CompletedList({
   year = String(new Date().getFullYear()),
   limit = 8,
@@ -40,7 +56,6 @@ export default function CompletedList({
 }) {
   const [data, setData] = useState<Payload | null>(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     let live = true;
     (async () => {
@@ -77,30 +92,26 @@ export default function CompletedList({
       </ul>
     );
   }
-
   if (!data || "error" in data || !data.items?.length) {
     return (
-      <div className="mt-2 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+      <div className="mt-2 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center">
         <p className="text-sm text-muted-foreground">
           No data found. Try changing year or view.
         </p>
       </div>
     );
   }
-
   const isFinishedLike = data.mode === "finished" || data.mode === "manual";
-
   return (
     <div className="mt-2">
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {data.items.map((g: any, i: number) => {
           const status: Status =
             g.status ?? (data.mode === "played" ? "Played" : "Completed");
-
           return (
             <li
               key={`${g.title}-${i}`}
-              className="group rounded-2xl border border-white/10 bg-white/[0.04] transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-white/20"
+              className="group rounded-2xl border border-white/10 bg-white/[0.04] transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.06] hover:shadow-[0_0_12px_rgba(255,255,255,0.06)]"
             >
               <a
                 href={g.url}
@@ -109,15 +120,18 @@ export default function CompletedList({
                 className="block p-4"
                 aria-label={`${g.title} — ${status}`}
               >
-                <h3 className="truncate font-medium text-foreground underline-offset-2 group-hover:underline">
+                <h3 className="truncate font-semibold text-foreground group-hover:text-white group-hover:underline underline-offset-2">
                   {g.title}
                 </h3>
-                <p className="mt-1 truncate text-xs text-muted-foreground">
+                <p className="mt-1 truncate text-[11px] text-muted-foreground">
                   {isFinishedLike ? (
                     <>
-                      {g.platform ? <span>{g.platform}</span> : null}
-                      {g.platform && g.date ? <span> • </span> : null}
-                      {g.date ?? ""}
+                      {g.platform ? (
+                        <span className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] mr-1">
+                          {g.platform}
+                        </span>
+                      ) : null}
+                      {g.date ? <span>{g.date}</span> : null}
                     </>
                   ) : (
                     <span>Recently played</span>
@@ -128,11 +142,10 @@ export default function CompletedList({
           );
         })}
       </ul>
-
-      <div className="mt-3 text-[11px] text-muted-foreground">
+      <div className="mt-3 text-[11px] text-muted-foreground text-right">
         Source:{" "}
         <a
-          className="underline decoration-dotted underline-offset-2 hover:decoration-solid"
+          className="underline decoration-dotted underline-offset-2 hover:decoration-solid hover:text-foreground transition-colors"
           href={(data as any).source}
           target="_blank"
           rel="noopener noreferrer"

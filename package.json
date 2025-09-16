@@ -16,6 +16,7 @@
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
+    "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "image-size": "^2.0.2",
     "lucide-react": "^0.542.0",
@@ -24,6 +25,7 @@
     "next-mdx-remote": "^5.0.0",
     "react": "^18",
     "react-dom": "^18",
+    "server-only": "^0.0.1",
     "sugar-high": "^0.7.4",
     "swr": "^2.3.6"
   },

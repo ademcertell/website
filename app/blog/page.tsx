@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import { Fragment, useMemo } from "react";
+import type { Metadata } from "next";
 
-import Container from "@/components/common/container";
-import BlogCard from "@/components/common/Notes/Card";
 import { getBlogPosts, type BlogPost, type PostType } from "@/lib/getBlogPosts";
+import Container from "@/components/common/container";
+import BlogCard from "@/components/common/Blog/BlogCard";
 import SectionHeader from "@/components/common/SectionHeader";
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function Blog() {
     () =>
       posts.filter((p) => {
         const t = (p.metadata.type ?? "blog") as PostType;
-        return t === "note" || t === "blog";
+        return t === "blog";
       }),
     [posts]
   );
@@ -27,11 +27,13 @@ export default function Blog() {
   return (
     <Container size="large" className="container animate-enter">
       <SectionHeader title="Blog" />
-
-      <div className="space-y-12">
-        {filtered.map((blog) => (
+      <div className="space-y-8">
+        {filtered.map((blog, index) => (
           <Fragment key={blog.slug}>
             <BlogCard blog={blog} />
+            {index < filtered.length - 1 && (
+              <hr className="border-t border-dotted border-white/10 my-6" />
+            )}
           </Fragment>
         ))}
       </div>

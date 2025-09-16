@@ -5,7 +5,10 @@ import LayoutShell from "@/components/common/LayoutShell";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-heading" });
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
 
 export const metadata: Metadata = {
   title: { default: "Adem Can Certel", template: "%s - Adem Can Certel" },
@@ -18,7 +21,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
     images: [
-      { url: "ademcancertel.png", width: 1200, height: 630, alt: "Adem Can Certel" },
+      {
+        url: "ademcancertel.png",
+        width: 1200,
+        height: 630,
+        alt: "Adem Can Certel",
+      },
     ],
   },
   icons: { icon: "ademcancertel.png", apple: "ademcancertel.png" },

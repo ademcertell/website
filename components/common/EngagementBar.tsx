@@ -1,7 +1,6 @@
 "use client";
 
-import LikeButton from "./Notes/LikeButton";
-import ViewCounter from "./Notes/ViewCounter";
+import ViewCounter from "./Blog/ViewCounter";
 
 export default function EngagementBar({
   slug,
@@ -24,7 +23,6 @@ export default function EngagementBar({
 
   return (
     <div className="mt-10 flex flex-wrap items-center gap-3 rounded-xl border border-white/10 bg-card/60 p-3">
-      <LikeButton slug={slug} />
       <ViewCounter slug={slug} />
       <button
         onClick={share}

@@ -1,7 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 import Container from "@/components/common/container";
@@ -19,10 +18,9 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 const photos = [
-  { src: "/deniz.jpg", alt: "Bridge moment" },
-  { src: "/bina.jpg", alt: "Architecture" },
-  { src: "/cardak.jpg", alt: "Shelter" },
-  { src: "/gok.jpg", alt: "Sky" },
+  { src: "/sea.jpg", alt: "Bridge moment" },
+  { src: "/adem.PNG", alt: "Architecture" },
+  { src: "/arbor.jpg", alt: "Shelter" },
 ];
 function DraggablePhoto({
   src,
@@ -110,11 +108,7 @@ export default function AboutPage() {
               In short, design for me is a way to keep learning, observing, and
               expressing ideas. If you’re curious about the games I’m currently
               playing or the ones I’ve completed this year, you can explore them
-              on my{" "}
-              <Link href="/playlog" className="underline hover:text-foreground">
-                playlog
-              </Link>
-              .
+              on my.
             </p>
           </div>
         </div>

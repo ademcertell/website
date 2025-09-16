@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/common/container";
-import HomeBlogCards from "@/components/common/Notes/HomeNotesCards";
-import ReadingNow from "@/components/common/ReadingNow";
+import HomeBlogCards from "@/components/common/Blog/HomeLatestCards";
 import SocialLinks from "@/components/social";
 
 const featured = [
@@ -11,13 +10,13 @@ const featured = [
     summary:
       "A clean and simple way to build habits with focus and consistency.",
     href: "https://www.behance.net/gallery/233745411/Habit-Tracker-App-UIUX-Design",
-    thumb: "/habify-cover.jpg",
+    thumb: "/projects-banner/habify-cover.jpg",
   },
   {
     title: "Camping Mobile App UI",
     summary: "Plan trips clearly, pack smart, and share easily.",
     href: "https://www.behance.net/gallery/233561175/Camping-Mobile-App-UI",
-    thumb: "/camping-design.png",
+    thumb: "/projects-banner/camping-design.png",
   },
 ];
 
@@ -114,9 +113,6 @@ export default function Home() {
             />
           </div>
           <div className="w-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          <div className="text-sm text-muted-foreground/90">
-            <ReadingNow />
-          </div>
         </div>
       </header>
       <section className="mb-16">
@@ -125,10 +121,16 @@ export default function Home() {
           {featured.map((item) => (
             <ProjectCard key={item.title} item={item} />
           ))}
+          <a
+            href="/projects"
+            className="md:col-span-2 flex justify-center text-neutral-400 hover:text-white cursor-pointer"
+          >
+            See more projects
+          </a>
         </div>
       </section>
       <section className="mb-16">
-        <SectionTitle>Latest Notes & Review</SectionTitle>
+        <SectionTitle>Latest Blog & Review</SectionTitle>
         <HomeBlogCards />
       </section>
     </Container>

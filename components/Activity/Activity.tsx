@@ -64,7 +64,6 @@ export default function Activity() {
 
   const subtitle =
     data?.gameName ?? "No current activity (or Steam unreachable).";
-
   return (
     <section className="mt-2">
       <article className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] supports-[backdrop-filter]:backdrop-blur-md">

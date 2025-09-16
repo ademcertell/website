@@ -3,7 +3,7 @@ import Container from "@/components/common/container";
 import { getPostsByType } from "@/lib/getBlogPosts";
 
 export const metadata: Metadata = {
-  title: "Reviews",
+  title: "Game Reviews",
   description: "Currently, gaming activity, my completed games, and reviews.",
 };
 
@@ -26,26 +26,27 @@ export default function ReviewsPage() {
 
   return (
     <Container size="large" className="text-foreground container animate-enter">
-      <h1 className="text-2xl md:text-3xl font-heading">Game Reviews</h1>
-      <p className="text-sm text-muted-foreground mb-6">
-        I write reviews of the games I play and enjoy here.
-      </p>
-
-      <ul className="space-y-4">
-        {reviews.map((r) => (
-          <li key={r.slug}>
-            <a
-              href={`/reviews/${r.slug}`}
-              className="font-xl flex items-center gap-2"
-            >
-              <RatingBadge rating={r.metadata.rating} />
-              <span className="underline underline-offset-2 font-semibold">
-                {r.metadata.title}
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <h2 className="text-[15px] uppercase tracking-[0.14em] text-foreground/70 font-medium">
+        Game Reviews
+      </h2>
+      <div className="h-px bg-gradient-to-r from-white/15 to-transparent mt-2" />
+      <div className="mt-12">
+        <ul className="space-y-4">
+          {reviews.map((r) => (
+            <li key={r.slug}>
+              <a
+                href={`/reviews/${r.slug}`}
+                className="font-xl flex items-center gap-2"
+              >
+                <RatingBadge rating={r.metadata.rating} />
+                <span className="underline underline-offset-2 font-semibold">
+                  {r.metadata.title}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </Container>
   );
 }

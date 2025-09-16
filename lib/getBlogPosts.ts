@@ -1,20 +1,16 @@
-// lib/getBlogPosts.ts
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
 export type PostType = "note" | "blog" | "review" | "game";
-export type BlogItem = BlogPost
+export type BlogItem = BlogPost;
+
 export type Frontmatter = {
   title: string;
   date: string;
   description?: string;
-  /**
-   * Yoksa "blog" gibi davranırız.
-   */
   type?: PostType;
-
-  // --- review / game odaklı opsiyonel alanlar ---
+  image?: string;
   rating?: number; // 0..10
   game?: {
     title?: string;
@@ -40,9 +36,7 @@ export function getBlogPosts(): BlogPost[] {
       const slug = filename.replace(/\.mdx?$/, "");
       const raw = fs.readFileSync(path.join(CONTENT_DIR, filename), "utf8");
       const { content, data } = matter(raw);
-
-      // `data` (frontmatter) -> Frontmatter tipine cast
-      const metadata = data as Frontmatter;
+      const metadata = data as Frontmatter; // `data` (frontmatter) -> Frontmatter tipine cast
 
       return { slug, metadata, content };
     })
@@ -53,7 +47,6 @@ export function getBlogPosts(): BlogPost[] {
     );
 }
 
-/** Belirli type’a göre filtre */
 export function getPostsByType(type: PostType): BlogPost[] {
   return getBlogPosts().filter(
     (p) => (p.metadata.type ?? "blog") === type

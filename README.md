@@ -1,7 +1,10 @@
 # ademcan.dev
 
-Minimalist, personal portfolio that blends my passion for **games**, **UI/UX design**, and **writing** into one interactive space.  
-Designed as a digital playground where code, design, and storytelling meet.
+A **minimal, elegant personal site** that blends my passion for  
+**games**, **UI/UX design**, and **writing** into one calm, cohesive space.
+
+More than a portfolio — **a digital journal** where design, code,  
+and storytelling meet to capture my journey.
 
 ---
 
@@ -10,45 +13,54 @@ Designed as a digital playground where code, design, and storytelling meet.
 
 ---
 
-## 📖 Pages
+## 📖 Structure
 
-### 🏠 Home
-- Short introduction  
-- "Reading” (Goodreads integration)  
-- Highlighted blog post & featured project  
+### 🏠 Home  
+A simple landing page that introduces who I am and what I care about.  
+Features: a reading widget, a highlighted blog post, and a featured project.
 
-### 👤 About
-- Personal story & design philosophy  
-- My focus on clarity, usability, and problem-solving  
+### 👤 About  
+My personal story and design philosophy — focused on clarity, usability,  
+and building meaningful digital experiences.
 
-### 📝 Blog
-- Notes and reflections  
-- Thoughts on design and everyday ideas  
+### 📝 Blog  
+A collection of thoughts, ideas, and reflections.  
+Short-form notes, longer essays, and personal observations.
 
-### 🎮 Playlog
-- Game diary (powered by Backloggd API)  
-- Completed games with covers, dates, and short reviews  
+### 📂 Projects  
+A curated list of my design and development work.  
+Interactive case studies showing process, tools, and outcomes.
 
-### 🖼️ Photos
-- A personal collection of photography and visual snippets  
-- Both real-life and in-game captures  
+### 🎮 Playlog  
+A personal game diary powered by Backloggd.  
+Tracks completed games with dates and short reflections.
 
-### 📚 Reviews
-- Extended write-ups on games, sometimes films/books  
-- More structured than playlog entries  
+### 📚 Reviews  
+Structured, in-depth write-ups on games (and sometimes films/books).  
+More analytical than Playlog — part review, part reflection.
+
+### 🖼️ Photos  
+A hand-picked selection of photography and visual snippets  
+that capture my mood and aesthetic.
 
 ---
 
 ## ⚙️ Tech Stack
+
 - **Framework:** Next.js + TypeScript  
 - **Styling:** TailwindCSS  
 - **Animations:** Framer Motion  
-- **Data & APIs:** Backloggd, Steam, Unsplash, Goodreads  
+- **Data & APIs:** Backloggd, Steam, Goodreads, Unsplash  
 
 ---
 
-## ✨ Philosophy
-A clean, narrative-driven website that works like a diary.  
-Focused on **simplicity, typography, and atmosphere**—keeping content at the center.
+## ✨ Purpose
+
+This site is my **digital playground** — part journal, part portfolio.  
+It exists to **document my growth**, share what I learn, and create a space  
+that feels calm, timeless, and uniquely mine.
+
+Minimal design, generous whitespace, and a typography-first approach  
+keep the focus on **content, storytelling, and atmosphere**.
 
 ---

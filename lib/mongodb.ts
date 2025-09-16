@@ -1,8 +1,7 @@
 import { MongoClient, Db } from "mongodb";
 
 declare global {
-  // Hot-reload sırasında tek bağlantı tutmak için
-  var _mongoClientPromise: Promise<MongoClient> | undefined;
+  var _mongoClientPromise: Promise<MongoClient> | undefined; // Hot-reload
 }
 
 const uri = process.env.MONGODB_URI!;

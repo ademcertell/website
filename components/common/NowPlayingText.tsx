@@ -17,10 +17,8 @@ export default function NowPlayingText({
 }) {
   const [data, setData] = useState<SteamNow | null>(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     let live = true;
-
     const load = async () => {
       try {
         const r = await fetch("/api/steam/now-playing", { cache: "no-store" });
@@ -34,7 +32,6 @@ export default function NowPlayingText({
         if (live) setLoading(false);
       }
     };
-
     load();
     const id = setInterval(load, 60_000);
     return () => {
@@ -42,7 +39,6 @@ export default function NowPlayingText({
       clearInterval(id);
     };
   }, []);
-
   let text = emptyLabel;
   if (!loading && data) {
     if (data.inGame && data.gameName) {
@@ -50,7 +46,6 @@ export default function NowPlayingText({
     } else if (data.gameName) {
     }
   }
-
   return (
     <span className="text-xs text-muted-foreground">
       {prefix} <em>{loading ? " — " : text}</em>

@@ -22,8 +22,17 @@ export default function SocialLinks({
   className,
 }: Props) {
   const defaults: SocialItem[] = [
-    { href: "https://www.behance.net/ademcancertel", label: "View Full Portfolio", primary: true, external: true },
-    { href: "https://www.linkedin.com/in/ademcertel/", label: "LinkedIn", external: true },
+    {
+      href: "https://www.behance.net/ademcancertel",
+      label: "View Full Portfolio",
+      primary: true,
+      external: true,
+    },
+    {
+      href: "https://www.linkedin.com/in/ademcertel/",
+      label: "LinkedIn",
+      external: true,
+    },
   ];
 
   const list = items ?? defaults;
@@ -34,7 +43,9 @@ export default function SocialLinks({
       <div
         className={clsx(
           "flex flex-wrap md:flex-nowrap gap-3",
-          align === "center" ? "justify-center items-center" : "justify-start items-center"
+          align === "center"
+            ? "justify-center items-center"
+            : "justify-start items-center"
         )}
       >
         {list.map(({ href, label, primary, external }) => (
@@ -56,7 +67,11 @@ export default function SocialLinks({
             )}
           >
             <span>{label}</span>
-            {isCTA && primary && <span aria-hidden className="translate-y-[1px]">→</span>}
+            {isCTA && primary && (
+              <span aria-hidden className="translate-y-[1px]">
+                →
+              </span>
+            )}
           </Link>
         ))}
       </div>

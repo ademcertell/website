@@ -9,10 +9,9 @@ import Container from "@/components/common/container";
 import CustomMDX from "@/components/mdx";
 import HideHeader from "@/components/common/HideHeader";
 
-import SimilarReviews from "@/components/common/Notes/SimilarReviews";
+import SimilarReviews from "@/components/common/Blog/SimilarReviews";
 import Comments from "@/components/common/Comments";
-import LikeButton from "@/components/common/Notes/LikeButton";
-import ViewCounter from "@/components/common/Notes/ViewCounter";
+import ViewCounter from "@/components/common/Blog/ViewCounter";
 
 const contentDir = path.join(process.cwd(), "content");
 

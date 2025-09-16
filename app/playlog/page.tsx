@@ -1,10 +1,14 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import Container from "@/components/common/container";
+import Link from "next/link";
+
 import Activity from "@/components/Activity/Activity";
+import Container from "@/components/common/container";
 import CompletedList from "@/components/common/CompletedList";
 import ReviewTeasers from "@/components/common/ReviewTeasers";
 import SectionHeader from "@/components/common/SectionHeader";
+
+import MotionSection from "@/components/common/MotionSection";
+import MotionHeader from "@/components/common/MotionHeader";
 
 export const metadata: Metadata = {
   title: "Playlog",
@@ -22,33 +26,40 @@ function CompactLabel({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
 export default function PlaylogPage() {
   return (
-    <Container size="large" className="text-foreground container animate-enter">
-      <SectionHeader title="Playlog" />
-
-      <section className="mt-2">
-        <Activity />
-      </section>
-
-      <section className="mt-12">
-        <CompactLabel>Recently Completed</CompactLabel>
-        <CompletedList year="2025" limit={8} view="auto" />
-      </section>
-
-      <section className="mt-12">
-        <div className="mb-4 flex items-center justify-between">
-          <CompactLabel>Latest Reviews</CompactLabel>
-          <Link
-            href="/reviews"
-            className="text-sm text-primary transition-colors hover:text-highlight"
-          >
-            View all →
-          </Link>
-        </div>
-        <ReviewTeasers limit={4} />
-      </section>
-    </Container>
+    <div className="relative">
+      <Container
+        size="large"
+        className="text-foreground container relative z-10"
+      >
+        <MotionHeader>
+          <SectionHeader title="Playlog" />
+        </MotionHeader>
+        <MotionSection delay={0.1}>
+          <Activity />
+        </MotionSection>
+        <section className="mt-12">
+          <MotionSection delay={0.2}>
+            <CompactLabel>Recently Completed</CompactLabel>
+            <CompletedList year="2025" limit={8} view="auto" />
+          </MotionSection>
+        </section>
+        <section className="mt-12">
+          <MotionSection delay={0.3}>
+            <div className="flex items-center justify-between">
+              <CompactLabel>Latest Reviews</CompactLabel>
+            </div>
+            <ReviewTeasers limit={4} />
+            <Link
+              href="/reviews"
+              className="inline-block mt-3 text-sm font-medium text-primary transition-colors hover:text-highlight"
+            >
+              View all →
+            </Link>
+          </MotionSection>
+        </section>
+      </Container>
+    </div>
   );
 }
