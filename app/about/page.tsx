@@ -109,14 +109,7 @@ export default function AboutPage() {
             </p>
             <p>
               In short, design for me is a way to keep learning, observing, and
-              expressing ideas. If you’re curious about the games I’m currently
-              playing or the ones I’ve completed this year,{" "}
-              <a
-                href="/playlog"
-                className="underline decoration-white/30 hover:decoration-white transition-colors"
-              >
-                you can explore them here.
-              </a>
+              expressing ideas.
             </p>
           </div>
         </div>

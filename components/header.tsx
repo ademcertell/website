@@ -21,8 +21,8 @@ export default function Header() {
     () => [
       { name: "home", href: "/" },
       { name: "about", href: "/about" },
-      { name: "blog", href: "/blog" },
       { name: "projects", href: "/projects" },
+      { name: "blog", href: "/blog" },
     ],
     []
   );
@@ -173,7 +173,7 @@ export default function Header() {
                   <QuickCard
                     href="/playlog"
                     title="Playlog"
-                    desc="A journal of the games I’m playing and finishing."
+                    desc="A journal of the games I’m playing and finishing"
                     image="/Playlog.JPEG"
                     icon={<Gamepad2 className="h-4 w-4" />}
                   />
@@ -190,6 +190,12 @@ export default function Header() {
                       title="Photos"
                       desc="Moments from nature and city life"
                       icon={<Camera className="h-4 w-4" />}
+                    />
+                    <TextCard
+                      href="/reviews"
+                      title="Game Reviews"
+                      desc="You can see my game reviews"
+                      icon={<Gamepad2 className="h-4 w-4" />}
                     />
                   </div>
                 </div>

@@ -3,7 +3,6 @@ import path from "path";
 import matter from "gray-matter";
 
 export type PostType = "note" | "blog" | "review" | "game";
-export type BlogItem = BlogPost;
 
 export type Frontmatter = {
   title: string;
@@ -11,10 +10,13 @@ export type Frontmatter = {
   description?: string;
   type?: PostType;
   image?: string;
+  cover?: string;
   rating?: number; // 0..10
+  tags?: string[];
   game?: {
     title?: string;
     platform?: string;
+    hours?: number;
   };
 };
 
@@ -36,8 +38,7 @@ export function getBlogPosts(): BlogPost[] {
       const slug = filename.replace(/\.mdx?$/, "");
       const raw = fs.readFileSync(path.join(CONTENT_DIR, filename), "utf8");
       const { content, data } = matter(raw);
-      const metadata = data as Frontmatter; // `data` (frontmatter) -> Frontmatter tipine cast
-
+      const metadata = data as Frontmatter;
       return { slug, metadata, content };
     })
     .sort(
