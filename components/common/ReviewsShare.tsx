@@ -6,7 +6,6 @@ export default function ShareButton({ title }: { title: string }) {
   const pathname = usePathname();
   const fullUrl = `https://ademcan.dev${pathname}`;
 
-  // 🔥 Türkçe tweet metni
   const shareText = encodeURIComponent(
     `🎮 ${title} hakkında @ademcertel tarafından yazılmış incelemeyi okudum. 👀\n\n${fullUrl}`
   );

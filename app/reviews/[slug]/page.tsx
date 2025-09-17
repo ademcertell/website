@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 import Container from "@/components/common/container";
 import CustomMDX from "@/components/mdx";
@@ -77,7 +78,7 @@ export default async function ReviewPost({
         <div className="relative overflow-hidden">
           <div className="relative aspect-[21/9]">
             {cover ? (
-              <img
+              <Image
                 src={cover}
                 alt={title}
                 className="absolute inset-0 h-full w-full object-cover"
