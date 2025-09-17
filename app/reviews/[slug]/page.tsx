@@ -20,18 +20,21 @@ function mdxFiles() {
   if (!fs.existsSync(contentDir)) return [];
   return fs.readdirSync(contentDir).filter((f) => f.endsWith(".mdx"));
 }
+
 function readFrontmatter(file: string) {
   const full = path.join(contentDir, file);
   const raw = fs.readFileSync(full, "utf-8");
   const { data } = matter(raw);
   return { slug: file.replace(/\.mdx$/, ""), data };
 }
+
 export async function generateStaticParams() {
   return mdxFiles()
     .map(readFrontmatter)
     .filter((p) => p.data?.type === "review")
     .map((p) => ({ slug: p.slug }));
 }
+
 function formatDate(date?: string) {
   if (!date) return "";
   return new Date(date).toLocaleDateString("tr-TR", {
@@ -81,7 +84,9 @@ export default async function ReviewPost({
               <Image
                 src={cover}
                 alt={title}
-                className="absolute inset-0 h-full w-full object-cover"
+                fill   // ✅ width & height yerine fill kullandık
+                className="object-cover"
+                priority
               />
             ) : (
               <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-black to-black" />
@@ -121,19 +126,24 @@ export default async function ReviewPost({
           </div>
         </div>
       </section>
+
       <Container size="large" className="mt-8">
         <article className="prose prose-invert mx-auto max-w-4xl prose-img:rounded-xl prose-img:shadow-lg prose-p:leading-7 prose-h2:text-2xl prose-h3:text-xl">
           <CustomMDX source={mdx} />
         </article>
+
         <div className="mt-10 flex justify-center">
           <ShareButton title={title} />
         </div>
+
         <div className="my-6 border-t border-white/10 pt-6">
           <Comments slug={params.slug} />
         </div>
+
         <div className="mx-auto mt-10 w-full max-w-6xl">
           <SimilarReviews currentSlug={params.slug} />
         </div>
+
         <div className="mt-12 flex justify-center">
           <Link
             href="/reviews"
@@ -143,6 +153,7 @@ export default async function ReviewPost({
           </Link>
         </div>
       </Container>
+
       <div className="mx-auto mt-8 flex w-full max-w-3xl items-center justify-center gap-3">
         <ViewCounter slug={params.slug} />
       </div>
