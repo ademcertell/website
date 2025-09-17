@@ -214,6 +214,7 @@ export default function PhotosGrid() {
                 </div>
               </figcaption>
             </figure>
+            
           </div>
         </div>
       )}

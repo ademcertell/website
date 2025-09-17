@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type Comment = {
   id: string;
@@ -59,7 +59,7 @@ export default function Comments({ slug }: { slug: string }) {
   const nameRef = useRef<HTMLInputElement>(null);
   const msgRef = useRef<HTMLTextAreaElement>(null);
 
-  const load = async () => {
+  const load = useCallback(async () => {
     try {
       const r = await fetch(`/api/reviews/${slug}/comments`, {
         cache: "no-store",
@@ -69,11 +69,11 @@ export default function Comments({ slug }: { slug: string }) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [slug]);
 
   useEffect(() => {
     load();
-  }, [slug]);
+  }, [load]);
 
   const nameValid = useMemo(() => isLikelyRealName(name), [name]);
   const msgValid = useMemo(
