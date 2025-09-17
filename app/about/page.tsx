@@ -1,27 +1,29 @@
 "use client";
+
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 import Container from "@/components/common/container";
 import SocialLinks from "@/components/social";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mb-5 flex items-center gap-4">
+    <div className="mb-6 flex items-center gap-4">
       <h2 className="text-[15px] uppercase tracking-[0.14em] text-foreground/70 font-medium">
         {children}
       </h2>
-      <div className="h-px flex-1 bg-gradient-to-r from-white/15 to-transparent" />
+      <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
     </div>
   );
 }
 
 const photos = [
   { src: "/sea.jpg", alt: "Bridge moment" },
-  { src: "/adem.PNG", alt: "Architecture" },
+  { src: "/adem.PNG", alt: "Portrait" },
   { src: "/arbor.jpg", alt: "Shelter" },
 ];
+
 function DraggablePhoto({
   src,
   alt,
@@ -36,41 +38,41 @@ function DraggablePhoto({
   const springX = useSpring(x, { stiffness: 200, damping: 20, mass: 0.6 });
   const springY = useSpring(y, { stiffness: 200, damping: 20, mass: 0.6 });
 
-  const baseRotate = [-6, -2, 2, 6][index % 4];
+  const baseRotate = [-5, 0, 5][index % 3];
 
   return (
     <motion.div
-      className="relative w-[220px] h-[300px] sm:w-[260px] sm:h-[340px] rounded-[22px] border border-white/10 overflow-hidden shadow-[0_18px_60px_-20px_rgba(0,0,0,0.6)] bg-white/5"
+      className="relative w-[220px] h-[300px] sm:w-[260px] sm:h-[340px] rounded-[22px] border border-white/10 overflow-hidden shadow-[0_18px_50px_-20px_rgba(0,0,0,0.65)] bg-white/5 hover:shadow-[0_20px_60px_-12px_rgba(0,0,0,0.7)] transition-all duration-300 ease-out"
       style={{ x: springX, y: springY, rotate: baseRotate }}
       drag
-      dragElastic={0.2}
+      dragElastic={0.18}
       dragMomentum={false}
-      whileTap={{ cursor: "grabbing", scale: 0.98 }}
-      initial={{ y: 0, rotate: baseRotate, scale: 1 }}
-      whileHover={{ scale: 1.02 }}
+      whileTap={{ cursor: "grabbing", scale: 0.97 }}
+      whileHover={{ scale: 1.03 }}
     >
       <Image
         src={src}
         alt={alt}
         fill
-        className="object-cover select-none pointer-events-none"
+        className="object-cover select-none pointer-events-none brightness-[1.05] contrast-[1.05]"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
     </motion.div>
   );
 }
+
 export default function AboutPage() {
   const areaRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
 
   return (
     <Container size="large" className="container animate-enter text-foreground">
-      <section className="mb-10 flex justify-center">
+      <section className="mb-16 flex justify-center">
         <div
           ref={areaRef}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className="relative w-full max-w-4xl h-[360px] sm:h-[400px] flex items-center justify-center"
+          className="relative w-full max-w-4xl h-[380px] sm:h-[420px] flex items-center justify-center"
         >
           <div className="relative">
             <div className="pointer-events-none absolute -inset-10" />
@@ -82,11 +84,12 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="mb-14">
+
+      <section className="mb-16">
         <SectionTitle>About</SectionTitle>
-        <div className="grid grid-cols-1 md:grid-cols-[0.5fr_1.5fr] gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-[0.4fr_1.6fr] gap-10">
           <div className="text-sm text-foreground/70"></div>
-          <div className="space-y-5 text-[15px] leading-relaxed text-foreground/85">
+          <div className="space-y-6 text-[15px] leading-[1.75] text-foreground/80 max-w-prose">
             <p>
               I’m Adem Can Certel, a UI/UX and product designer focused on
               building clear, functional, human-centered experiences. For me,
@@ -107,12 +110,18 @@ export default function AboutPage() {
             <p>
               In short, design for me is a way to keep learning, observing, and
               expressing ideas. If you’re curious about the games I’m currently
-              playing or the ones I’ve completed this year, you can explore them
-              on my.
+              playing or the ones I’ve completed this year,{" "}
+              <a
+                href="/playlog"
+                className="underline decoration-white/30 hover:decoration-white transition-colors"
+              >
+                you can explore them here.
+              </a>
             </p>
           </div>
         </div>
       </section>
+
       <section className="mb-12">
         <SectionTitle>Elsewhere</SectionTitle>
         <SocialLinks

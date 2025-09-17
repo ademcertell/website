@@ -22,18 +22,18 @@ const featured = [
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mb-5 flex items-center gap-4">
+    <div className="mb-6 flex items-center gap-4">
       <h2 className="text-[15px] uppercase tracking-[0.14em] text-foreground/70 font-medium">
         {children}
       </h2>
-      <div className="h-px flex-1 bg-gradient-to-r from-white/15 to-transparent" />
+      <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
     </div>
   );
 }
 
 function CardShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-[28px] border border-white/10 bg-white/[0.02] supports-[backdrop-filter]:backdrop-blur-xl shadow-[0_10px_30px_-16px_rgba(0,0,0,0.55)] transition-transform">
+    <div className="rounded-[28px] border border-white/10 bg-white/[0.03] supports-[backdrop-filter]:backdrop-blur-xl shadow-[0_10px_30px_-16px_rgba(0,0,0,0.6)] transition-transform hover:scale-[1.01] hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)] duration-300 ease-out">
       {children}
     </div>
   );
@@ -53,7 +53,7 @@ function ProjectCard({ item }: { item: (typeof featured)[number] }) {
             src={item.thumb}
             alt={item.title}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1000px"
             priority
           />
@@ -66,11 +66,11 @@ function ProjectCard({ item }: { item: (typeof featured)[number] }) {
           <p className="mt-2 text-sm text-foreground/70 leading-relaxed max-w-prose">
             {item.summary}
           </p>
-          <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-foreground/90">
+          <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-foreground/90 transition-colors group-hover:text-white">
             <span>View</span>
             <span
               aria-hidden
-              className="translate-y-[1px] transition-transform group-hover:translate-x-0.5"
+              className="translate-y-[1px] transition-transform group-hover:translate-x-1"
             >
               →
             </span>
@@ -84,27 +84,29 @@ function ProjectCard({ item }: { item: (typeof featured)[number] }) {
 export default function Home() {
   return (
     <Container size="large" className="text-foreground container animate-enter">
-      <header className="pt-2 mb-16 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <header className="pt-4 mb-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
         <div className="flex flex-col gap-6 self-start">
           <div>
-            <h1 className="font-heading font-bold tracking-tight text-[32px] sm:text-[40px] md:text-[48px] leading-[1.08]">
+            <h1 className="font-heading font-bold tracking-tight text-[36px] sm:text-[44px] md:text-[52px] leading-[1.1]">
               Adem.
             </h1>
-            <p className="mt-3 text-[15px] text-muted-foreground/90 max-w-xl leading-relaxed">
+            <p className="mt-4 text-[15px] text-muted-foreground/80 max-w-xl leading-relaxed">
               I keep a small digital journal here—notes I’m collecting, things
               I’m designing, and games I’m currently into.{" "}
-              <Link href="/about" className="underline hover:text-foreground">
+              <Link
+                href="/about"
+                className="underline decoration-white/30 hover:decoration-white hover:text-foreground transition-colors"
+              >
                 More about me
               </Link>
               .
             </p>
           </div>
-          {/* CTA */}
           <SocialLinks variant="cta" />
         </div>
 
         <div className="flex flex-col items-center gap-6 self-start">
-          <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border border-white/10 shadow-xl">
+          <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border border-white/10 shadow-2xl">
             <Image
               src="/ademcancertel.png"
               alt="Adem Can profile photo"
@@ -112,24 +114,26 @@ export default function Home() {
               className="object-cover"
             />
           </div>
-          <div className="w-12 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          <div className="w-12 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
         </div>
       </header>
-      <section className="mb-16">
+
+      <section className="mb-20">
         <SectionTitle>Featured Projects</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {featured.map((item) => (
             <ProjectCard key={item.title} item={item} />
           ))}
-          <a
+          <Link
             href="/projects"
-            className="md:col-span-2 flex justify-center text-neutral-400 hover:text-white cursor-pointer"
+            className="md:col-span-2 flex justify-center text-neutral-400 hover:text-white cursor-pointer transition-colors"
           >
             See more projects
-          </a>
+          </Link>
         </div>
       </section>
-      <section className="mb-16">
+
+      <section className="mb-20">
         <SectionTitle>Latest Blog & Review</SectionTitle>
         <HomeBlogCards />
       </section>

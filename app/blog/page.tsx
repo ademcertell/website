@@ -27,12 +27,12 @@ export default function Blog() {
   return (
     <Container size="large" className="container animate-enter">
       <SectionHeader title="Blog" />
-      <div className="space-y-8">
+      <div className="space-y-10">
         {filtered.map((blog, index) => (
           <Fragment key={blog.slug}>
             <BlogCard blog={blog} />
             {index < filtered.length - 1 && (
-              <hr className="border-t border-dotted border-white/10 my-6" />
+              <hr className="border-t border-white/10 opacity-20 my-4" />
             )}
           </Fragment>
         ))}

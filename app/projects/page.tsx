@@ -45,6 +45,13 @@ const projects: Project[] = [
     image: "/projects-banner/car-market.png",
     link: "https://www.behance.net/gallery/234422847/CarMarket-Car-Sales-App-UIUX-Design",
   },
+    {
+    title: "Ambient City – UI/UX Design Concept",
+    description: "Hear the World, Feel the Meoment.",
+    tools: ["Figma"],
+    image: "/projects-banner/ambient-cover.png",
+    link: "https://www.behance.net/gallery/234792557/Ambient-City-UIUX-Design-Concept",
+  },
 ];
 
 export default function Projects() {
