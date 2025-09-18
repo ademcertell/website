@@ -131,11 +131,6 @@ export default function AboutPage() {
               label: "LinkedIn",
               external: true,
             },
-            {
-              href: "https://www.instagram.com/ademcertel/",
-              label: "Instagram",
-              external: true,
-            },
             { href: "mailto:ademcan.cert@gmail.com", label: "Email" },
           ]}
         />
