@@ -6,11 +6,6 @@ A **minimal, elegant personal site** that blends my passion for
 More than a portfolio — **a digital journal** where design, code,  
 and storytelling meet to capture my journey.
 
-
-## Live
-[ademcan.dev](https://ademcan.dev)
-
-
 ## Structure
 
 ### Home  
