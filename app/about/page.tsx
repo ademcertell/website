@@ -122,6 +122,11 @@ export default function AboutPage() {
           align="start"
           items={[
             {
+              href: "https://discord.com/invite/vHZVGRAm3P",
+              label: "Discord",
+              external: true,
+            },
+            {
               href: "https://www.behance.net/ademcancertel",
               label: "Behance",
               external: true,
