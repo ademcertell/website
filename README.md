@@ -36,20 +36,6 @@ More analytical than Playlog — part review, part reflection.
 A hand-picked selection of photography and visual snippets  
 that capture my mood and aesthetic.
 
-## Connect
-
-Join my **Discord community** to chat about games, design, and creative ideas.  
-
-<a 
-  href="https://discord.gg/vHZVGRAm3P" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="mt-4 inline-block bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700 transition"
->
-  Join a Discord
-</a>
-
----
 
 ## Tech Stack
 
@@ -68,5 +54,13 @@ that feels calm, timeless, and uniquely mine.
 
 Minimal design, generous whitespace, and a typography-first approach  
 keep the focus on **content, storytelling, and atmosphere**.
+
+---
+
+## Connect
+
+Join my **Discord community** to chat about games, design, and creative ideas.  
+
+[Join Discord](https://discord.gg/vHZVGRAm3P)
 
 ---
