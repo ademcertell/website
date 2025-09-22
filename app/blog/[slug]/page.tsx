@@ -7,6 +7,7 @@ import CustomMDX from "@/components/mdx";
 import Container from "@/components/common/container";
 import BlogIntroduction from "@/components/common/Blog/BlogIntroduction";
 import ShareButton from "@/components/common/Blog/ShareButton";
+import DiscordButton from "@/components/common/Blog/DiscordButton";
 
 const contentDirectory = path.join(process.cwd(), "content");
 
@@ -42,7 +43,6 @@ export default async function NotePage({ params }: NotePageProps) {
         size="large"
         className="container animate-enter flex flex-col md:flex-row gap-10"
       >
-        {/* İçerik */}
         <div className="flex-1">
           <header className="mb-6">
             <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
@@ -55,8 +55,9 @@ export default async function NotePage({ params }: NotePageProps) {
           <article className="prose prose-invert prose-p:leading-7">
             <CustomMDX source={mdxSource} />
           </article>
-          <div className="mt-8">
+          <div className="mt-8 flex gap-4">
             <ShareButton title={title} />
+            <DiscordButton title={title} />
           </div>
         </div>
         <BlogIntroduction />
