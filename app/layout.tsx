@@ -12,10 +12,12 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: { default: "Adem Can Certel", template: "%s - Adem Can Certel" },
-  description: "UI/UX Designer",
+  description:
+    "UI/UX designer focused on web apps and micro products. I create intuitive interfaces that solve real problems and enhance user experiences.",
   openGraph: {
     title: "Adem Can Certel",
-    description: "UI/UX Designer",
+    description:
+      "UI/UX designer focused on web apps and micro products. I create intuitive interfaces that solve real problems and enhance user experiences.",
     url: "https://ademcan.dev",
     siteName: "Adem Can Certel",
     locale: "en_US",
@@ -24,13 +26,18 @@ export const metadata: Metadata = {
       {
         url: "ademcancertel.png",
         width: 1200,
-        height: 630,
+        height: 675, // 16:9 oranı için küçük düzeltme
         alt: "Adem Can Certel",
       },
     ],
   },
   icons: { icon: "ademcancertel.png", apple: "ademcancertel.png" },
-  twitter: { title: "Adem Can Certel", card: "summary_large_image" },
+  twitter: {
+    title: "Adem Can Certel",
+    card: "summary_large_image",
+    site: "@ademcertel",
+    creator: "@ademcertel",
+  },
 };
 
 export default function RootLayout({
