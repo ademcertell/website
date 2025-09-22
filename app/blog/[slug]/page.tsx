@@ -5,7 +5,6 @@ import matter from "gray-matter";
 
 import CustomMDX from "@/components/mdx";
 import Container from "@/components/common/container";
-import BlogIntroduction from "@/components/common/Blog/BlogIntroduction";
 import ShareButton from "@/components/common/Blog/ShareButton";
 import DiscordButton from "@/components/common/Blog/DiscordButton";
 
@@ -60,7 +59,6 @@ export default async function NotePage({ params }: NotePageProps) {
             <DiscordButton title={title} />
           </div>
         </div>
-        <BlogIntroduction />
       </Container>
     </div>
   );
