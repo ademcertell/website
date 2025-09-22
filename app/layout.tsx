@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "ademcancertel.png",
+        url: "card-banner.jpg",
         width: 1200,
-        height: 675, // 16:9 oranı için küçük düzeltme
+        height: 675,
         alt: "Adem Can Certel",
       },
     ],
   },
-  icons: { icon: "ademcancertel.png", apple: "ademcancertel.png" },
+  icons: { icon: "card-banner.jpg", apple: "card-banner.jpg" },
   twitter: {
     title: "Adem Can Certel",
     card: "summary_large_image",
