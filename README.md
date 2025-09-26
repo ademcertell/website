@@ -1,7 +1,6 @@
 # ademcan.dev
 
-A **minimal, elegant personal site** that blends my passion for  
-**games**, **UI/UX design**, and **writing** into one calm, cohesive space.
+A **minimal, elegant personal site** that blends my passion for  **UI/UX design**, and **writing** into one calm, cohesive space.
 
 More than a portfolio — **a digital journal** where design, code,  
 and storytelling meet to capture my journey.
@@ -23,14 +22,6 @@ Short-form notes, longer essays, and personal observations.
 ### Projects  
 A curated list of my design and development work.  
 Interactive case studies showing process, tools, and outcomes.
-
-### Playlog  
-A personal game diary powered by Backloggd.  
-Tracks completed games with dates and short reflections.
-
-### Reviews  
-Structured, in-depth write-ups on games (and sometimes films/books).  
-More analytical than Playlog — part review, part reflection.
 
 ### Photos  
 A hand-picked selection of photography and visual snippets  
@@ -54,13 +45,5 @@ that feels calm, timeless, and uniquely mine.
 
 Minimal design, generous whitespace, and a typography-first approach  
 keep the focus on **content, storytelling, and atmosphere**.
-
----
-
-## Connect
-
-Join my **Discord community** to chat about games, design, and creative ideas.  
-
-[Join Discord](https://discord.gg/vHZVGRAm3P)
 
 ---

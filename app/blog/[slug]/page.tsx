@@ -4,9 +4,8 @@ import path from "path";
 import matter from "gray-matter";
 
 import CustomMDX from "@/components/mdx";
-import Container from "@/components/common/container";
+import Container from "@/components/container";
 import ShareButton from "@/components/common/Blog/ShareButton";
-import DiscordButton from "@/components/common/Blog/DiscordButton";
 
 const contentDirectory = path.join(process.cwd(), "content");
 
@@ -56,7 +55,6 @@ export default async function NotePage({ params }: NotePageProps) {
           </article>
           <div className="mt-8 flex gap-4">
             <ShareButton title={title} />
-            <DiscordButton title={title} />
           </div>
         </div>
       </Container>

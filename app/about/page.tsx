@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-import Container from "@/components/common/container";
+import Container from "@/components/container";
 import SocialLinks from "@/components/social";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
@@ -64,7 +64,6 @@ function DraggablePhoto({
 export default function AboutPage() {
   const areaRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
-
   return (
     <Container size="large" className="container animate-enter text-foreground">
       <section className="mb-16 flex justify-center">
@@ -84,7 +83,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
       <section className="mb-16">
         <SectionTitle>About</SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-[0.4fr_1.6fr] gap-10">
@@ -114,18 +112,12 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
       <section className="mb-12">
         <SectionTitle>Elsewhere</SectionTitle>
         <SocialLinks
           variant="pill"
           align="start"
           items={[
-            {
-              href: "https://discord.com/invite/vHZVGRAm3P",
-              label: "Discord",
-              external: true,
-            },
             {
               href: "https://www.behance.net/ademcancertel",
               label: "Behance",

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import classNames from "classnames";
-import Container from "./common/container";
+import Container from "./container";
 import { ChevronDown, Bookmark, Gamepad2, Camera } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -110,7 +110,7 @@ export default function Header() {
                 aria-expanded={panelOpen}
                 aria-controls="quick-panel"
               >
-                More{" "}
+                more{" "}
                 <ChevronDown
                   className={classNames(
                     "h-4 w-4 transition-transform",
@@ -145,7 +145,7 @@ export default function Header() {
               aria-expanded={panelOpen}
               aria-controls="quick-panel"
             >
-              More{" "}
+              more{" "}
               <ChevronDown
                 className={classNames(
                   "h-4 w-4 transition-transform",
@@ -169,14 +169,7 @@ export default function Header() {
               className="mx-auto max-w-4xl px-4"
             >
               <div className="rounded-2xl bg-neutral-900 p-4 shadow-xl">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <QuickCard
-                    href="/playlog"
-                    title="Playlog"
-                    desc="A journal of the games I’m playing and finishing"
-                    image="/Playlog.JPEG"
-                    icon={<Gamepad2 className="h-4 w-4" />}
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <QuickCard
                     href="/bucket-list"
                     title="Bucket List"
@@ -184,20 +177,13 @@ export default function Header() {
                     image="/bucket-list.avif"
                     icon={<Bookmark className="h-4 w-4" />}
                   />
-                  <div className="flex flex-col gap-4">
-                    <TextCard
-                      href="/photos"
-                      title="Photos"
-                      desc="Moments from nature and city life"
-                      icon={<Camera className="h-4 w-4" />}
-                    />
-                    <TextCard
-                      href="/reviews"
-                      title="Game Reviews"
-                      desc="You can see my game reviews"
-                      icon={<Gamepad2 className="h-4 w-4" />}
-                    />
-                  </div>
+                   <QuickCard
+                    href="/photos"
+                    title="Photos"
+                    desc="Moments from nature and city life"
+                    image="/sea.jpg"
+                    icon={<Camera className="h-4 w-4" />}
+                  />
                 </div>
               </div>
             </motion.div>

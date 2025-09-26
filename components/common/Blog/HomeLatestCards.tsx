@@ -12,26 +12,32 @@ function formatDate(date?: string) {
 
 function Card({
   href,
-  eyebrow,
   title,
   desc,
   date,
+  imageSrc,
 }: {
   href: string;
-  eyebrow: string;
   title: string;
   desc?: string;
   date?: string;
+  imageSrc?: string;
 }) {
   return (
     <Link
       href={href}
       className="flex flex-col justify-between rounded-3xl border border-white/10 bg-card/40 p-6 hover:border-white/20 transition-colors"
     >
-      <div>
-        <div className="mb-1 text-[11px] uppercase tracking-wide font-medium text-primary">
-          {eyebrow}
+      {imageSrc && (
+        <div className="mb-4 overflow-hidden rounded-2xl">
+          <img
+            src={imageSrc}
+            alt={title}
+            className="w-full h-40 object-cover"
+          />
         </div>
+      )}
+      <div>
         <h3 className="text-lg md:text-xl font-semibold text-foreground">
           {title}
         </h3>
@@ -55,24 +61,16 @@ export default function HomeBlogCards() {
   return (
     <section>
       <div className="grid gap-6 md:grid-cols-2">
-        {latestBlog && (
+        {blogs.slice(0, 2).map((blog) => (
           <Card
-            href={`/blog/${latestBlog.slug}`}
-            eyebrow="Latest Blog"
-            title={latestBlog.metadata.title}
-            desc={latestBlog.metadata.description}
-            date={formatDate(latestBlog.metadata.date)}
+            key={blog.slug}
+            href={`/blog/${blog.slug}`}
+            title={blog.metadata.title}
+            desc={blog.metadata.description}
+            date={formatDate(blog.metadata.date)}
+            imageSrc={blog.metadata.image}
           />
-        )}
-        {latestReview && (
-          <Card
-            href={`/reviews/${latestReview.slug}`}
-            eyebrow="Latest Review"
-            title={latestReview.metadata.title}
-            desc={latestReview.metadata.description}
-            date={formatDate(latestReview.metadata.date)}
-          />
-        )}
+        ))}
       </div>
     </section>
   );

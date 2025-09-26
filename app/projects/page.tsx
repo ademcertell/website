@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Container from "@/components/common/container";
-import SectionHeader from "@/components/common/SectionHeader";
 import { ArrowRight } from "lucide-react";
+
+import Container from "@/components/container";
+import SectionHeader from "@/components/common/SectionHeader";
 
 type Project = {
   title: string;
@@ -45,7 +46,7 @@ const projects: Project[] = [
     image: "/projects-banner/car-market.png",
     link: "https://www.behance.net/gallery/234422847/CarMarket-Car-Sales-App-UIUX-Design",
   },
-    {
+  {
     title: "Ambient City – UI/UX Design Concept",
     description: "Hear the World, Feel the Meoment.",
     tools: ["Figma"],

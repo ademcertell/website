@@ -1,6 +1,7 @@
-import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter, Space_Grotesk } from "next/font/google"; // Space Grotesk import
+
 import LayoutShell from "@/components/common/LayoutShell";
 import "./globals.css";
 

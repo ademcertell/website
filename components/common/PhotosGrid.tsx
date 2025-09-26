@@ -31,7 +31,7 @@ export default function PhotosGrid() {
   const [idx, setIdx] = useState(0);
 
   async function load(p: number | null) {
-    if (!p || loading) return; // Aynı anda tekrar yüklemeyi engelle
+    if (!p || loading) return;
     setLoading(true);
     setError(null);
 
@@ -61,12 +61,11 @@ export default function PhotosGrid() {
     }
   }
 
-  // İlk yükleme - sadece 1 kez
   useEffect(() => {
     if (items.length === 0) {
       void load(1);
     }
-  }, []); // boş dependency array → yalnızca ilk mount
+  }, []);
 
   const openAt = (i: number) => {
     setIdx(i);

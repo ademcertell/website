@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
-import Container from "@/components/common/container";
+import { CheckCircle2 } from "lucide-react";
+
+import Container from "@/components/container";
 
 export default function BucketListPage() {
   const [preview, setPreview] = useState<{

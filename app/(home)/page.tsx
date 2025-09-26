@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Container from "@/components/common/container";
+
+import Container from "@/components/container";
 import HomeBlogCards from "@/components/common/Blog/HomeLatestCards";
 import SocialLinks from "@/components/social";
 
@@ -33,7 +34,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 function CardShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-[28px] border border-white/10 bg-white/[0.03] supports-[backdrop-filter]:backdrop-blur-xl shadow-[0_10px_30px_-16px_rgba(0,0,0,0.6)] transition-transform hover:scale-[1.01] hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.65)] duration-300 ease-out">
+    <div className="rounded-[28px] border border-white/10 bg-white/[0.03] supports-[backdrop-filter]:backdrop-blur-xl shadow-[0_10px_30px_-16px_rgba(0,0,0,0.6)]">
       {children}
     </div>
   );
@@ -41,43 +42,31 @@ function CardShell({ children }: { children: React.ReactNode }) {
 
 function ProjectCard({ item }: { item: (typeof featured)[number] }) {
   return (
-    <a
+    <Link
       href={item.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block"
+      className="group relative block rounded-2xl overflow-hidden"
     >
-      <CardShell>
-        <div className="relative aspect-[16/9] overflow-hidden rounded-t-[28px]">
-          <Image
-            src={item.thumb}
-            alt={item.title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1000px"
-            priority
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-        </div>
-        <div className="p-6">
-          <h3 className="text-[18px] font-semibold tracking-tight text-foreground">
-            {item.title}
-          </h3>
-          <p className="mt-2 text-sm text-foreground/70 leading-relaxed max-w-prose">
-            {item.summary}
-          </p>
-          <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-foreground/90 transition-colors group-hover:text-white">
-            <span>View</span>
-            <span
-              aria-hidden
-              className="translate-y-[1px] transition-transform group-hover:translate-x-1"
-            >
-              →
-            </span>
-          </div>
-        </div>
-      </CardShell>
-    </a>
+      <div className="relative w-full h-[350px]">
+        <Image
+          src={item.thumb}
+          alt={item.title}
+          fill
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/60 group-hover:bg-black/70 transition-colors" />
+      </div>
+      <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+        <span className="uppercase text-xs tracking-[0.2em] text-white/70 mb-2">
+          Project
+        </span>
+        <h3 className="text-xl font-semibold">{item.title}</h3>
+        <p className="mt-1 text-sm text-white/80 line-clamp-2">
+          {item.summary}
+        </p>
+      </div>
+    </Link>
   );
 }
 
@@ -134,7 +123,7 @@ export default function Home() {
       </section>
 
       <section className="mb-20">
-        <SectionTitle>Latest Blog & Review</SectionTitle>
+        <SectionTitle>Latest Blog</SectionTitle>
         <HomeBlogCards />
       </section>
     </Container>
