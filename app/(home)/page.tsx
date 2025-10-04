@@ -113,12 +113,6 @@ export default function Home() {
           {featured.map((item) => (
             <ProjectCard key={item.title} item={item} />
           ))}
-          <Link
-            href="/projects"
-            className="md:col-span-2 flex justify-center text-neutral-400 hover:text-white cursor-pointer transition-colors"
-          >
-            See more projects
-          </Link>
         </div>
       </section>
 

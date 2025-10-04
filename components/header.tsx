@@ -21,7 +21,6 @@ export default function Header() {
     () => [
       { name: "home", href: "/" },
       { name: "about", href: "/about" },
-      { name: "projects", href: "/projects" },
       { name: "blog", href: "/blog" },
     ],
     []
@@ -78,9 +77,7 @@ export default function Header() {
                 <span className="text-[15px] font-medium text-foreground">
                   Adem Can Certel
                 </span>
-                <span className="text-[15px] text-foreground/70">
-                  UI/UX Designer
-                </span>
+                <span className="text-[15px] text-foreground/70">Designer</span>
               </div>
             </Link>
             <div className="hidden md:flex items-center">
@@ -177,7 +174,7 @@ export default function Header() {
                     image="/bucket-list.avif"
                     icon={<Bookmark className="h-4 w-4" />}
                   />
-                   <QuickCard
+                  <QuickCard
                     href="/photos"
                     title="Photos"
                     desc="Moments from nature and city life"

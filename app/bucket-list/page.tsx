@@ -28,7 +28,7 @@ export default function BucketListPage() {
     },
     {
       title: "Attend a Motorsport Event",
-      desc: "",
+      desc: "My goal is to experience the thrill of Formula 1 live at the track.",
       done: false,
       images: [],
     },
